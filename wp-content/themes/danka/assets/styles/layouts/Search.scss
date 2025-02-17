@@ -1,107 +1,27 @@
 .Search {
-    @apply flex flex-col px-margin pb-xxxxl;
-
-    &__breadcrumbs {
-        @apply mb-xxl;
-    }
-
     &__main {
-        @apply flex flex-col gap-xxl;
-    }
-
-    &__top {
-        @apply flex flex-col items-start gap-xl;
-
-        & > div {
-            @apply flex flex-wrap justify-between items-center gap-l w-full;
-
-            & > button {
-                @extend .component--button;
-                @extend .component--secondary;
-                @apply border-none;
-            }
-        }
+        @apply flex flex-col gap-xxl my-xxxl;
     }
 
     &__content {
-        @apply grid grid-cols-12 gap-x-gap gap-y-xxxxl;
+        @apply flex flex-col gap-xl;
     }
 
-    &__informations {
-        @apply col-span-full flex flex-col gap-s;
+    &__post {
+        @apply flex d:items-center justify-between gap-xxl border-t last:border-b border-[#00000029] py-l d:py-xl transition-colors duration-500 ease-in-out;
 
-        & > span:last-child {
-            @apply ts-h3;
-        }
-    }
-
-    &__list {
-        @apply col-span-full flex flex-col gap-xxxxl;
-    }
-
-    &__posts {
-        @apply flex flex-col gap-xxl;
-
-        & > div {
-            @apply flex flex-col gap-m pb-xxl border-b border-gray2;
-
-            & > a {
-                @apply ts-h4;
-            }
-        }
-    }
-
-    &__pagination {
-        @apply col-span-full fcc;
-    }
-    
-    &__anchor {
-        @apply hidden mt-xxxxl;
-    }
-}
-
-@include desktop() {
-
-    .Search {
-
-        &__breadcrumbs {
-            @apply mb-xxxl;
+        .component-button {
+            @apply transition-colors duration-500 ease-in-out;
         }
 
-        &__main {
-            @apply gap-xxxl;
-        }
+        @media (hover: hover) {
+            &:hover {
+                @apply text-primary border-primary;
 
-        &__top {
-            @apply gap-xxl;
-
-            & > div,
-            & > div > div {
-                @apply flex-row justify-between items-center gap-xxl;
-            }
-        }
-
-        &__informations {
-            @apply col-span-6;
-        }
-    
-        &__list {
-            @apply col-span-6;
-        }
-
-        &__posts {
-
-            & > * {
-                @apply col-span-3;
-
-                & > * {
-                    @apply justify-between h-full;
+                .component-button {
+                    @apply text-primary border-primary;
                 }
             }
         }
-
-        &__anchor {
-            @apply flex;
-        }
-    }    
+    }
 }

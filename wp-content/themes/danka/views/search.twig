@@ -1,37 +1,45 @@
 {% extends "app-content.twig" %}
 
-{% import "@components/breadcrumbs.twig" as breadcrumbs %}
-{% import "@components/pagination.twig" as pagination %}
+{% import "@components/breadcrumbs.twig" as _breadcrumbs %}
+{% import "@components/pagination.twig" as _pagination %}
+{% import "@components/svg.twig" as _svg %}
 
 {% block app_content %}
 	<div class="Search">
-		<div class="Search__breadcrumbs">
-			{{ breadcrumbs.default() }}
-		</div>
-		<div class="Search__main">
-			<div class="Search__top">
-				<div>
-					<h1 class="split animation--text" show-element>{{ pll__('Recherche') }}</h1>
-				</div>
+		<div class="container">
+			<div class="Search__breadcrumbs">
+				{{ _breadcrumbs.default() }}
 			</div>
-			<div class="Search__content">
-				<div class="Search__informations">
-					<span>Vous avez cherché</span>
-					<span>{{ search_query }}</span>
+			<div class="Search__main">
+				<div class="Search__top">
+					<div class="flex flex-col gap-l">
+						<div class="split animation--text" show-element>{{ pll__('Vous avez recherché') }}</div>
+						<div class="ts-h1 split animation--text" show-element>{{ search_query }}</div>
+					</div>
 				</div>
-				<div class="Search__list">
-					<div class="Search__posts">
-						{% for p in posts %}
-							<div>
-								<a href="{{ p.link }}">{{ p.title }}</a>
-								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-							</div>
-						{% endfor %}
+				<div class="Search__content">
+					<div class="Search__informations">
+						<span>{{ posts|length }} résultat{% if posts|length > 1 %}s{% endif %}</span>
+					</div>
+					<div class="Search__list">
+						<div class="Search__posts">
+							{% for p in posts %}
+								<a class="Search__post" href="{{ p.link }}">
+									<div class="flex-1 ts-body">
+										<div class="font-semibold">{{ p.title }}</div>
+										<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+									</div>
+									<div class="component-button component-button--icon">
+										{{ _svg.default('arrow-right') }}
+									</div>
+								</a>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
 				{% if posts.pagination.pages %}
 					<div class="Search__pagination">
-						{{ pagination.default(posts) }}
+						{{ _pagination.default(posts) }}
 					</div>
 				{% endif %}
 			</div>
