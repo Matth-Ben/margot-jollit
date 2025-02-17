@@ -1,0 +1,45 @@
+.Archive {
+    @apply px-margin;
+
+    &__breadcrumbs {
+        @apply mb-xxxl;
+    }
+
+    &__header {
+        @apply flex flex-col gap-l my-xxl;
+
+        p {
+            @apply ts-h4;
+        }
+    }
+    
+    &__filters {
+        @apply my-xxl;
+    }
+
+    &__list {
+        @apply grid grid-cols-12 gap-x-gap gap-y-xl mt-xxl mb-xxxl;
+
+        & >  div {
+            @apply col-span-full;
+        }
+    }
+}
+
+@include desktop() {
+
+    .Archive {
+
+        &__header {
+            @apply max-w-col-8;
+        }
+
+        &__list {
+            //
+
+            & > div {
+                @apply col-span-4;
+            }
+        }
+    }
+}

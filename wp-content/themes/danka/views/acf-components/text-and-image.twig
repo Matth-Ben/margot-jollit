@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% import "@components/text-and-image.twig" as text_and_image %}
+
+    <div class="acf-component-text-and-image">
+        {{ text_and_image.default(data) }}
+    </div>
+{% endmacro %}

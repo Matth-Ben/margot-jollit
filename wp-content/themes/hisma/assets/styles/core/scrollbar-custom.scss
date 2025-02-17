@@ -1,0 +1,23 @@
+/* Cacher la scrollbar native */
+::-webkit-scrollbar {
+    display: none;
+}
+
+// body {
+//     scrollbar-width: none; /* Pour Firefox */
+//     -ms-overflow-style: none; /* Pour IE et Edge */
+//     position: relative;
+// }
+
+.custom-scrollbar-thumb {
+    @apply fixed top-0 right-3 w-12 bg-primary rounded-full z-40 opacity-0 cursor-pointer;
+    user-select: none; /* Empêche la sélection de texte */
+}
+
+/* Empêcher la sélection de texte pendant le drag */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

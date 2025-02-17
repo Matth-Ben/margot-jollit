@@ -1,0 +1,62 @@
+.component-slider {
+    @apply relative;
+
+    &__items {
+        @apply w-full h-[100svh];
+    }
+    
+    &__item {
+        @apply absolute top-0 left-0 w-full h-full opacity-0;
+        transition: var(--transition);
+
+        &.active {
+            @apply opacity-100;
+        }
+    }
+    
+    &__item-image {
+        @apply absolute top-0 left-0 w-full h-full;
+
+        .image {
+            @apply w-full h-full object-cover aspect-auto;
+
+            &::after {
+                content: '';
+                @apply absolute top-0 left-0 w-full h-full opacity-50;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
+            }
+        }
+    }
+    
+    &__item-content {
+        @apply flex flex-col justify-end items-start gap-xl absolute top-0 left-0 w-full h-full p-xl z-[1];
+
+        & > div {
+            @apply flex flex-col gap-m text-light;
+        }
+    }
+    
+    &__navigation {
+        @apply absolute bottom-0 right-0 m-xl text-light z-[2];
+        --color-dark: #fff; // TODO
+    }
+}
+
+
+@include desktop() {
+
+    .component-slider {
+
+        &__items {
+            @apply w-full h-auto aspect-[16/9];
+        }
+
+        &__item-content {
+            @apply max-w-col-6 p-xxl;
+        }
+
+        &__navigation {
+            @apply m-xxl;
+        }
+    }
+}

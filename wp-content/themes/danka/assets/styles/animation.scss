@@ -1,0 +1,59 @@
+.animation {
+    
+    &--text {
+
+        &.split {
+
+            &.words {
+        
+                .word,
+                .whitespace {
+                    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+                    
+                    span {
+                        display: inline-flex;
+                        transform: translate3d(0, 120%, 0) rotate3d(1, 1, 1, 4deg);
+                    }
+                }
+        
+                &.is-in-view {
+            
+                    .word.is-show span {
+                        transition: transform var(--transition-secondary);
+                        transform: translateY(0%);
+                    }
+                }
+            }
+        }
+    }
+
+
+    &--fade-up {
+        opacity: 0;
+        transform: translate3d(0, var(--spacing-l), 0);
+        transition: opacity var(--transition-secondary), transform var(--transition-secondary);
+
+        &.is-in-view {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    
+    &--fade-down-bg {
+        @apply relative;
+    
+        &::before {
+            @apply absolute top-0 left-0 w-full h-0 bg-dark z-[0];
+            content: '';
+            transition: height var(--transition-secondary);
+        }
+    
+        & > * {
+            @apply z-[1];
+        }
+    
+        &.is-in-view::before {
+            @apply h-full;
+        }
+    }
+}

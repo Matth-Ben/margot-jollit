@@ -1,0 +1,14 @@
+{% extends "app.twig" %}
+
+{% import "@components/footer.twig" as footer %}
+
+{% set is_dark = false %}
+
+{% block app %}
+	<div id="app-content" class="{{ body_class }} {% if is_dark %}dark{% endif %}">
+		<article>
+			{% block app_content %}{% endblock %}
+		</article>
+		{# {{ footer.default() }} #}
+	</div>
+{% endblock %}

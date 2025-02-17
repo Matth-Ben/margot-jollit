@@ -1,0 +1,19 @@
+{% macro default(data) %}
+    {% if data %}
+        <section class="component--acf-flex-content">
+            {% for component in data %}
+                {% if component.acf_fc_layout %}
+                    {% set filename = component.acf_fc_layout|replace({'_': '-'}) %}
+                    {% set filename = filename ~ ".twig" %}
+                    {% set path = function('get_template_directory') ~ '/views/blocks/' ~ filename %}
+
+                    {% if function('file_exists', path) %}
+                        {% import "@acf-components/" ~ filename as c %}
+                        
+                        {{ c.default(component[component.acf_fc_layout]) }}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endmacro %}

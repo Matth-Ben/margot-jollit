@@ -1,0 +1,53 @@
+@function breakpoint($key) {
+
+    @if variable-exists(data) {
+        $breakpoints: map-get($data, 'breakpoints');
+
+        @if $breakpoints {
+            $breakpoint: map-get($breakpoints, $key);
+
+            @if $breakpoint {
+                @return $breakpoint;
+            }
+        }
+    }
+
+    @return '';
+}
+
+@function font-family($key) {
+
+    @if variable-exists(data) {
+        $fonts: map-get($data, 'fonts');
+        $font: map-get($fonts, $key);
+        
+        @if $font {
+            $font-name: map-get($font, 'name');
+            $font-serif: map-get($font, 'serif');
+
+            @if $font-serif {
+                @return '#{$font-name}', #{$font-serif};
+            }
+            @else {
+                @return '#{$font-name}';
+            }
+        }
+    }
+
+    @return '';
+}
+
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function get-width-of-columns($number-of-columns) {
+    @return calc( ((var(--width-of-layout) - (var(--gap) * (var(--max-columns) - 1))) / var(--max-columns)) * #{$number-of-columns} + (var(--gap) * (#{$number-of-columns} - 1)) );
+    // @return calc((var(--width-of-layout) - (var(--gap) * (#{$number-of-columns}-1))) / #{$number-of-columns} );
+}

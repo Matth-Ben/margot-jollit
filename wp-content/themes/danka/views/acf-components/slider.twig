@@ -1,0 +1,9 @@
+{% macro default(data) %}
+    {% import "@components/slider.twig" as slider %}
+
+    {% if data.items|length > 0 %}
+        <div class="acf-component-slider">
+            {{ slider.default(data) }}
+        </div>
+    {% endif %}
+{% endmacro %}

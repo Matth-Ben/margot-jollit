@@ -1,0 +1,66 @@
+{% macro default(data) %}    
+    {% if data %}
+        <section class="component--acf-flex-content">
+            {% for component in data %}
+                {% if component.acf_fc_layout %}
+                    {% set filename = component.acf_fc_layout|replace({'_': '-'}) %}
+                    {% set filename = filename ~ ".twig" %}
+                    {% set path = function('get_template_directory') ~ '/views/acf-components/' ~ filename %}
+
+                    {% if function('file_exists', path) %}
+                        {% import path as c %}
+                        {% set source = source(path) %}
+
+                        {% if 'macro default' in source %}
+                            {{ c.default(component[component.acf_fc_layout]) }}
+                        {% endif %}
+
+                        {# {% set variation = component.variation ? component.variation : 'default' %} #}
+
+                        {# {% include path with {
+                            variation: variation,
+                            data: component[component.acf_fc_layout]
+                        } %} #}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endmacro %}
+
+{% macro half(data, title) %}
+    {% set content = function('get_flex_content', data, 'half') %}
+    {% set display_title = true %}
+
+    {% if content %}
+        <div class="component component--acf-flex-content component--halfscreen">
+            {% if not function('is_array', content[0]) and title %}
+                {% set display_title = false %}
+                <div class="component__title">
+                    <h2 class="split animation--text" show-element>{{ title }}</h2>
+                </div>
+            {% endif %}
+            <div class="component__content">
+                {% for item in content %}
+                    {% if function('is_array', item) and item %}
+                        <div class="component__half {% if title and display_title %}has-title{% endif %}">
+                            <div>
+                                {% if title and display_title %}
+                                    {% set display_title = false %}
+                                    <h2 class="split animation--text" show-element>{{ title }}</h2>
+                                {% endif %}
+                            </div>
+                            <div>
+                                {% for i in item %}
+                                    {{ i|raw }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ item|raw }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

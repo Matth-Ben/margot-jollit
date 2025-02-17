@@ -1,0 +1,144 @@
+{
+    "breakpoints": {
+        "s": 768,
+        "m": 1024,
+        "l": 1280,
+        "xl": 1440
+    },
+    "gutters": {
+        "default": 1.2,
+        "s": 1.6,
+        "m": 2.4
+    },
+    "margins": {
+        "default": 2.4,
+        "m": 2.4,
+        "l": 3.2,
+        "xl": 4.8,
+        "xxl": 9.6,
+        "xxxl": 13
+    },
+    "breakpointDesktop": "l",
+    "colors": {
+        "dark": "#000000",
+        "light": "#fff",
+        "primary": "#304ACF",
+        "primary-light": "#A6B4FF",
+        "white-light": "#FFFFFF29",
+        "grid": "#304ACF"
+    },
+    "fonts": {
+        "default": {
+            "name": "Inter",
+            "serif": "sans-serif"
+        },
+        "heading": {
+            "name": "PP Mori",
+            "serif": "sans-serif"
+        }
+    },
+    "textStyles": {
+        "h1": {
+            "font-size": "5.2rem",
+            "line-height": "5rem",
+            "font-family": "heading",
+            "font-weight": "500"
+        },
+        "h2": {
+            "font-size": "3.6rem",
+            "line-height": "3.8rem",
+            "font-family": "heading",
+            "font-weight": "500"
+        },
+        "h3": {
+            "font-size": "2.6rem",
+            "line-height": "3rem",
+            "font-family": "heading",
+            "font-weight": "500"
+
+        },
+        "h4": {
+            "font-size": "2.2rem",
+            "line-height": "2.6rem",
+            "font-family": "heading",
+            "font-weight": "500"
+        },
+        "body": {
+            "font-size": "1.6rem",
+            "line-height": "2.2rem",
+            "font-family": "default"
+        },
+        "cta": {
+            "font-size": "1.4rem",
+            "line-height": "1.8rem",
+            "font-family": "heading",
+            "font-weight": "600"
+        },
+        "label": {
+            "font-size": "1.2rem",
+            "line-height": "1.8rem",
+            "text-transform": "uppercase",
+            "letter-spacing": "0.8px",
+            "font-family": "default"
+        },
+        "desktop": {
+            "h1": {
+                "font-size": "8rem",
+                "line-height": "8.4rem"
+            },
+            "h2": {
+                "font-size": "5rem",
+                "line-height": "5.4rem"
+            },
+            "h3": {
+                "font-size": "3.2rem",
+                "line-height": "3.4rem"
+            },
+            "h4": {
+                "font-size": "2.4rem",
+                "line-height": "3rem"
+            }
+        }
+    },
+    "spacings": {
+        "s": 0.4,
+        "m": 0.8,
+        "l": 1.6,
+        "xl": 2.4,
+        "xxl": 4.8,
+        "xxxl": 9.6,
+        "huge": 12
+    },
+    "maxColumns": {
+        "s": 6,
+        "m": 8,
+        "l": 12
+    },
+    "radius": 0,
+    "lists": {
+        "default": {
+            "s": 1,
+            "m": 3,
+            "l": 3,
+            "xl": 4,
+            "xxl": 4
+        },
+        "event": {
+            "s": 1,
+            "m": 3,
+            "l": 3,
+            "xl": 3,
+            "xxl": 3
+        }
+    },
+    "transitions": {
+        "default": {
+            "duration": 400,
+            "timing": "ease"
+        },
+        "secondary": {
+            "duration": 1600,
+            "timing": "cubic-bezier(0.2, 0.2, 0.06, 0.97)"
+        }
+    }
+}

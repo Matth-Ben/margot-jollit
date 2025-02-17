@@ -1,0 +1,70 @@
+{% macro default(data) %}
+    {% import "@components/card-event.twig" as card %}
+    {% import "@components/button.twig" as button %}
+
+    {% set title = data.title ?? pll__('Découvertes') %}
+    {% set posts = [] %}
+
+    {# Contenu mis en avant #}
+    {% if data.pinned_posts %}
+        {% set q = get_posts({
+            'post_type': 'event',
+            'post__in': data.pinned_posts,
+            'posts_per_page': -1,
+            'orderby': 'post__in',
+        }) %}
+
+        {% if q %}
+            {% for i in q %}
+                {% set posts = posts|merge([i]) %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+    {# Autre contenu #}
+    {% if data.posts|length < 4 %}
+        {% set arguments = {
+            'post_type': 'event',
+            'posts_per_page': 6 - posts|length,
+            'post__not_in': posts|map(p => p.id),
+            'orderby': 'date',
+            'order': 'DESC'
+        } %}
+
+        {% if data.arguments %}
+            {% set arguments = arguments|merge(data.arguments) %}
+        {% endif %}
+
+        {% set q = get_posts(arguments) %}
+
+        {% if q %}
+            {% for i in q %}
+                {% set posts = posts|merge([i]) %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    
+    <div class="component-some-events">
+        <div>
+            <h2>{{ title }}</h2>
+            {{ button.simple({
+                title: pll__('Voir tout'),
+                url: function('get_post_type_archive_link', 'event'),
+                icon: 'arrow-right',
+            }) }}
+        </div>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for item in posts %}
+                    <div class="swiper-slide">
+                        {{ card.default({post: item}) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            {{ button.icon({classList: 'component-some-events__previous', icon: 'arrow-left'}) }}
+            {{ button.icon({classList: 'component-some-events__next', icon: 'arrow-right'}) }}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,13 @@
+body:not(.show-quick-links) {
+
+    #quick-links {
+        @apply sr-only;
+    }
+}
+
+body.show-quick-links {
+
+    #quick-links {
+        @apply fixed top-0 left-0 bg-light z-[10000000] p-margin;
+    }
+}

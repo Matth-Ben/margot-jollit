@@ -1,0 +1,9 @@
+{% macro default(data) %}
+    {% import "@components/video-or-embed.twig" as video_or_embed %}
+
+    <div class="component component--video-or-embed acf-component--fullscreen">
+        {{ video_or_embed.default(data) }}
+    </div>
+{% endmacro %}
+
+{{ _self.default(data) }}

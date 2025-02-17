@@ -1,0 +1,11 @@
+.FrontPage {
+    @apply flex flex-col gap-xxl;
+    
+    &__top {
+        @apply fcc gap-xxl flex-col;
+
+        h1 {
+            @apply text-light;
+        }
+    }
+}

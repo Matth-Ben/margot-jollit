@@ -1,0 +1,19 @@
+@include desktop() {
+
+    .acf-component--accordions {
+    
+        .component--accordions {
+
+            .accordion__header {
+
+                h3 {
+                    @apply max-w-col-5;
+                }
+            }
+            
+            .accordion__content {
+                @apply w-full max-w-col-6 ml-auto;
+            }
+        }
+    }
+}

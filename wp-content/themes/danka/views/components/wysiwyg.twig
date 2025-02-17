@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% if data.text %}
+        <div class="component component--wysiwyg">
+            <div>{{ data.text }}</div>
+        </div>
+    {% endif %}
+{% endmacro %}

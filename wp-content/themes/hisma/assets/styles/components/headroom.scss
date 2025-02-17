@@ -1,0 +1,87 @@
+.component--headroom {
+    @apply fixed top-0 left-0 right-0 z-50 w-full pt-xxl;
+
+    &__item {
+        @apply transition-colors duration-300 ease-in-out;
+
+        @media (hover: hover) {
+            &:hover {
+                @apply text-primary;
+            }
+        }
+    }
+
+    &.active {
+        @apply text-light;
+    
+        .component__button--header {
+            @apply rounded-full transition-colors duration-300 ease-in-out;
+    
+            @media (hover: hover) {
+                &:hover {
+                    @apply bg-light border-light text-primary;
+                }
+            }
+        }
+
+        .component__menu-burger {
+            @apply border-light text-light;
+
+            .component__button--burger {
+                span {
+                    @apply bg-light;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    @apply bg-light text-primary;
+
+                    .component__button--burger {
+                        span {
+                            @apply bg-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+body[wp-class*="home"] {
+    .component--headroom {
+        @apply text-light;
+
+        .component__button--header {
+            @apply rounded-full transition-colors duration-300 ease-in-out;
+    
+            @media (hover: hover) {
+                &:hover {
+                    @apply bg-light border-light text-primary;
+                }
+            }
+        }
+
+        .component__menu-burger {
+            @apply border-light text-light;
+
+            .component__button--burger {
+                span {
+                    @apply bg-light;
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    @apply bg-light text-primary;
+
+                    .component__button--burger {
+                        span {
+                            @apply bg-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

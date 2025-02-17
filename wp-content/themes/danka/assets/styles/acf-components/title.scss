@@ -1,0 +1,9 @@
+@include desktop() {
+
+    .acf-component-title {
+        
+        & > * {
+            @apply max-w-col-10 mx-auto;
+        }
+    }
+}

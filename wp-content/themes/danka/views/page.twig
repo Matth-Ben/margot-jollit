@@ -1,0 +1,30 @@
+{% extends "app-content.twig" %}
+
+{% import "@components/image.twig" as image %}
+{% import "@components/acf-flex-content.twig" as acf_flex_content %}
+{% import "@components/button.twig" as button %}
+{% import "@components/breadcrumbs.twig" as breadcrumbs %}
+
+{% set data = get_fields() %}
+
+{% block app_content %}
+    <div class="Page">
+        <div class="Page__breadcrumbs">
+            {{ breadcrumbs.default() }}
+        </div>
+        <div class="Page__header">
+            <h1>{{ post.title }}</h1>
+            {% if data.description %}
+                <p>{{ data.description }}</p>
+            {% endif %}
+        </div>
+        <div class="Page__thumbnail">
+            {% if post.thumbnail %}
+                {{ image.default(post.thumbnail) }}
+            {% endif %}
+        </div>
+        <div class="Page__content">
+            {{ acf_flex_content.default(data.content) }}
+        </div>
+    </div>
+{% endblock %}

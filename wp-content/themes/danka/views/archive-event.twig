@@ -1,0 +1,53 @@
+{% extends "app-content.twig" %}
+
+{% import "@components/breadcrumbs.twig" as breadcrumbs %}
+{% import "@components/button.twig" as button %}
+{% import "@components/card-" ~ wp_query.queried_object.name ~ ".twig" as card %}
+{% import "@components/pagination.twig" as pagination %}
+{% import "@components/pannel.twig" as pannel %}
+{% import "@components/pannel-filters.twig" as pannel_filters %}
+
+{% set title = wp_query.queried_object.label %}
+{% set pannel_filter_id = 'archive-filters' %}
+
+{% block app_content %}
+    <div class="ArchiveEvent">
+        <div class="ArchiveEvent__breadcrumbs">
+            {{ breadcrumbs.default() }}
+        </div>
+        <div class="ArchiveEvent__header">
+            <div>
+                <h1>{{ pll__('Agenda') }}</h1>
+                <p>{{ posts.found_posts }} {{ posts.found_posts > 1 ? pll__('évènements') : pll__('évènement') }}</p>
+            </div>
+            {{ button.default({title: 'Filtrer', icon: 'filter', variation: 'soft', attributes: 'data-pannel-target="' ~ pannel_filter_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_filter_id ~ '"'}) }}
+        </div>
+        <div class="ArchiveEvent__list">
+            {% for p in posts %}
+                <div>
+                    {{ card.default({post: p}) }}
+                </div>
+            {% endfor %}
+        </div>
+        {% if posts.pagination.pages|length > 0 %}
+            <div class="ArchiveEvent__pagination">
+                {{ pagination.default(posts) }}
+            </div>
+        {% endif %}
+        {% if posts|length == 0 %}
+            {{ button.default({title: pll__('Réinitialiser'), url: './'}) }}
+        {% endif %}
+    </div>
+
+    {{ pannel.default({
+        id: pannel_filter_id,
+        html: pannel_filters.default({
+            id: pannel_filter_id,
+            has_dates: true,
+            has_taxonomies: true,
+            taxonomies: {'type_of_event': pll__('Types')},
+            end_date: last_date
+        })|raw,
+        direction: 'right'
+    }) }}
+{% endblock %}

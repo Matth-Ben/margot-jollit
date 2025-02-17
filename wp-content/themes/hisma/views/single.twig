@@ -1,0 +1,21 @@
+{% extends "app-content.twig" %}
+
+{# {% import "@components/breadcrumbs.twig" as breadcrumbs %}
+{% import "@components/share.twig" as share %}
+{% set shareResult = get_share() %}
+{% set type = shareResult['social-network-share-type'].0 %} #}
+
+{% block app_content %}
+    <div class="container flex flex-col gap-m mb-xl" show-elements>
+		<h1 class="split animation--text" show-element>{{ post.title }}</h1>
+        <div class="animation--fade-up" show-element show-delay="300">
+            {# {{ breadcrumbs.default() }} #}
+        </div>
+
+        {% if type.name == post.type%}
+            <div class="animation--fade-up" show-element show-delay="300">
+                {# {{ share.default(post) }} #}
+            </div>
+        {% endif %}
+	</div>
+{% endblock %}

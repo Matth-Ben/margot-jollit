@@ -1,0 +1,43 @@
+.component--video {
+    @apply relative h-[100svh] bg-nightblue;
+
+    &.component--pause {
+
+        button {
+
+            & > span > svg:first-child {
+                @apply block;
+            }
+
+            & > span > svg:last-child {
+                @apply hidden;
+            }
+        }
+    }
+
+    &::after {
+        content: '';
+        @apply absolute inset-0 bg-black opacity-20;
+    }
+
+    video {
+        @apply w-full h-full object-cover;
+    }
+
+    button {
+        @apply dark absolute bottom-0 left-0 m-margin z-[2];
+        @extend .component--button;
+        @extend .component--icon;
+
+        & > span > svg:first-child {
+            @apply hidden;
+        }
+    }
+}
+
+@include desktop() {
+    
+    .component--video {
+        @apply h-auto aspect-[1440/800];
+    }
+}

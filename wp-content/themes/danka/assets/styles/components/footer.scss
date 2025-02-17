@@ -1,0 +1,133 @@
+.component--footer {
+    @apply dark flex flex-col gap-xxxl px-margin py-xxl bg-light;
+    clip-path: polygon(0% 150%, 100% 100%, 100% 120%, 0 100%);
+    transition: var(--transition-secondary);
+
+    &.is-in-view {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%);
+    }
+
+    .component {
+        
+        &__primary {
+            @apply flex flex-col gap-xxl;
+            
+            & > span {
+
+                & > p,
+                & > p * {
+                    @apply text-[5.6rem] leading-[5.6rem];
+                    --ts-line-height: 5.6rem;
+                    --ts-font-size: 5.6rem;
+                }
+
+                & > svg {
+                    @apply hidden w-full;
+                    transition: var(--transition-secondary);
+                }
+
+                // &:not(.is-in-view) > svg {
+                //     transform: translate3d(0, 110%, 0);
+                // }
+            }
+
+            & > div {
+                @apply grid grid-cols-12 gap-x-gap gap-y-xxl flex-col;
+                
+                & > div {
+                    @apply col-span-full flex flex-col gap-xxl;
+
+                    & > a {
+                        @apply fbe gap-xxl pt-xxl border-t border-dark;
+                    
+                        span {
+                            @apply ts-h3;
+                        }
+    
+                        svg {
+                            @apply shrink-0 w-auto h-20;
+                        }
+                    }
+                }
+
+                & > nav {
+                    @apply col-span-full grid grid-cols-2 gap-gap pt-xxl border-t border-dark;
+
+                    & > ul {
+                        @apply col-span-1 flex flex-col gap-m;
+                    }
+                    
+                    & > div {
+                        @apply col-span-full flex flex-wrap items-center gap-xl;
+
+                        svg {
+                            @apply w-20 h-auto;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__secondary {
+            @apply flex flex-col items-start gap-m;
+
+            & > svg {
+                @apply w-auto h-40;
+            }
+
+            & > ul {
+                @apply flex flex-col;
+            }
+        }
+    }
+}
+
+@include desktop() {
+    
+
+    .component--footer {
+        @apply pt-xxxl gap-xxxxl;
+        
+        .component {
+
+            &__primary {
+                @apply gap-xxxl;
+
+                & > span {
+                    @apply overflow-hidden;
+
+                    & > p {
+                        @apply hidden;
+                    }
+    
+                    & > svg {
+                        @apply block;
+                    }
+                }
+
+                & > div {
+                    
+                    & > div {
+                        @apply col-span-8 grid grid-cols-2 gap;
+
+                        & > a {
+                            @apply flex-col items-start pt-0 pl-margin border-t-0 border-l;
+                        }
+                    }
+
+                    & > nav {
+                        @apply col-span-4 pt-0 pl-margin border-t-0 border-l;
+                    }
+                }
+            }
+
+            &__secondary {
+                @apply flex-row justify-between items-center;
+
+                & > ul {
+                    @apply flex-row items-center gap-xl;
+                }
+            }
+        }
+    }
+}

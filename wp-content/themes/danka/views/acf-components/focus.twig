@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% import "@components/focus.twig" as focus %}
+
+    <div class="acf-component acf-component--focus acf-component--fullscreen">
+        {{ focus.default(data) }}
+    </div>
+{% endmacro %}

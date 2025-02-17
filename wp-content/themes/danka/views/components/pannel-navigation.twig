@@ -1,0 +1,54 @@
+{% macro default(pannel_navigation_id, pannel_search_id) %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% set menus = get_menus() %}
+
+    <div class="component-pannel-navigation">
+        <div class="component-pannel-navigation__menu">
+            <div>
+                {{ button.icon({icon: 'cart'}) }}
+                {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
+            </div>
+            {{ button.burger({title: 'Menu', attributes: 'data-focus data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
+        </div>
+        <div class="component-pannel-navigation__content">
+            {% if menus['header-secondary'].items %}
+                <ul class="component-pannel-navigation__items" data-lenis-prevent>
+                    {% for item in menus['header-secondary'].items %}
+                            {% if item.children %}
+                                <li class="has-children" >
+                                    <button>
+                                        <span>
+                                            {{ svg.default('arrow-left') }}
+                                            <span>{{ item.title }}</span>
+                                        </span>
+                                        {{ svg.default('chevron-right') }}
+                                    </button>
+                                    <ul>
+                                        {% for child in item.children %}
+                                            <li>
+                                                <a href="{{ child.url }}">
+                                                    <span>{{ child.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ item.url }}">
+                                        <span>{{ item.title }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="component-pannel-navigation__buttons">
+                {{ button.default({title: 'Contact', url: '#0'}) }}
+                {{ button.default({title: 'Contact', url: '#0'}) }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

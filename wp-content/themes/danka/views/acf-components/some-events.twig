@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% import "@components/some-events.twig" as some_events %}
+    
+    <div class="acf-component acf-component--some-events">
+        {{ some_events.default(data) }}
+    </div>
+{% endmacro %}

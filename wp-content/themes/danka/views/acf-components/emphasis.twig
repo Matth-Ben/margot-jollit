@@ -1,0 +1,9 @@
+{% macro default(data) %}
+    {% import "@components/emphasis.twig" as emphasis %}
+    
+    <div class="acf-component acf-component--emphasis">
+        {{ emphasis.default(data) }}
+    </div>
+{% endmacro %}
+
+{{ _self.default(data) }}

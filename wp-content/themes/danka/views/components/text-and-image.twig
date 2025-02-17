@@ -1,0 +1,25 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/button.twig" as button %}
+
+    <div class="component-text-and-image">
+        <div>
+            <div>
+                {% if data.title %}
+                    <h2>{{ data.title }}</h2>
+                {% endif %}
+                {% if data.description %}
+                    <p>{{ data.description }}</p>
+                {% endif %}
+            </div>
+            {% if data.button.title and data.button.url %}
+                {{ button.default(data.button) }}
+            {% endif %}
+        </div>
+        <div>
+            {% if data.image %}
+                {{ image.default(data.image) }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

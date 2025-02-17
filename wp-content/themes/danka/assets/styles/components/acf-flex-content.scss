@@ -1,0 +1,43 @@
+.component--acf-flex-content {
+    @apply overflow-hidden;
+    
+    &:not(.component--halfscreen) > *,
+    &.component--halfscreen > .component__content > * {
+        @apply my-xxxxl;
+
+        // &:first-child {
+        //     @apply mt-0;
+        // }
+        
+        // &:last-child {
+        //     @apply mb-0;
+        // }
+    }
+
+    & > *:not(.acf-component--fullscreen):not(.acf-component--halfscreen):not(.acf-component--section) {
+        @apply px-margin;
+    }
+
+    & > .acf-component--fullscreen + .acf-component--fullscreen,
+    & > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+
+    & > .acf-component--fullscreen + .acf-component--first-is-fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+
+    & > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+}
+
+@include desktop() {
+
+    .component--acf-flex-content {
+
+        & > .acf-component--halfscreen {
+            @apply max-w-col-6 mx-auto;
+        }
+    }
+}

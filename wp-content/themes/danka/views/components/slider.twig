@@ -1,0 +1,33 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/button.twig" as button %}
+
+    {% if data.items|length > 0 %}
+        <div class="component-slider">
+            <div class="component-slider__items">
+                {% for item in data.items %}
+                    <div class="component-slider__item">
+                        <div class="component-slider__item-image">
+                            {{ image.default(item.image) }}
+                        </div>
+                        <div class="component-slider__item-content">
+                            <div>
+                                <h3>{{ item.title }}</h3>
+                                {% if item.description %}
+                                    <p>{{ item.description }}</p>
+                                {% endif %}
+                            </div>
+                            {% if item.button.title and item.button.url %}
+                                {{ button.default(item.button) }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="component-slider__navigation">
+                {{ button.icon({classList: 'component-slider__previous', icon: 'arrow-left'}) }}
+                {{ button.icon({classList: 'component-slider__next', icon: 'arrow-right'}) }}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

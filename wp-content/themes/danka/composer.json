@@ -1,0 +1,35 @@
+{
+  "name": "upstatement/timber-starter-theme",
+  "description": "Starter theme to build a Timber theme dnk",
+  "type":"dnk-wordpress-theme",
+  "minimum-stability" : "stable",
+  "authors": [
+    {
+      "email": "update@danka.fr",
+      "name": "danka"
+    }
+  ],
+  "autoload": {
+		"psr-4": {
+			"Danka\\": "./includes"
+		}
+	},
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+	  "timber/timber": "1.*",
+    "hellonico/timber-dump-extension": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.5.3"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

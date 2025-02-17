@@ -1,0 +1,7 @@
+.component--embed {
+    @apply fcc aspect-[2/1] bg-gray1;
+
+    iframe {
+        @apply w-full h-full;
+    }
+}

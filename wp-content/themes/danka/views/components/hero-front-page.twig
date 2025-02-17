@@ -1,0 +1,24 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/svg.twig" as svg %}
+    {% import "@components/image.twig" as image %}
+
+    {% if data %}
+        <div class="component component-hero-front-page">
+            {% if data.image %}
+                <div class="component-hero-front-page__image">
+                    {{ image.normal(data.image) }}
+                </div>
+            {% endif %}
+            <div class="component-hero-front-page__content">
+                <div>
+                    <h1>{{ data.title }}</h1>
+                    <p>{{ data.text }}</p>
+                </div>
+                {% if data.button.title and data.button.url %}
+                    {{ button.default(data.button) }}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,112 @@
+{% macro default(data) %}
+    {% import "@components/svg.twig" as svg %}
+    
+    
+    {% set menus = get_menus() %}
+    {% set museums = get_posts({
+        'post_type': 'museum',
+        'posts_per_page': -1,
+    }) %}
+    {% set id_submenu_museums = uniqid() %}
+    {% set id_submenu_search = uniqid() %}
+    {% set id_submenus_primary = [] %}
+    {% set id_submenus_secondary = [] %}
+    {% set event_archive_link = function('get_post_type_archive_link', 'event') %}
+
+    <div class="component component--header-mobile">
+        <div class="component__headroom">
+            <a href="{{ function('get_bloginfo', 'url') }}" aria-label="{{ pll__('Accueil') }}">
+                <img src="{{ function('get_template_directory_uri') }}/assets/svg/logo.svg" />
+            </a>
+            <div>
+                <a class="component__button-agenda" href="{{ event_archive_link }}" aria-label="{{ pll__('Agenda') }}">
+                    {{ svg.default('agenda') }}
+                </a>
+                <button class="component__button-search" data-submenu="{{ id_submenu_search }}" aria-label="{{ pll__('Rechercher') }}">
+                    {{ svg.default('search') }}
+                </button>
+                <button class="component__button-burger" aria-label="{{ pll__('Menu') }}">
+                    <span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <nav class="component__navigation" data-lenis-prevent>
+            <div class="component__navigation-main">
+                <ul>
+                    <li><a href="#0" data-submenu="{{ id_submenu_museums }}">{{ pll__('Les musées') }}</a></li>
+                    {% for item in menus['header-primary'].items %}
+                        <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div>
+                    <ul>
+                        {% for item in menus['header-secondary'].items %}
+                            {% if item.children %}
+                                {% set id_submenu = uniqid() %}
+                                {% set id_submenus_secondary = id_submenus_secondary|merge([{id: id_submenu, index: loop.index - 1}]) %}
+                                <li><a href="{{ item.url }}" target="{{ item.target }}" data-submenu="{{ id_submenu }}">{{ item.name }}</a></li>
+                            {% else %}
+                                <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <div>
+                        <span>FR</span>
+                        <a href="#0">EN</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="{{ id_submenu_museums }}" class="component__navigation-museums">
+                <button aria-label="{{ pll__('Retour') }}">
+                    <span>{{ pll__('retour') }}</span>
+                </button>
+                <ul>
+                    {% for m in museums %}
+                        <li>
+                            <a href="{{ m.link }}" style="--color:{{ m.color }};">
+                                <p><span>{{ m.title }}<span>{{ m.practical_informations_place }}</span></span></p>
+                                {{ svg.default('arrow-right') }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% if id_submenus_secondary %}
+                {% for item in id_submenus_secondary %}
+                    {% set subitems = menus['header-secondary'].items[item.index] %}
+                    <div id="{{ item.id }}" class="component__navigation-submenu">
+                        <button aria-label="{{ pll__('Retour') }}">
+                            <span>{{ pll__('retour') }}</span>
+                        </button>
+                        <ul>
+                            {% for subitem in subitems.children %}
+                                <li>
+                                    <a href="{{ subitem.url }}" target="{{ subitem.target }}">
+                                        <span>{{ subitem.name }}</span>
+                                        {{ svg.default('arrow-right') }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div id="{{ id_submenu_search }}" class="component__navigation-search">
+                <form action="/">
+                    <input type="text" name="s" placeholder="{{ pll__('Votre recherche') }}" aria-label="{{ pll__('Texte') }}" />
+                    <button class="component--button" type="submit">
+                        <span class="component__text">{{ pll__('Rechercher') }}</span>
+                        <span aria-hidden="true">{{ pll__('Rechercher') }}</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </div>
+{% endmacro %}

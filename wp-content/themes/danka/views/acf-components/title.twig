@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% import "@components/title.twig" as title %}
+
+    <div class="acf-component-title">
+        {{ title.default(data) }}
+    </div>
+{% endmacro %}

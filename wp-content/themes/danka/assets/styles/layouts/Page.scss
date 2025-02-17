@@ -1,0 +1,28 @@
+.Page {
+    
+    &__breadcrumbs {
+        @apply mb-xxxl px-margin;
+    }
+
+    &__header {
+        @apply flex flex-col gap-l px-margin my-xxl;
+    }
+    
+    &__thumbnail {
+        @apply mt-xxl;
+    }
+}
+
+@include desktop() {
+
+    .Page {
+
+        &__header {
+            @apply max-w-col-8;
+            
+            p {
+                @apply max-w-col-6;
+            }
+        }
+    }
+}

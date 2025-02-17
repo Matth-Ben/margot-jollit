@@ -1,0 +1,16 @@
+{% macro default(data, anchor) %}
+    {% import "@components/acf-flex-content.twig" as acf_flex_content %}
+
+    <div class="component--content-flex my-xxl">
+        <div class="container">
+            <div class="component--container grid grid-cols-6 d:grid-cols-12 gap-xl d:gap-24">
+                <div class="col-span-6 d:pr-m">
+                    <h2>{{ data.title }}</h2>
+                </div>
+                <div class="col-span-6 d:pl-m">
+                    {{ acf_flex_content.body(data.flex) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,32 @@
+/*!
+ * Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2023 Fonticons, Inc.
+ */
+// Font Awesome core compile (Web Fonts-based)
+// -------------------------
+$fa-font-path : "../assets/fonts/fontawesome";
+
+@import 'fontawesome/functions';
+@import 'fontawesome/variables';
+@import 'fontawesome/mixins';
+@import 'fontawesome/core';
+@import 'fontawesome/sizing';
+@import 'fontawesome/fixed-width';
+@import 'fontawesome/list';
+@import 'fontawesome/bordered-pulled';
+@import 'fontawesome/animated';
+@import 'fontawesome/rotated-flipped';
+@import 'fontawesome/stacked';
+@import 'fontawesome/icons';
+@import 'fontawesome/screen-reader';
+
+// @import "fontawesome/solid.scss";
+// @import "fontawesome/light.scss";
+@import "fontawesome/regular.scss";
+@import "fontawesome/brands.scss";
+// @import "fontawesome/duotone.scss";
+// @import "fontawesome/sharp-light.scss";
+// @import "fontawesome/sharp-regular.scss";
+// @import "fontawesome/sharp-solid.scss";
+// @import "fontawesome/thin.scss";

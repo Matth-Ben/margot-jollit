@@ -1,0 +1,17 @@
+.component--accordions {
+    @apply border-b border-dark;
+
+    .accordion {
+        @apply border-t border-dark;
+        
+        .accordion__header {
+            @apply fbc gap-xxl py-m d:py-24;
+        }
+
+        .accordion__content {
+            .component--buttons {
+                @apply mt-0;
+            }
+        }
+    }
+}

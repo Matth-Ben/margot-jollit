@@ -1,0 +1,42 @@
+*::selection {
+    @apply bg-dark text-light;
+}
+
+#app-content {
+    @apply bg-light;
+}
+
+.button-burger {
+    @apply flex flex-col justify-center items-center relative w-16;
+    height: calc(1rem + 3px);
+    transition: var(--transition);
+    
+    &.active {
+        transform: rotate(45deg);
+        
+        & > span:nth-child(1) {
+            transform: translate3d(0, calc(.5rem + 1px), 0) rotate(90deg);
+        }
+        
+        & > span:nth-child(2) {
+            @apply w-0 opacity-0;
+        }
+            
+        & > span:nth-child(3) {
+            transform: translate3d(0, calc((.5rem + 1px) * -1), 0);
+        }
+    }
+
+    & > span:nth-child(1) {
+        @apply absolute top-0 left-0;
+    }
+    
+    & > span:nth-child(3) {
+        @apply absolute bottom-0 left-0;
+    }
+
+    span {
+        @apply w-full h-[1px] bg-dark rounded-full;
+        transition: var(--transition);
+    }
+}

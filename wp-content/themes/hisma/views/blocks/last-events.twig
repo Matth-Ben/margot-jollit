@@ -1,0 +1,44 @@
+{% macro default(data, currentPost = null, postType = 'event') %}
+    {% import "@components/svg.twig" as _svg %}
+    {% import '@components/card/card-' ~ postType ~ '.twig' as card %}
+
+    {% if data.events is empty %}
+        {% set posts = get_last_events(6, currentPost, postType) %}
+    {% else %}
+        {% set posts = check_event_date(data.events, currentPost, postType) %}
+    {% endif %}
+
+    <div class="block--last-events">
+        <div class="container">
+            <div class="swiper">
+                <div class="block--last-events__head swiper-head flex items-center justify-between mb-xxl">
+                    <div show-elements>
+                        <h2 class="split animation--text" show-element>{{ data.title }}</h2>
+                    </div>
+                    <a class="link" href="#">Voir tout {{ _svg.default('arrow-right', 18, 14) }}</a>
+                </div>
+
+                <div class="swiper-wrapper block--last-events__body" show-elements>
+                    {% for p in posts %}
+                        <div class="swiper-slide">
+                            <div class="block animation--fade-up" show-element show-delay="{{ 150 * loop.index }}">
+                                {{ card.default(p) }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="block--last-events__foot mt-xxl">
+                    <div class="swiper-navigation flex items-center gap-s ">
+                        <button class="swiper-previous component__button component__button--svg component__slider">
+                            {{ _svg.default('arrow-left', 16, 14) }}
+                        </button>
+                        <button class="swiper-next component__button component__button--svg component__slider">
+                            {{ _svg.default('arrow-right', 16, 14) }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

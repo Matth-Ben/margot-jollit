@@ -1,0 +1,38 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# VSCode related
+.vscode
+
+# Wordpress related
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/ai1wm-backups
+wp-content/backups/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wflogs/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
+wp-content/files_dnk
+wp-content/plugins/kint-debugger
+wp-content/plugins/wp-rocket/cache.json
+wp-content/wp-rocket-config/*.local.php
+wp-content/wp-rocket-config/*.work.php
+
+# Hosting relative #
+####################
+.htaccess
+
+wp-content/themes/danka/node_modules
+wp-content/themes/danka/vendor
+wp-content/themes/hisma/node_modules
+wp-content/themes/hisma/vendor

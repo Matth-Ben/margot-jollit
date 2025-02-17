@@ -1,0 +1,15 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+
+    <div class="component-newsletter">
+        <div>
+            <h2>{{ pll__('Newsletter') }}</h2>
+            <p>Cum dui eveniet ratione animi a cillum lectus fermentum quidem molestie aperiam</p>
+        </div>
+        {{ button.default({
+            'title': pll__('Souscrire'),
+            'url': '#0',
+            'target': '_blank',
+        }) }}
+    </div>
+{% endmacro %}

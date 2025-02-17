@@ -1,0 +1,45 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/modal.twig" as modal %}
+    {% import "@components/pannel.twig" as pannel %}
+    {% import "@components/pannel-navigation.twig" as pannel_navigation %}
+    {% import "@components/pannel-search.twig" as pannel_search %}
+
+    {% set menus = get_menus() %}
+    {% set pannel_navigation_id = 'menu-header-primary' %}
+    {% set pannel_search_id = 'search-header' %}
+
+    <div class="component-header-desktop">
+        <a href="{{ function('get_bloginfo', 'url') }}">
+            {% include "@assets/svg/logo.svg" %}
+        </a>
+        <nav>
+            {% if menus['header-primary'].items %}
+                <ul>
+                    {% for item in menus['header-primary'].items %}
+                        <li>
+                            <a href="{{ item.url }}">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div>
+                {{ button.icon({icon: 'cart'}) }}
+                {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
+            </div>
+            {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
+        </nav>
+    </div>
+
+    {{ pannel.default({
+        id: pannel_navigation_id,
+        html: pannel_navigation.default(pannel_navigation_id, pannel_search_id)|raw,
+        direction: 'right'
+    }) }}
+    
+    {{ pannel.default({
+        id: pannel_search_id,
+        html: pannel_search.default(pannel_search_id)|raw,
+        direction: 'top'
+    }) }}
+{% endmacro %}

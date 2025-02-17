@@ -1,0 +1,7 @@
+.component-text {
+    @apply flex flex-col items-start gap-xl;
+
+    & > div {
+        @apply flex flex-col items-start gap-xl;
+    }
+}

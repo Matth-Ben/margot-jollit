@@ -1,0 +1,73 @@
+{% macro default(data) %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% if data.url %}
+        <a class="component-button {{ data.classList }} {% if data.variation %}component-button--{{ data.variation }}{% endif %}" href="{{ data.url }}" target="{{ data.target }}" {{ data.attributes|join(' ') }}>
+            <span class="component__text">{{ data.title }}</span>
+            {% if data.icon %}
+                <span class="component__icon">
+                    {{ svg.default(data.icon) }}
+                </span>
+            {% endif %}
+        </a>
+    {% else %}
+        <button class="component-button {{ data.classList }} {% if data.variation %}component-button--{{ data.variation }}{% endif %}" {{ data.attributes|join(' ') }}>
+            <span class="component__text">{{ data.title }}</span>
+            {% if data.icon %}
+                <span class="component__icon">
+                    {{ svg.default(data.icon) }}
+                </span>
+            {% endif %}
+        </button>
+    {% endif %}
+{% endmacro %}
+
+{% macro simple(data) %}
+    {% import "@components/svg.twig" as svg %}
+
+    <a class="component-button component-button--simple {{ data.class }}" href="{{ data.url }}" target="{{ data.target }}" {{ data.attributes|join(' ') }}>
+        <span class="component__text">{{ data.title }}</span>
+        {% if data.icon %}
+            <span class="component__icon">
+                {{ svg.default(data.icon) }}
+            </span>
+        {% endif %}
+    </a>
+{% endmacro %}
+
+{% macro icon(data) %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% if data.url %}
+        <a href="{{ data.url }}" class="component-button component-button--icon {{ data.classList }}" {{ data.attributes|join(' ') }}>
+            <span class="component__icon">{{ svg.default(data.icon) }}</span>
+        </a>
+    {% else %}
+        <button class="component-button component-button--icon {{ data.classList }}" {{ data.attributes|join(' ') }}>
+            <span class="component__icon">{{ svg.default(data.icon) }}</span>
+        </button>
+    {% endif %}
+{% endmacro %}
+
+{% macro pagination(data) %}
+    {% if data.is_not_link %}
+        <span class="component-button component-button--pagination {{ data.class }}" {{ data.attributes|join(' ') }}>
+            <span class="component__text">{{ data.title }}</span>
+        </span>
+    {% else %}
+        <a class="component-button component-button--pagination {{ data.class }}" href="{{ data.url }}" target="{{ data.target }}" {{ data.attributes|join(' ') }}>
+            <span class="component__text">{{ data.title }}</span>
+        </a>
+    {% endif %}
+{% endmacro %}
+
+{% macro burger(data) %}
+    <button class="component-button component-button--burger {{ data.class }}" {{ data.attributes|join(' ') }}>
+        {{ data.title }}
+        <span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+{% endmacro %}

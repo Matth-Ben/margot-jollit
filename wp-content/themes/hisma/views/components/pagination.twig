@@ -1,0 +1,56 @@
+{% macro default(query) %}
+    {% import "@components/button.twig" as button %}
+
+    {% set pagination = query.pagination %}
+    {% set pagination_url = null %}
+
+    {# {% if pagination.prev %}
+        {% set prev_url = pagination.prev.link|replace({('page/' ~ (pagination.current - 1)): 'page/xx' }) %}
+    {% endif %}
+    
+    {% if pagination.next %}
+        {% set pagination_url = pagination.next.link|replace({('page/' ~ (pagination.current + 1)): 'page/xx' }) %}
+    {% endif %} #}
+
+    <div class="component component--pagination">
+        <div class="flex gap-m">
+            {% if pagination.total / 1 != 1 %}
+                {% if pagination.prev %}
+                    <span class="rotate-180">
+                        {{ button.chevron({url: pagination.prev.link}) }}
+                    </span>
+                {% endif %}
+
+                {% if pagination.current > 1 %}
+                    {% set count = 0 %}
+
+                    {% for index, item in 1..(pagination.current - 1) %}
+                        {% if count < 3 %}
+                            {% set count = count + 1 %}
+
+                            {{ button.pagination({url: pagination_url|replace({'page/xx': 'page/' ~ item}), title: item }) }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {{ button.pagination({is_not_link: true, title: pagination.current}) }}
+
+                {% set count = 0 %}
+                {% if pagination.current + 1 < pagination.total %}
+                    {% for index, item in (pagination.current + 1)..(pagination.total - 1) %}
+
+                        {% if count < 3 %}
+                            {% set count = count + 1 %}
+
+                            {{ button.pagination({url: pagination_url|replace({'page/xx': 'page/' ~ item}), title: item }) }}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {% if pagination.next %}
+                    {{ button.chevron({url: pagination.next.link}) }}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

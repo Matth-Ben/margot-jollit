@@ -1,0 +1,16 @@
+.acf-component--image {
+    @apply overflow-hidden;
+
+    &.is-in-view {
+
+        .image {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%);
+        }
+    }
+    
+    .image {
+        @apply aspect-[16/9] scale-[1.1];
+        clip-path: polygon(0% 150%, 100% 100%, 100% 120%, 0 100%);
+        transition: var(--transition-secondary);
+    }
+}

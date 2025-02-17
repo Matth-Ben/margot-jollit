@@ -1,0 +1,22 @@
+{% extends "app-content.twig" %}
+
+{% import "@components/hero-front-page.twig" as hero_front_page %}
+{% import "@components/acf-flex-content.twig" as acf_flex_content %}
+{% import "@components/newsletter.twig" as newsletter %}
+{% import "@components/button.twig" as button %}
+
+{% set data = function('get_fields') %}
+
+{% block app_content %}
+    <div class="FrontPage fullscreen">
+        <div class="FrontPage__hero">
+            {{ hero_front_page.default(data.homescreen) }}
+        </div>
+        <div class="FrontPage__content">
+            {{ acf_flex_content.default(data.content) }}
+        </div>
+        <div class="FrontPage__newsletter">
+            {{ newsletter.default() }}
+        </div>
+    </div>
+{% endblock %}

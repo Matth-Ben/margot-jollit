@@ -1,0 +1,42 @@
+.acf-component--video {
+    @apply dark relative aspect-[16/9] bg-light;
+
+    & > div {
+        @apply fcc w-full h-full;
+
+        .component--embed {
+            @apply fcc absolute top-0 left-0 w-full h-full hidden;
+
+            iframe {
+                pointer-events: auto;
+            }
+        }
+
+        .image {
+            @apply absolute top-0 left-0 w-full h-full;
+
+            &::after {
+                @apply absolute top-0 left-0 w-full h-full bg-light opacity-20;
+            }
+        }
+
+        button {
+            @apply fcc absolute inset-0 w-full h-full;
+        }
+    }
+
+    &.see-video {
+
+        & > div {
+
+            .component--embed {
+                @apply flex;
+            }
+
+            .image,
+            button {
+                @apply hidden;
+            }
+        }
+    }
+}

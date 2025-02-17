@@ -1,0 +1,23 @@
+{% macro default(app_data) %}
+    {% if app_data.maxColumns %}
+        <div class="grid-helper container fixed inset-0 w-full h-full opacity-20 invisible z-[1000]">
+            {% for breakpoint, value in app_data.maxColumns %}
+                {% set nextBreakpoint = function('array_slice', app_data.maxColumns, loop.index, 1) %}
+
+                {% if nextBreakpoint|length > 0 %}
+                    {% for b, v in nextBreakpoint %}
+                        {% set nextBreakpoint = b %}
+                    {% endfor %}
+                {% else %}
+                    {% set nextBreakpoint = null %}
+                {% endif %}
+
+                <div class="grid grid-cols-{{value}} gap hidden h-full {{breakpoint}}:grid {% if nextBreakpoint %}{{nextBreakpoint}}:hidden{% endif %}">
+                    {% for item in 1..value %}
+                        <div class="col-span-1 h-full bg-[red]"></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,11 @@
+.component__menu {
+    &--link {
+        @apply transition-colors duration-300 ease-in-out;
+
+        @media (hover: hover) {
+            &:hover {
+                @apply text-primary border-t-primary;
+            }
+        }
+    }
+}

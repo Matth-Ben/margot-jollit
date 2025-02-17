@@ -1,0 +1,152 @@
+.component--cookies-manager {
+    @apply border;
+    position: fixed;
+    bottom: 8rem;
+    right: var(--margin);
+    width: calc(100% - 2 * var(--margin));
+    background-color: var(--color-light);
+    overflow: hidden;
+    border-radius: 1.6rem;
+    z-index: 100;
+
+    @include desktop() {
+        bottom: 10.8rem;
+        right: 9.6rem;
+        width: 48.4rem;
+    }
+
+    &:not(.active) {
+        display: none;
+    }
+
+    & > div:not(.active) {
+        display: none;
+    }
+
+    .component {
+        
+        &__main,
+        &__preferences {
+            @apply flex flex-col gap-m p-l bg-light;
+        }
+
+        &__title {
+            @apply ts-h4 flex justify-between items-center gap-l;
+
+            button {
+                @apply fcc w-46 h-46 border border-dark rounded-full;
+                transition: all var(--animation);
+                
+                * {
+                    transition: all var(--animation);
+                }
+
+                svg {
+                    @apply w-16 h-16;
+                }
+
+                &:hover {
+                    @apply bg-dark;
+
+                    * {
+                        @apply text-light;
+                    }
+                }
+            }
+        }
+        
+        &__description {
+            @apply ts-cta;
+        }
+        
+        &__privacy-policy {
+            @apply ts-cta underline;
+        }
+
+        &__buttons {
+            @apply flex flex-wrap gap-m;
+
+            &--default {
+                @apply flex gap-s order-2 d:order-1;
+            }
+
+            svg {
+                @apply w-20 h-20;
+            }
+        }
+
+        // &__button-decline {
+        //     @apply component--button;
+        // }
+        
+        // &__button-accept,
+        // &__button-confirm {
+        //     @apply component--button;
+        // }
+
+        &__button-personalize {
+            @apply underline font-medium order-1 d:order-2 max-d:w-full;
+        }
+
+        &__services {
+            @apply flex flex-col gap-s;
+        }
+
+        &__service {
+            @apply flex justify-between gap-l;
+
+            button {
+                width: 4rem;
+                height: 2rem;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--color-light);
+                    border: solid 1px var(--color-dark);
+                    border-radius: 10rem;
+                    transition: background-color .3s ease;
+                }
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    width: calc(2rem - 6px);
+                    height: calc(2rem - 6px);
+                    margin: 3px;
+                    background-color: var(--color-dark);
+                    border-radius: 10rem;
+                    transition: background-color .3s ease, left .3s ease;
+                }
+            }
+
+            &.active button,
+            &[data-name="necessary"] button {
+
+                &::before {
+                    background-color: var(--color-dark);
+                }
+
+                &::after {
+                    background-color: var(--color-light);
+                    left: calc(100% - 2rem);
+                }
+            }
+
+            &[data-name="necessary"] button {
+                opacity: .3;
+            }
+
+        }
+    }
+
+    @include desktop() {
+        bottom: var(--spacing-xxl);
+        right: var(--spacing-xxl);
+    }
+}

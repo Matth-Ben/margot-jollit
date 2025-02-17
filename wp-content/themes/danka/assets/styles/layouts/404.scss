@@ -1,0 +1,46 @@
+.Page404 {
+    @apply flex flex-col justify-end gap items-end min-h-[100svh] p-margin;
+
+    & > div:first-child {
+        @apply flex flex-col items-start gap-xl h-full my-auto pt-112;
+    }
+
+    & > div:last-child {
+        @apply flex justify-between gap-m w-full;
+
+        & > a {
+            @apply fcc w-full aspect-[1/1] rounded-full;
+            background-color: var(--color);
+
+            &:hover svg {
+                @apply opacity-100;
+                transform: translate3d(0, 0, 0);
+            }
+
+            svg {
+                @apply w-20 h-auto opacity-0;
+                transform: translate3d(-1rem, 0, 0);
+                transition: var(--transition);
+            }
+        }
+    }
+}
+
+@include desktop() {
+ 
+    .Page404 {
+        @apply flex-row justify-between;
+    
+        & > div:first-child {
+            @apply max-w-col-6 my-0;
+        }
+    
+        & > div:last-child {
+            @apply max-w-col-4;
+    
+            & > a {
+                @apply w-48;
+            }
+        }
+    }
+}

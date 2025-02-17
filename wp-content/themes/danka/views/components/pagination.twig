@@ -1,0 +1,70 @@
+{% macro default(query) %}
+    {% import "@components/button.twig" as button %}
+
+    {% set pagination = query.pagination %}
+    {% set pagination_url = null %}
+
+    {% if pagination.prev %}
+        {% set pagination_url = pagination.prev.link|replace({('page/' ~ (pagination.current - 1)): 'page/xx' }) %}
+    {% endif %}
+    
+    {% if pagination.next %}
+        {% set pagination_url = pagination.next.link|replace({('page/' ~ (pagination.current + 1)): 'page/xx' }) %}
+    {% endif %}
+
+    <div class="component-pagination">
+        {% if pagination.total / 1 != 1 %}
+            {% if pagination.prev %}
+                <span>
+                    {{ button.icon({
+                        url: pagination.prev.link,
+                        attributes: 'aria-label="' ~ pll__('Précèdent') ~ '"',
+                        icon: 'arrow-left',
+                    }) }}
+                </span>
+            {% endif %}
+
+            {% if pagination.current > 1 %}
+                {% set count = 0 %}
+
+                {% for index, item in 1..(pagination.current - 1) %}
+                    {% if count < 3 %}
+                        {% set count = count + 1 %}
+
+                        {{ button.pagination({
+                            url: pagination_url|replace({'page/xx': 'page/' ~ item}),
+                            title: item,
+                            attributes: 'aria-label="' ~ pll__('Page') ~ ' ' ~ item ~ '"'
+                        }) }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {{ button.pagination({is_not_link: true, title: pagination.current, class: "active"}) }}
+
+            {% set count = 0 %}
+            {% if pagination.current < pagination.total %}
+                {% for index, item in (pagination.current + 1)..(pagination.total) %}
+
+                    {% if count < 3 %}
+                        {% set count = count + 1 %}
+
+                        {{ button.pagination({
+                            url: pagination_url|replace({'page/xx': 'page/' ~ item}),
+                            title: item,
+                            attributes: 'aria-label="' ~ pll__('Page') ~ ' ' ~ item ~ '"'
+                        }) }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            {% if pagination.next %}
+                {{ button.icon({
+                    url: pagination.next.link,
+                    attributes: 'aria-label="' ~ pll__('Suivant') ~ '"',
+                    icon: 'arrow-right',
+                }) }}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,30 @@
+.component--form-search {
+    @apply flex justify-between gap-xxl w-full h-xxxl px-margin py-xl bg-light;
+
+    .component {
+
+        &__buttons {
+            @apply flex items-center gap-xl;
+
+            .component__button-close {
+                @apply flex;
+                
+                svg {
+                    @apply w-16 h-16;
+                }
+            }
+        }
+    }
+
+    input {
+        @apply ts-h2 w-full bg-transparent;
+
+        &::placeholder {
+            @apply text-primary;
+        }
+    }
+
+    a {
+        cursor: pointer;
+    }
+}

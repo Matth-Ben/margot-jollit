@@ -1,0 +1,41 @@
+.component-header-desktop {
+    @apply flex justify-between items-center fixed top-0 left-0 w-full p-margin z-[90];
+
+    & > nav {
+        @apply flex items-center gap-l;
+        
+        & > ul {
+            @apply flex items-center gap-xl;
+
+            a {
+                @apply ts-cta;
+            }
+        }
+
+        & > div {
+            @apply flex items-center gap-m;
+
+            & > * {
+                @apply p-0 border-none;
+            }
+        }
+    }
+}
+
+@include desktop() {
+    //
+}
+
+[wp-class*="home"] .component-header-desktop {
+
+    & > a > svg path {
+        fill: var(--color-light);
+    }
+
+    & > nav > ul > li > a,
+    & > nav > div > button svg,
+    & > nav > button,
+    & > nav > button > span {
+        @apply text-light;
+    }
+}

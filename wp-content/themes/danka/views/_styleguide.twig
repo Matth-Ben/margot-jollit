@@ -1,0 +1,94 @@
+{% extends "base-page.twig" %}
+
+{% block pageContent %}
+    <div class="container flex flex-col gap-100 my-200">
+        {% set path_icons = function('get_template_directory') ~ '/assets/icons/' %}
+
+        {% if function('file_exists', path_icons) %}
+            {% set icons = function('scandir', path_icons) %}
+
+            <div class="flex flex-col gap-50 flex-wrap">
+                {% for item in icons %}
+                    {% if item not in '.' and item not in '..' %}
+                        <div class="flex flex-col">
+                            <div class="child:max-w-[50px] child:max-h-[50px]">
+                                {% include path_icons ~ item %}
+                            </div>
+                            <div class="text-[10px]">{{ item }}</div>
+                        </div>
+                    {% endif %}        
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if app_data %}
+
+            {# Couleurs #}
+            <div class="grid grid-cols-12 gap-y-s">
+                <div class="col-span-full ts-h2 mb-m w-col-6">Couleurs</div>
+                {% for key, item in app_data.colors %}
+                    <div class="col-span-full">
+                        <p>{{ key }} <span class="opacity-40">- {{ item }}</span></p>
+                        <div class="h-xxl bg-{{ key }}"></div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {# Styles de texte #}
+            <div>
+                {% for key, item in app_data.textStyles %}
+                    {% if key in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] %}
+                        <{{ key }}>Heading {{ key|replace({'h': ''}) }}</{{ key }}>
+                    {% endif %}
+                {% endfor %}
+                <br>
+                <p>Paragraphe</p>
+                <br>
+                {% for key, item in app_data.textStyles %}
+                    {% if key not in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'titles', 'body', 'desktop'] %}
+                        <div class="ts-{{ key }}">{{ key }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {# Espacements #}
+            <div class="grid grid-cols-12 gap-y-s">
+                <div class="col-span-full ts-h2 mb-m">Espacements</div>
+                {% for key, item in app_data.spacings %}
+                    {% if key != 'desktop' %}
+                        <div class="col-span-full flex flex-col gap-s pt-10">
+                            <p>{{ key }} <span class="opacity-40">- {{ item }}rem</span></p>
+                            <div class="w-full pt-{{ key }} bg-dark"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {# Listes #}
+            <div>
+                <div class="col-span-full ts-h2 mb-m">Listes</div>
+                {% for key, value in app_data.lists %}
+                    <div class="col-span-full ts-h3 mb-m">{{ key }}</div>
+                    <div class="grid list{% if key != 'default' %}--{{ key }}{% endif %} mb-xl child:h-xxl child:bg-dark child:rounded">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <pre>
+            {{ dump(app_data) }}
+        </pre>
+    </div>
+{% endblock %}

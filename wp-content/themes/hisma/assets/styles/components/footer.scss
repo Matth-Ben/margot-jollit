@@ -1,0 +1,7 @@
+.component--footer {
+    &__logo {
+        svg {
+            @apply w-full h-auto;
+        }
+    }
+}

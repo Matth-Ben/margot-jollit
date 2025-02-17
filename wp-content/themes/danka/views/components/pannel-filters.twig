@@ -1,0 +1,98 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% set url_parameters = function('get_url_parameters') %}
+
+    {% if url_parameters.taxonomies %}
+        {% set active_taxonomies = url_parameters.taxonomies|split('|') %}
+    {% endif %}
+
+    <div class="component-pannel-filters">
+        <div class="component-pannel-filters__header">
+            <div class="component-pannel-filters__navigation">
+                {{ button.default({title: 'Dates', attributes: 'data-filter-target="dates"', variation: 'soft'}) }}
+
+                {% if data.has_taxonomies and data.taxonomies %}
+                    {% for key, name in data.taxonomies %}
+                        {{ button.default({title: name, attributes: 'data-filter-target="' ~ key ~ '"', variation: 'soft'}) }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {{ button.icon({icon: 'close', attributes: 'type="button" data-pannel-target="' ~ data.id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.id ~ '"'}) }}
+        </div>
+        <div class="component-pannel-filters__content">
+
+            {# dates #}
+            {% if data.has_dates %}
+                <div class="component-pannel-filters__filter-dates" data-filter="dates">
+                    <div>
+                        <span>{{ pll__('Période') }}</span>
+                        <div>
+                            {# {{ button.default({title: pll__('Cette semaine'), classList: url_parameters.period == 'current_week' ? 'active' : '', attributes: 'data-period="current_week"', variation: 'soft'}) }}
+                            {{ button.default({title: pll__('Ce weekend'), classList: url_parameters.period == 'next_weekend' ? 'active' : '', attributes: 'data-period="next_weekend"', variation: 'soft'}) }}
+                            {{ button.default({title: pll__('La semaine prochaine'), classList: url_parameters.period == 'next_week' ? 'active' : '', attributes: 'data-period="next_week"', variation: 'soft'}) }} #}
+
+                            <button class="{% if url_parameters.period == 'current_week' %}active{% endif %}" data-period="current_week">{{ pll__('Cette semaine') }}</button>
+                            <button class="{% if url_parameters.period == 'next_weekend' %}active{% endif %}" data-period="next_weekend">{{ pll__('Ce weekend') }}</button>
+                            <button class="{% if url_parameters.period == 'next_week' %}active{% endif %}" data-period="next_week">{{ pll__('La semaine prochaine') }}</button>
+                        </div>
+                    </div>
+                    {% if data.end_date %}
+                        {% set month_list = function('get_month_list', data.end_date) %}
+                        {% set current_year = month_list[0]|date('Y') %}
+
+                        <div>
+                            <span>{{ pll__('Mois') }}</span>
+                            <div>
+                                <span>{{ current_year }}</span>
+                                {% for item in month_list %}
+                                    {% if item|date('Y') != current_year %}
+                                        {% set current_year = item|date('Y') %}
+                                        <span>{{ current_year }}</span>
+                                    {% endif %}
+                                    <button class="{% if url_parameters.period == item|date('Y-m') %}active{% endif %}" data-period="{{ item|date('Y-m') }}">{{ item|date('F')|capitalize }}</button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {# taxonomies #}
+            {% if data.has_taxonomies and data.taxonomies %}
+                {% for key, name in data.taxonomies %}
+                    {% set terms = function('get_terms', {'taxonomy': key, 'hide_empty': true}) %}
+                    {% if terms %}
+                        {% set current_term = null %}
+
+                        {# Si aucun term n'est sélectionné #}
+                        {% if active_taxonomies %}
+                            {% for term in terms %}
+                                {% for item in active_taxonomies %}
+                                    {% set taxonomy = item|split(',') %}
+
+                                    {% if taxonomy and taxonomy[0] == key and taxonomy[1] == term.slug %}
+                                        {% set current_term = term.slug %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="component-pannel-filters__filter-taxonomy" data-filter="{{ key }}">
+                            {# {{ button.default({title: pll__('Tout'), classList: current_term ? '' : 'active', attributes: 'data-term="all"', variation: 'soft'}) }} #}
+                            <button class="{% if not current_term %}active{% endif %}" data-term="all">{{ pll__('Tout') }}</button>
+                            {% for term in terms %}
+                                <button class="{% if term.slug == current_term %}active{% endif %}" data-term="{{ term.slug }}">{{ term.name }}</button>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="component-pannel-filters__actions">
+            {{ button.default({title: 'Réinitialiser', classList: 'component-pannel-filters__reset-button', variation: 'simple'}) }}
+            {{ button.default({title: 'Appliquer', classList: 'component-pannel-filters__apply-button', variation: 'soft'}) }}
+        </div>
+    </div>
+{% endmacro %}

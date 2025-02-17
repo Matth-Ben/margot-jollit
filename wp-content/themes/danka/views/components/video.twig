@@ -1,0 +1,13 @@
+{% macro default(data) %}
+    {% import "@components/svg.twig" as svg %}
+    
+    {% if data.url %}
+        <div class="component component--video">
+            <video autoplay muted loop playsinline src="{{ data.url }}" type="video/mp4"></video>
+            <button type="button" data-text-pause="{{ pll__('Reprendre la vidéo') }}" data-text-play="{{ pll__('Mettre en pause la vidéo') }}" aria-label="{{ pll__('Mettre en pause la vidéo') }}">
+                <span class="component__icon">{{ svg.default('play') }}{{ svg.default('pause') }}</span>
+                <span aria-hidden="true">{{ svg.default('play') }}{{ svg.default('pause') }}</span>
+            </button>
+        </div>
+    {% endif %}
+{% endmacro %}

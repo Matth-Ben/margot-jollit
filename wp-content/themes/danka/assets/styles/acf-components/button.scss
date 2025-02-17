@@ -1,0 +1,7 @@
+.acf-component--button {
+    @apply grid grid-cols-12 gap px-margin;
+
+    & > * {
+        @apply col-span-full d:col-span-6 d:col-start-6;
+    }
+}

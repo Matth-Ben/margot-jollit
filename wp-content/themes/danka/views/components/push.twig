@@ -1,0 +1,17 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+
+    {% if data.text %}
+        <div class="component-push">
+            <div>
+                <p class="component-push__text">{{ data.text }}</p>
+                {% if data.description %}
+                    <p class="component-push__additional-text">{{ data.description }}</p>
+                {% endif %}
+            </div>
+            {% if data.button.title and data.button.url %}
+                {{ button.default(data.button) }}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endmacro %}

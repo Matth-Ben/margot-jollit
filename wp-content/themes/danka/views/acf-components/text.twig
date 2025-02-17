@@ -1,0 +1,11 @@
+{% macro default(data) %}
+    {% import "@components/text.twig" as text %}
+
+    {% if data.text %}
+        <div class="acf-component-text acf-component--halfscreen">
+            {{ text.default(data) }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{{ _self.default(data) }}

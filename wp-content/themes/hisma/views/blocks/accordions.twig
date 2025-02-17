@@ -1,0 +1,16 @@
+{% macro default(data) %}
+    {% import "@components/accordions.twig" as accordions %}
+
+    {% set items = [] %}
+
+    {% for item in data.items %}
+        {% set items = items|merge([{
+            header: _self._header(item),
+            content: item.text
+        }]) %}
+    {% endfor %}
+
+    <div class="acf-component acf-component--accordions">
+        {{ accordions.custom({items: items}) }}
+    </div>
+{% endmacro %}

@@ -1,0 +1,18 @@
+{% macro default(data) %}
+	{% import "@components/svg.twig" as svg %}
+	
+	{% set breadcrumbs = data.id ? get_breadcrumbs(data.id) : get_breadcrumbs() %}
+
+	<div class="component component--breadcrumbs">
+		{% for index, item in breadcrumbs %}
+			{% if index > 0 %}
+				{{ svg.default('chevron-right') }}
+			{% endif %}
+			{% if loop.index != breadcrumbs|length %}
+				<a href="{{ item.url }}">{{ item.text|length > 40 ? item.text|slice(0,40) ~ '...' : item.text }}</a>
+			{% else %}
+				<span>{{ item.text|length > 40 ? item.text|slice(0,40) ~ '...' : item.text }}</span>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endmacro %}

@@ -1,0 +1,9 @@
+{% macro default(data) %}
+    {% import "@components/header-mobile.twig" as header_mobile %}
+    {% import "@components/header-desktop.twig" as header_desktop %}
+
+    <header id="navigation" class="component component--headroom">
+        {# {{ header_mobile.default() }} #}
+        {{ header_desktop.default() }}
+    </header>
+{% endmacro %}

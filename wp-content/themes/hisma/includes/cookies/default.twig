@@ -1,0 +1,40 @@
+<div class="component component--cookies-manager">
+    {# Personnaliser / Je refuse / J'accepte #}
+    <div class="component__main active">
+        <p class="component__description">Nous collectons et traitons vos informations personnelles dans le but suivant : Système, hotjar.</p>
+        <a class="component__privacy-policy" href="#0">Politique de confidentialité</a>
+        <div class="component__buttons">
+            <div class="component__buttons--default">
+                <button class="component__button-accept component__transparent-dark component__small" type="button">
+                    <span>Autoriser</span>{% include "@icons/valid.svg" %}
+                </button>
+                <button class="component__button-decline component__transparent-dark component__small" type="button">
+                    <span>Refuser</span>{% include "@icons/close.svg" %}
+                </button>
+            </div>
+            <button class="component__button-personalize" type="button">
+                Préférences
+            </button>
+        </div>
+    </div>
+    {# Différents service à activer #}
+    <div class="component__preferences">
+        <p class="component__title">
+            Préférences
+            <button class="component__back" type="button">
+                {% include "@icons/arrow-left.svg" %}
+            </button>
+        </p>
+        <div class="component__services">
+            <div class="component__service" data-name="necessary">
+                <span>Témoins nécessaires</span>
+                <button type="button"></button>
+            </div>
+        </div>
+        <div class="component__buttons">
+            <button class="component__button-confirm component__transparent-dark component__small" type="button">
+                <span>Confirmer</span>{% include "@icons/valid.svg" %}
+            </button>
+        </div>
+    </div>
+</div>

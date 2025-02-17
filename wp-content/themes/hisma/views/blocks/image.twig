@@ -1,0 +1,9 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+
+    <div class="acf-component acf-component--image">
+        <div>
+            {{ image.full(data.image) }}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,28 @@
+{% macro default(data) %}
+    {% import "@components/svg.twig" as svg %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/button.twig" as button %}
+
+    {% if data.items %}
+        <div class="component component--carousel">
+            <div class="component__header">
+                {% if data.title %}
+                    <h2>{{ data.title }}</h2>
+                {% endif %}
+                <div>
+                    {{ button.icon({class: 'component__previous', icon: 'arrow-left'}) }}
+                    {{ button.icon({class: 'component__next', icon: 'arrow-right'}) }}
+                </div>
+            </div>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for item in data.items %}
+                        <div class="swiper-slide">
+                            {{ item|raw }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endmacro %}

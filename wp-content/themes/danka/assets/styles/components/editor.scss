@@ -1,0 +1,58 @@
+.component--editor {
+
+    & > * {
+        @apply mb-24;
+
+        &:first-child {
+            @apply mt-0;
+        }
+        
+        &:last-child {
+            @apply mb-0;
+        }
+    }
+    
+    h2 {
+        @apply ts-h3 mt-xxxl;
+    }
+    
+    h3 {
+        @apply ts-h4 mt-xxxl;
+    }
+
+    ul {
+        @apply pl-18;
+
+        li {
+            @apply relative;
+            
+            &::before {
+                @apply content-[''] absolute top-[.3em] -left-18 w-10 h-10 border-[0.15rem] border rounded-full;
+            }
+        }
+    }
+
+    p,
+    ul {
+        @apply text-[black];
+        
+        * {
+            @apply text-[black];
+        }
+    }
+
+    a > button {
+        @extend .button;
+    }
+
+    @include mobile() {
+
+        h2 {
+            @apply mt-xxl;
+        }
+        
+        h3 {
+            @apply mt-xxl;
+        }
+    }
+}

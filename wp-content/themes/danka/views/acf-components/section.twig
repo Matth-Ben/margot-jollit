@@ -1,0 +1,35 @@
+{% macro default(data) %}
+    {% import "@components/acf-flex-content.twig" as acf_flex_content %}
+
+    {% set first_item = data.content|first %}
+    {% set last_item = data.content|last %}
+    {% set first_path = function('get_template_directory') ~ '/views/acf-components/' ~ first_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
+    {% set last_path = function('get_template_directory') ~ '/views/acf-components/' ~ last_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
+    {% set first_is_fullscreen = false %}
+    {% set last_is_fullscreen = false %}
+    
+    {% if function('file_exists', first_path) %}
+        {% set source = source(first_path) %}
+
+        {% if 'acf-component--fullscreen' in source %}
+            {% set first_is_fullscreen = true %}
+        {% endif %}
+    {% endif %}
+    
+    {% if function('file_exists', last_path) %}
+        {% set source = source(last_path) %}
+
+        {% if 'acf-component--fullscreen' in source %}
+            {% set last_is_fullscreen = true %}
+        {% endif %}
+    {% endif %}
+    
+    <div class="acf-component acf-component--section {% if data.title == '' and first_is_fullscreen %}acf-component--first-is-fullscreen{% endif %} {% if last_is_fullscreen %}acf-component--last-is-fullscreen{% endif %}">
+        {% if data.title %}
+            <div id="{{ slugify(data.title) }}" class="acf-component__anchor"></div>
+        {% endif %}
+        {{ acf_flex_content.half(data.content, data.title) }}
+    </div>
+{% endmacro %}
+
+{{ _self.default(data) }}

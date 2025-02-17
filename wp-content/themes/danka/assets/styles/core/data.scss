@@ -1,0 +1,133 @@
+$data: (
+  breakpoints: (
+    s: 0,
+    m: 768,
+    l: 1024,
+    xl: 1280,
+    xxl: 1440
+  ),
+  gutters: (
+    s: 1.6,
+    m: 2.4
+  ),
+  margins: (
+    s: 2,
+    m: 2.4,
+    xl: 4.8
+  ),
+  breakpointDesktop: l,
+  rem: (
+    s: 10px,
+    xxl: scale
+  ),
+  colors: (
+    dark: #000,
+    light: #fff,
+    primary: #304ACF,
+    blue: #A6B4FF,
+    orange: #FF8A70,
+    yellow: #F5D276,
+    pink: #F8A9E2,
+    green: #B3DE98,
+    valid: #90E5A9,
+    error: #FC7B7D
+  ),
+  fonts: (
+    default: (
+      name: Inter,
+      serif: sans-serif
+    ),
+    heading: (
+      name: PP Mori,
+      serif: sans-serif
+    )
+  ),
+  textStyles: (
+    h1: (
+      font-size: 5.2rem,
+      line-height: 5.6rem
+    ),
+    h2: (
+      font-size: 3.6rem,
+      line-height: 4rem
+    ),
+    h3: (
+      font-size: 2.8rem,
+      line-height: 3.2rem
+    ),
+    h4: (
+      font-size: 2.4rem,
+      line-height: 3rem
+    ),
+    titles: (
+      font-family: "heading"
+    ),
+    body: (
+      font-size: 1.6rem,
+      line-height: 2.2rem,
+      font-family: "default"
+    ),
+    body2: (
+      font-size: 1.4rem,
+      line-height: 2.4rem
+    ),
+    cta: (
+      font-size: 1.4rem,
+      line-height: 1.8rem,
+      font-weight: 600,
+      font-family: "heading"
+    ),
+    bold: (
+      font-weight: 600
+    ),
+    desktop: (
+      h1: (
+        font-size: 8rem,
+        line-height: 8.4rem
+      ),
+      h2: (
+        font-size: 4.8rem,
+        line-height: 5.2rem
+      ),
+      h3: (
+        font-size: 3.2rem,
+        line-height: 3.6rem
+      )
+    )
+  ),
+  spacings: (
+    s: 0.4,
+    m: 0.8,
+    l: 1.6,
+    xl: 2.4,
+    xxl: 4.8,
+    xxxl: 9.6,
+    xxxxl: 12
+  ),
+  maxColumns: (
+    s: 6,
+    m: 8,
+    l: 12
+  ),
+  radius: 0,
+  lists: (
+    default: (
+      s: 1,
+      m: 4
+    ),
+    secondary: (
+      s: 1,
+      m: 3
+    )
+  ),
+  transitions: (
+    default: (
+      duration: 400,
+      timing: ease
+    ),
+    secondary: (
+      duration: 800,
+      timing: ease-in-out
+    )
+  )
+);

@@ -1,0 +1,32 @@
+.component-pannel-search {
+    --color-dark: #fff; // TODO reprendre variable
+    @apply flex justify-between items-center gap-xxl px-margin py-24 text-dark bg-primary;
+
+    & > div {
+        @apply flex items-center;
+
+        &:first-child {
+            @apply gap-l w-full;
+
+            svg {
+                @apply w-24;
+            }
+
+            input {
+                @apply ts-h4 bg-transparent w-full;
+
+                &::placeholder {
+                    @apply text-dark;
+                }
+            }
+        }
+        
+        &:last-child {
+            @apply gap-xl;
+
+            & > button:last-child {
+                @apply border-none;
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+.Search {
+    @apply flex flex-col px-margin pb-xxxxl;
+
+    &__breadcrumbs {
+        @apply mb-xxl;
+    }
+
+    &__main {
+        @apply flex flex-col gap-xxl;
+    }
+
+    &__top {
+        @apply flex flex-col items-start gap-xl;
+
+        & > div {
+            @apply flex flex-wrap justify-between items-center gap-l w-full;
+
+            & > button {
+                @extend .component--button;
+                @extend .component--secondary;
+                @apply border-none;
+            }
+        }
+    }
+
+    &__content {
+        @apply grid grid-cols-12 gap-x-gap gap-y-xxxxl;
+    }
+
+    &__informations {
+        @apply col-span-full flex flex-col gap-s;
+
+        & > span:last-child {
+            @apply ts-h3;
+        }
+    }
+
+    &__list {
+        @apply col-span-full flex flex-col gap-xxxxl;
+    }
+
+    &__posts {
+        @apply flex flex-col gap-xxl;
+
+        & > div {
+            @apply flex flex-col gap-m pb-xxl border-b border-gray2;
+
+            & > a {
+                @apply ts-h4;
+            }
+        }
+    }
+
+    &__pagination {
+        @apply col-span-full fcc;
+    }
+    
+    &__anchor {
+        @apply hidden mt-xxxxl;
+    }
+}
+
+@include desktop() {
+
+    .Search {
+
+        &__breadcrumbs {
+            @apply mb-xxxl;
+        }
+
+        &__main {
+            @apply gap-xxxl;
+        }
+
+        &__top {
+            @apply gap-xxl;
+
+            & > div,
+            & > div > div {
+                @apply flex-row justify-between items-center gap-xxl;
+            }
+        }
+
+        &__informations {
+            @apply col-span-6;
+        }
+    
+        &__list {
+            @apply col-span-6;
+        }
+
+        &__posts {
+
+            & > * {
+                @apply col-span-3;
+
+                & > * {
+                    @apply justify-between h-full;
+                }
+            }
+        }
+
+        &__anchor {
+            @apply flex;
+        }
+    }    
+}

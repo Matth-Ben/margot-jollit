@@ -1,0 +1,11 @@
+{% macro default(data) %}
+    {% if data.url %}
+        <a href="{{ data.url }}" class="component-label {{ data.classList }}">
+            {{ data.text }}
+        </a>
+    {% else %}
+        <span class="component-label {{ data.classList }}">
+            {{ data.text }}
+        </span>
+    {% endif %}
+{% endmacro %}

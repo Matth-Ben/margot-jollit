@@ -1,0 +1,15 @@
+.component-card-discovery {
+    @apply flex flex-col gap-xl;
+    
+    .image {
+        @apply aspect-[4/3];
+    }
+
+    & > div {
+        @apply flex flex-col items-start gap-l;
+    }
+
+    h3 {
+        @apply ts-h4;
+    }
+}

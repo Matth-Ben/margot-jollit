@@ -1,0 +1,33 @@
+{% extends "app-content.twig" %}
+
+{% import "@components/breadcrumbs.twig" as breadcrumbs %}
+{% import "@components/filters.twig" as filters %}
+{% import "@components/card-" ~ wp_query.queried_object.name ~ ".twig" as card %}
+{% import "@components/pagination.twig" as pagination %}
+
+{% set title = wp_query.queried_object.label %}
+
+{% block app_content %}
+    <div class="Archive">
+        <div class="Archive__breadcrumbs">
+            {{ breadcrumbs.default() }}
+        </div>
+        <div class="Archive__header">
+            <h1>{{ title }}</h1>
+            <p>L’ensemble de nos programmes saura combler votre soif d’exploration et d’aventure</p>
+        </div>
+        <div class="Archive__filters">
+            {{ filters.default({taxonomy: wp_query.queried_object.name, current_filter: current_filter}) }}
+        </div>
+        <div class="Archive__list">
+            {% for p in posts %}
+                <div>
+                    {{ card.default({post: p}) }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="Archive__pagination">
+            {{ pagination.default(posts) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+.acf-component {
+    &:not(.is-full) {
+        @apply container;
+    }
+    
+    &--section {
+        @apply relative;
+    }
+}

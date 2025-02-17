@@ -1,0 +1,7 @@
+.component-label {
+    @apply ts-cta px-m py-3 border border-dark rounded-full;
+
+    &.active {
+        @apply bg-dark text-white;
+    }
+}

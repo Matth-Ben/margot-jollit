@@ -1,0 +1,22 @@
+{% macro default(data) %}
+    <a class="component component--card-default" href="{{ fn('get_permalink', data) }}">
+        <div class="grid grid-cols-6 d:grid-cols-12 gap-l d:gap-xl">
+            <div class="col-span-6 d:col-span-2">
+                <div class="component__text ts-h4">{{ data.post_date|date("j M") }}</div>
+                <div class="component__text ts-h4 text-grey-medium">{{ data.post_date|date("Y") }}</div>
+            </div>
+            <div class="col-span-6 d:col-span-6 d:col-start-4">
+                <div class="flex flex-col gap-m d:gap-l">
+                    <div class="component__text ts-h3">{{ data.post_title }}</div>
+                </div>
+            </div>
+            <div class="col-span-6 d:col-span-2 d:col-start-11">
+                <div class="flex d:justify-end">
+                    <div class="component component--button component__transparent-dark">
+                        <span class="component__text">Voir</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+{% endmacro %}

@@ -1,0 +1,33 @@
+<div class="component component--cookies-manager">
+    {# Personnaliser / Je refuse / J'accepte #}
+    <div class="component__main active">
+        <div>
+            <p class="component__title">Ce site utilise des témoins (cookies)</p>
+            <p class="component__description">Nous et nos partenaires utilisons des témoins pour améliorer votre expérience et comprendre comment nos plateformes numériques sont utilisées. Consultez notre politique de confidentialité pour en savoir plus.</p>
+            <a class="component__privacy-policy" href="#0">Politique de confidentialité</a>
+        </div>
+        <div class="component__buttons">
+            <button class="component__button-personalize component--button component--tertiary" type="button" aria-label="{{ pll__('Choisir') }}">Choisir</button>
+            <span>
+                <button class="component__button-decline component--button component--tertiary" type="button" aria-label="{{ pll__('Refuser') }}">Refuser</button>
+                <button class="component__button-accept component--button component--tertiary" type="button" aria-label="{{ pll__('Accepter') }}">Accepter</button>
+            </span>
+        </div>
+    </div>
+    {# Différents service à activer #}
+    <div class="component__preferences">
+        <div>
+            <p class="component__title">{{ pll__('Préférences') }}</p>
+            <div class="component__services">
+                <div class="component__service" data-name="necessary">
+                    <span>Témoins nécessaires</span>
+                    <button type="button" disabled></button>
+                </div>
+            </div>
+        </div>
+        <div class="component__buttons">
+            <button class="component__back component--button component--tertiary" type="button" aria-label="{{ pll__('Retour') }}">Retour</button>
+            <button class="component__button-confirm component--button component--tertiary" type="button" aria-label="{{ pll__('Confirmer') }}">Confirmer</button>
+        </div>
+    </div>
+</div>

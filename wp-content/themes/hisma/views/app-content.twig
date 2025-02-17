@@ -1,0 +1,9 @@
+{% extends "app.twig" %}
+
+{% block app %}
+	<div id="app-content" class="{{ body_class }}">
+		<article>
+			{% block app_content %}{% endblock %}
+		</article>
+	</div>
+{% endblock %}

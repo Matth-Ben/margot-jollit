@@ -1,0 +1,10 @@
+{% macro default(data) %}
+	<div class="component component--embed {% if 'youtube' in data.code or 'youtu.be' in data.code %}component--youtube-manager{% endif %}" data-iframe='{{ function('esc_attr', data.code) }}' data-button-active-cookies='{{ function('esc_attr', _self.button_active_cookies()) }}'></div>
+{% endmacro %}
+
+{% macro button_active_cookies() %}
+	<button href="#active-cookies-youtube" class="component--button">
+        <span class="component__text">{{ pll__('Activer les cookies') }}</span>
+        <span aria-hidden="true">{{ pll__('Activer les cookies') }}</span>
+	</button>
+{% endmacro %}

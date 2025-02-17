@@ -1,0 +1,21 @@
+.component--breadcrumbs {
+    @apply ts-cta flex items-center gap-m;
+
+    & > *:nth-child(1),
+    & > *:nth-child(2),
+    & > *:nth-child(3),
+    & > *:nth-child(4) {
+        @apply shrink-0;
+    }
+
+    & > a,
+    & > span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    & > svg {
+        @apply shrink-0 w-auto h-24;
+    }
+}

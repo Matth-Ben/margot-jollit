@@ -1,0 +1,11 @@
+{% macro default(data) %}
+    {% import "@components/files-to-download.twig" as files_to_download %}
+
+    {% if data.items %}
+        <div class="acf-component acf-component--files-to-download acf-component--halfscreen">
+            {{ files_to_download.default(data) }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{{ _self.default(data) }}

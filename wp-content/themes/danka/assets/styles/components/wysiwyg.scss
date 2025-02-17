@@ -1,0 +1,29 @@
+.component--wysiwyg {
+
+    & > div > * {
+        @apply mb-xl;
+
+        &:last-child {
+            @apply mb-0;
+        }
+    }
+
+    p + ul {
+        margin-top: calc(var(--spacing-xl) * -1);
+    }
+
+    ul {
+
+        li {
+            @apply list-disc ml-xl;
+
+            li {
+                list-style-type: circle;
+            }
+        }
+    }
+
+    a {
+        @apply underline;
+    }
+}

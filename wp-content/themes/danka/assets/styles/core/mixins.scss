@@ -1,0 +1,126 @@
+@mixin min-width($key) {
+    $breakpoint: breakpoint($key);
+
+    @if $breakpoint and $breakpoint == 0 {
+        @content;
+    }
+    @else {
+        @media (min-width: #{$breakpoint}px) { @content; }
+    }
+}
+
+@mixin max-width($key) {
+    $breakpoint: breakpoint($key);
+
+    @if $breakpoint {
+        @media (max-width: #{$breakpoint - 1}px) { @content; }
+    }
+}
+
+@mixin desktop() {
+    $breakpointDesktopKey: map-get($data, 'breakpointDesktop');
+    
+    @if $breakpointDesktopKey {
+        $breakpointDesktop: breakpoint($breakpointDesktopKey);
+
+        @if $breakpointDesktop {
+            @media (min-width: #{$breakpointDesktop}px) { @content; }
+        }
+    }
+}
+
+@mixin mobile() {
+    $breakpointDesktopKey: map-get($data, 'breakpointDesktop');
+    
+    @if $breakpointDesktopKey {
+        $breakpointDesktop: breakpoint($breakpointDesktopKey);
+
+        @if $breakpointDesktop {
+            @media (max-width: #{$breakpointDesktop - 1}px) { @content; }
+        }
+    }
+}
+
+@mixin _display-styles($styles) {
+    @each $property, $value in $styles {
+        @if $property == 'font-family' {
+            #{$property}: font-family($value);
+        }
+        @else {
+            #{$property}: #{$value} ;
+        }
+    }
+}
+
+@mixin _get-in-text-styles($textStyles, $name) {
+    $specificStyles: map-get($textStyles, 'specifics');
+
+    // titles
+    @if $name == h1 or $name == h2 or $name == h3 or $name == h4 or $name == h5 or $name == h6 {
+        $titleStyles: map-get($textStyles, 'titles');
+
+        @if $titleStyles {
+            @include _display-styles($titleStyles);
+        }
+    }
+
+    // specifics
+    @if $specificStyles {
+        @each $key, $styles in $specificStyles {        
+            @if $key == $name {
+                @include _display-styles($styles);
+            }
+        }
+    }
+
+    // other
+    @each $key, $styles in $textStyles {        
+        @if $key == $name {
+            @include _display-styles($styles);
+        }
+    }
+}
+
+@mixin text-styles($name) {
+    $allTextStyles: map-get($data, 'textStyles');
+
+    @if $allTextStyles {
+        $desktopTextStyle: map-get($allTextStyles, 'desktop');
+        @include _get-in-text-styles($allTextStyles, $name);
+
+        @if $desktopTextStyle {
+            @include desktop() {
+                @include _get-in-text-styles($desktopTextStyle, $name);
+            }
+        }
+    }
+}
+
+// https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+// @include font-face(Samplinoff, fonts/Samplinoff, null, null, woff);
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}

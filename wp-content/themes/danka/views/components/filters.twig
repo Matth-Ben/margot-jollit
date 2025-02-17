@@ -1,0 +1,19 @@
+{% macro default(data) %}
+    {% import "@components/label.twig" as label %}
+
+    {% set terms = function('get_terms', {'taxonomy': 'type_of_' ~ data.taxonomy, 'hide_empty': true}) %}
+
+    <div class="component-filters">
+        {{ label.default({text: 'Tous', classList: data.current_filter ? '' : 'active', url: './'}) }}
+
+        {% for term in terms %}
+            {% if slug or term.slug == data.current_filter %}
+                {% set classList = 'active' %}
+            {% else %}
+                {% set classList = '' %}
+            {% endif %}
+
+            {{ label.default({text: term.name, classList: classList, url: '?filter=' ~ term.slug }) }}
+        {% endfor %}
+    </div>
+{% endmacro %}

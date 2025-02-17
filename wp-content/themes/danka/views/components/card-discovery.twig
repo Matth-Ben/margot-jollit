@@ -1,0 +1,22 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/label.twig" as label %}
+
+    {% set type = data.post.type_of_discovery %}
+    {% set type = type ? timber_term(type) : null %}
+
+    <a class="component-card-discovery" href="{{ data.post.link }}">
+        {% if data.post.thumbnail %}
+            {{ image.default(data.post.thumbnail) }}
+        {% endif %}
+        <div>
+            {% if type %}
+                {{ label.default({text: type.name}) }}
+            {% endif %}
+            <h3>{{ data.post.title }}</h3>
+            {% if data.post.description %}
+                <p>{{ data.post.description }}</p>
+            {% endif %}
+        </div>
+    </a>
+{% endmacro %}

@@ -1,0 +1,94 @@
+.acf-component--section {
+
+    & > .acf-component__anchor {
+        transform: translate3d(0, -12.4rem, 0);
+    }
+
+    & > .component--acf-flex-content.component--halfscreen {
+        @apply flex flex-col gap-xxl;
+
+        & > .component__content {
+
+            & > * {
+                @apply my-xxxxl;
+
+                &:first-child {
+                    @apply mt-0;
+                }
+                
+                &:last-child {
+                    @apply mb-0;
+                }
+            }
+
+            & > .component__half {
+                @apply grid grid-cols-1 gap-x-gap;
+
+                &.has-title {
+                    @apply gap-y-xxl;
+                }
+
+                & > div:last-child {
+
+                    & > .acf-component--files-to-download {
+                        @apply my-xxxl;
+                    }
+
+                    & > .acf-component--text {
+                        @apply mx-0;
+                    }
+                    
+                    & > * {
+                        @apply my-xl;
+
+                        &.acf-component--table {
+                            @apply my-xxxxl;
+                        }
+
+                        &:first-child {
+                            @apply mt-0;
+                        }
+                        
+                        &:last-child {
+                            @apply mb-0;
+                        }
+                    }
+                }
+            }
+
+            & > .acf-component--fullscreen {
+                margin-left: calc(var(--margin) * -1);
+                width: calc(100% + var(--margin) * 2);
+
+                & + .acf-component--fullscreen {
+                    margin-top: calc(var(--spacing-xxxxl) * -1);
+                }
+            }
+        }
+    }
+}
+
+@include desktop() {
+
+    .acf-component--section {
+
+        & > .acf-component__anchor {
+            transform: translate3d(0, -13.6rem, 0);
+        }
+
+        & > .component--acf-flex-content.component--halfscreen {
+            @apply gap-xxxl;
+    
+            & > .component__content {
+    
+                & > .component__half {
+                    @apply grid-cols-2;
+    
+                    & > div:first-child {
+                        @apply max-w-col-5;
+                    }
+                }
+            }
+        }
+    }
+}

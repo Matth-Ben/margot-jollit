@@ -1,0 +1,29 @@
+{% extends "app-content.twig" %}
+
+{% block app_content %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% set museums = get_posts({
+        'post_type': 'museum',
+        'posts_per_page': -1,
+    }) %}
+
+    <div class="Page404 fullscreen">
+        <div>
+            <span>{{ pll__('Erreur 404') }}</span>
+            <h1>{{ pll__("La page demandée n'existe pas") }}</h1>
+            {{ button.default({
+                'title': pll__("Aller à l'accueil"),
+                'url': function('get_bloginfo', 'url'),
+            }) }}
+        </div>
+        <div>
+            {% for m in museums %}
+                <a href="{{ m.link }}" style="--color:{{ m.color }}">
+                    {{ svg.default('arrow-right') }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

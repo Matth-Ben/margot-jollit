@@ -1,0 +1,65 @@
+{% macro default() %}
+    {% import "@components/button.twig" as button %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/svg.twig" as svg %}
+
+    {% set menus = get_menus() %}
+    {% set data = get_fields('option') %}
+
+    <footer class="component component--footer" show-element>
+        <div class="component__primary">
+            <span show-element>
+                <p>{{ function('get_bloginfo', 'name') }}</p>
+                {% include "@assets/svg/Les Musées de Troyes.svg" %}
+            </span>
+            <div>
+                <div>
+                    {% for item in data.navigation.links_put_forward %}
+                        {% if item.link.title and item.link.url %}{% endif %}
+                        <a href="{{ item.link.url }}" target="{{ item.link.target }}">
+                            <span>{{ function('htmlspecialchars_decode', item.link.title)|raw }}</span>
+                            {{ svg.default('arrow-right') }}
+                        </a>
+                    {% endfor %}
+                </div>
+                <nav>
+                    {% if menus['footer-primary'].items %}
+                        <ul>
+                            {% for item in menus['footer-primary'].items %}
+                                <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if menus['footer-secondary'].items %}
+                        <ul>
+                            {% for item in menus['footer-secondary'].items %}
+                                <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if data.social_networks %}
+                        <div>
+                            {% for item in data.social_networks %}
+                                {% if function('in_array', item.acf_fc_layout, ['facebook', 'instagram']) %}
+                                    <a href="{{ item.url }}" aria-label="{{ pll__(item.acf_fc_layout) }}">
+                                        {{ svg.default(item.acf_fc_layout) }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+        <div class="component__secondary">
+            {% include "@assets/svg/logo-troyes.svg" %}
+            {% if menus['footer-tertiary'].items %}
+                <ul>
+                    {% for item in menus['footer-tertiary'].items %}
+                        <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </footer>
+{% endmacro %}

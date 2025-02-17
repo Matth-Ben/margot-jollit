@@ -1,0 +1,110 @@
+.component-pannel-navigation {
+    --color-dark: #fff; // TODO reprendre variable
+    --color-light: #000;
+    @apply h-full bg-light;
+    color: var(--color-dark);
+    
+    &__menu {
+        @apply fixed flex items-center gap-l top-margin right-margin;
+
+        & > div {
+            @apply flex items-center gap-m;
+            
+            * {
+                @apply p-0 border-none;
+            }
+        }
+    }
+
+    &__content {
+        @apply flex flex-col gap-xl h-full px-margin pb-margin;
+        padding-top: calc(4.8rem + var(--margin) * 2);
+    }
+    
+    &__items {
+        @apply flex-grow overflow-auto;
+        transition: var(--transition);
+
+        & > li {
+
+            & > a,
+            & > button {
+                @apply flex justify-between items-center gap-xxl w-full py-l border-t;
+                border-color: #FFFFFF29;
+            }
+            
+            &:not(.has-children) > a > span {
+                @apply ts-h3;
+            }
+
+            &.has-children {
+                @apply overflow-hidden;
+
+                & > button {
+                    
+                    & > span {
+                        @apply ts-h3 flex items-center;
+                        
+                        svg {
+                            @apply w-24 mr-4 -ml-28;
+                        }
+                    }
+                    
+                    & > svg {
+                        @apply w-24;
+                    }
+                }
+
+                & > ul {
+                    @apply hidden flex-col gap-l border-t;
+                    border-color: #FFFFFF29;
+    
+                    & > li {
+
+                        &:first-child {
+                            @apply pt-l;
+                        }
+                        
+                        &:last-child {
+                            @apply pb-l;
+                        }
+
+                        & > a {
+                            @apply ts-h4;
+                        }
+                    }
+                }
+
+                &.active {
+
+                    & > button {
+
+                        & > span {
+                            @apply ts-cta;
+    
+                            svg {
+                                @apply ml-0;
+                            }
+                        }
+    
+                        & > svg {
+                            @apply opacity-0;
+                        }
+                    }
+
+                    & > ul {
+                        @apply flex;
+                    }
+                }
+            }
+        }
+    }
+
+    &__buttons {
+        @apply flex justify-between items-center gap-xl;
+    }
+
+    &.show-subitems .component-pannel-navigation__items > li:not(.active) {
+        @apply hidden;
+    }
+}

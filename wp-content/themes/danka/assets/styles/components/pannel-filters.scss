@@ -1,0 +1,83 @@
+.component-pannel-filters {
+    --color-dark: #fff; // TODO reprendre variable
+    --color-light: #000;
+    @apply flex flex-col h-full p-margin text-dark bg-light;
+
+    &__header {
+        @apply flex justify-between items-center;
+
+        & > button {
+            @apply h-auto p-0 border-none;
+        }
+    }
+    
+    &__navigation {
+        @apply flex flex-wrap gap-m;
+
+        & > .active {
+            @apply bg-dark;
+
+            & > span {
+                @apply text-primary;
+            }
+        }
+    }
+
+    &__content {
+        @apply grow py-xxxl;
+
+        & > div {
+            @apply hidden;
+
+            &.active {
+                @apply flex;
+            }
+
+            //
+        }
+    }
+
+    &__filter-dates {
+        @apply flex flex-col gap-xl;
+
+        & > div {
+            @apply flex flex-col gap-l;
+
+            & > span {
+                @apply ts-h4;
+            }
+
+            & > div {
+                @apply flex gap-m flex-wrap;
+
+                & > button {
+                    @apply ts-cta p-m border border-dark rounded-full;
+
+                    &.active {
+                        @apply bg-dark text-light;
+                    }
+                }
+                
+                span {
+                    @apply ts-cta p-m bg-[#FFFFFF29] rounded-full
+                }
+            }
+        }
+    }
+
+    &__filter-taxonomy {
+        @apply flex gap-m flex-wrap;
+        
+        & > button {
+            @apply ts-cta p-m border border-dark rounded-full;
+
+            &.active {
+                @apply bg-dark text-light;
+            }
+        }
+    }
+
+    &__actions {
+        @apply flex justify-between items-center gap-xl;
+    }
+}

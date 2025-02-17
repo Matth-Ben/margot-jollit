@@ -1,0 +1,15 @@
+{% macro default(data) %}
+    {% import "@components/video.twig" as video %}
+    {% import "@components/embed.twig" as _embed %}
+
+    <div class="acf-component acf-component--video acf-component--fullscreen">
+        {% if data.is_youtube_iframe == false and data.video.url %}
+            {{ video.default({url: data.video.url}) }}
+        {% endif %}
+        {% if data.is_youtube_iframe == true and data.embed %}
+            {{ _embed.default({code: data.embed}) }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{{ _self.default(data) }}

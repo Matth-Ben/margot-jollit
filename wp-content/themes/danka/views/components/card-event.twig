@@ -1,0 +1,27 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+    {% import "@components/label.twig" as label %}
+
+    {% set type = data.post.type_of_event %}
+    {% set type = type ? timber_term(type) : null %}
+    {% set place = data.post.place %}
+    {% set place = place ? timber_term(place) : null %}
+
+    <a class="component-card-event" href="{{ data.post.link }}">
+        {% if data.post.thumbnail %}
+            {{ image.default(data.post.thumbnail) }}
+        {% endif %}
+        <div class="component-card-event__text">
+            <div>
+                {% if type %}
+                    {{ label.default({text: type}) }}
+                {% endif %}
+                <span>{{ data.post.date|date('D. d F')|capitalize }}</span>
+            </div>
+            <h3 class="component__title">{{ data.post.title }}</h3>
+            {% if place %}
+                <span>{{ place }}</span>
+            {% endif %}
+        </div>
+    </a>
+{% endmacro %}

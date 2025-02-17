@@ -1,0 +1,230 @@
+.component--header-mobile {
+    @apply flex flex-col fixed top-margin left-margin z-[100] bg-white;
+    width: calc(100% - var(--margin) * 2);
+    transition: var(--transition);
+
+    &::before {
+        content: '';
+        @apply fixed top-0 left-0 w-full h-full bg-dark opacity-0 invisible z-[1];
+        transition: opacity var(--transition), visibility 0s;
+        transition-delay: 0s, var(--animation-duration);
+    }
+    
+    &.is-open::before,
+    &.search-is-open::before {
+        @apply opacity-20 visible;
+        transition: opacity var(--transition), visibility 0s;
+        transition-delay: 0s, 0s;
+    }
+
+    &.is-open {
+
+        .component {
+
+            &__button-burger > span {
+                @extend .active;
+            }
+
+            &__navigation {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%);
+            }
+        }
+    }
+    
+    &.search-is-open {
+
+        .component {
+
+            &__navigation {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%);
+            }
+        }
+    }
+
+    .component {
+
+        &__headroom {
+            @apply flex items-stretch bg-light z-[2];
+            
+            & > a {
+                @apply shrink-0;
+    
+                img {
+                    @apply w-145 h-auto;
+                }
+            }
+    
+            & > div {
+                @apply fbc w-full border border-gray2;
+                padding: 0 calc(var(--spacing-xxl) - 1rem);
+
+                & > * {
+                    @apply p-10;
+                }
+            }
+        }
+
+        &__button-burger > span {
+            @extend .button-burger;
+        }
+
+        &__navigation {
+            @apply absolute bottom-0 left-0 w-full h-0 bg-white overflow-scroll z-[1];
+            max-height: calc(100svh - 14rem);
+            transform: translate3d(0, calc(100% - 1px), 0);
+            clip-path: polygon(0% 0%, 100% 0%, 100% -80%, 0% 0%);
+            transition: var(--transition);
+
+            & > * {
+                @apply absolute top-0 left-0 w-full;
+                transition: var(--transition);
+
+                &.active {
+                    @apply relative;
+                }
+                
+                &:not(.active) {
+                    @apply hidden;
+                }
+
+                &:not(.show-element) {
+                    @apply opacity-0 invisible;
+                }
+            }
+        }
+        
+        &__navigation-main {
+            @apply flex flex-col gap-xxxxl p-xl;
+
+            & > ul {
+                @apply flex flex-col gap-l;
+
+                & > li {
+                    @apply flex;
+
+                    a {
+                        @apply ts-h3;
+                    }
+                }
+            }
+
+            & > div {
+                @apply fbe gap-l;
+
+                & > ul {
+                    @apply flex flex-col gap-l;
+
+                    & > li {
+                        @apply flex;
+                        
+                        a {
+                            @apply ts-label;
+                        }
+                    }
+                }
+
+                & > div {
+                    @apply flex;
+
+                    a,
+                    span {
+                        @apply ts-label pr-12;
+                    }
+
+                    a {
+                        @apply text-gray1;
+                    }
+
+                    & > *:last-child {
+                        @apply flex items-center gap-12 pr-0;
+
+                        &:before {
+                            content: '';
+                            @apply inline-block w-1 h-full bg-gray2;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__navigation-museums {
+
+            & > button {
+                @apply px-xl pt-l pb-20 w-full text-left;
+
+                & > span {
+                    @extend .component--button;
+                    @extend .component--tertiary;
+                }
+            }
+
+            & > ul > li > a {
+                @apply flex justify-between items-center gap-l p-xl border-t border-gray2;
+
+                & > p {
+                    @apply flex gap-m;
+    
+                    &::before {
+                        content: '';
+                        @apply inline-block shrink-0 w-11 h-11 mt-6 bg-dark rounded-full;
+                        background-color: var(--color);
+                    }
+    
+                    span {
+                        @apply flex flex-col gap-s;
+    
+                        span {
+                            @apply ts-mini;
+                        }
+                    }
+                }
+
+                & > svg {
+                    @apply shrink-0 w-20 h-auto;
+                }
+            }
+        }
+
+        &__navigation-submenu {
+
+            & > button {
+                @apply px-xl pt-l pb-20 w-full text-left;
+
+                & > span {
+                    @extend .component--button;
+                    @extend .component--tertiary;
+                }
+            }
+
+            & > ul > li a {
+                @apply ts-bold flex justify-between items-center gap-l p-xl border-t border-gray2;
+
+                & > svg {
+                    @apply shrink-0 w-20 h-auto;
+                }
+            }
+        }
+
+        &__navigation-search {
+
+            & > form {
+                @apply flex flex-col justify-between items-start gap-xxl w-full min-h-300 p-xxl;
+
+                input {
+                    @apply ts-h2 w-full;
+
+                    &::placeholder {
+                        @apply text-gray2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include desktop() {
+ 
+    .component--header-mobile {
+        @apply hidden;
+    }
+}

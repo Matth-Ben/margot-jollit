@@ -1,0 +1,14 @@
+{% macro default(data) %}
+    {% import "@components/acf-flex-content.twig" as acf_flex_content %}
+
+    <div class="acf-component acf-component--section">
+        {% if data.title %}
+            <div class="component__title">
+                <h2>{{ data.title }}</h2>
+            </div>
+        {% endif %}
+        <div class="component__content">
+            {{ acf_flex_content.default(data.content) }}
+        </div>
+    </div>
+{% endmacro %}

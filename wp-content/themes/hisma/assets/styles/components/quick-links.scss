@@ -1,0 +1,5 @@
+body:not(.show-quick-links) {
+    #quick-links {
+        @apply sr-only;
+    }
+}
