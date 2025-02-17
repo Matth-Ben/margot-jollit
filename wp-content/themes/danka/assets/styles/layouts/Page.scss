@@ -9,7 +9,7 @@
     }
     
     &__thumbnail {
-        @apply mt-xxl;
+        @apply aspect-[2/1] mt-xxl;
     }
 }
 

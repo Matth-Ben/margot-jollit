@@ -20,7 +20,7 @@
         </div>
         <div class="Page__thumbnail">
             {% if post.thumbnail %}
-                {{ image.default(post.thumbnail) }}
+                {{ image.default(post.thumbnail, {'aspect_ratio' : 'aspect-[2/1]'}) }}
             {% endif %}
         </div>
         <div class="Page__content">
