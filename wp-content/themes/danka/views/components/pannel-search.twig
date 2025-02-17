@@ -4,12 +4,12 @@
 
     <form class="component-pannel-search">
         <div>
-            {{ svg.default('search') }}
-            <input type="text" placeholder="{{ pll__('Votre recherche') }}" />
-        </div>
-        <div>
+            <div>
+                {{ svg.default('search') }}
+                <input type="text" placeholder="{{ pll__('Votre recherche') }}" />
+            </div>
             {{ button.default({title: pll__('Rechercher'), attributes: 'type="submit"', variation: 'soft'}) }}
-            {{ button.icon({icon: 'close', attributes: 'type="button" data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
         </div>
+        {{ button.icon({icon: 'close', attributes: 'type="button" data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
     </form>
 {% endmacro %}

@@ -18,7 +18,7 @@
     }
 
     &__list {
-        @apply grid grid-cols-12 gap-x-gap gap-y-xl mt-xxl mb-xxxl;
+        @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
 
         & >  div {
             @apply col-span-full;
@@ -35,7 +35,7 @@
         }
 
         &__list {
-            //
+            @apply gap-y-xl;
 
             & > div {
                 @apply col-span-4;

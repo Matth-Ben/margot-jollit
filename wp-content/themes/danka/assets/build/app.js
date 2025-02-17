@@ -1824,38 +1824,43 @@ var init = function init() {
   document.querySelectorAll('.component-pannel-navigation').forEach(function (element) {
     var _data;
     var all_items = element.querySelectorAll('.component-pannel-navigation__items');
+    var all_items_mobile = element.querySelectorAll('.component-pannel-navigation__items-mobile');
     var duration = (_data = data) !== null && _data !== void 0 && (_data = _data.transitions) !== null && _data !== void 0 && (_data = _data["default"]) !== null && _data !== void 0 && _data.duration ? data.transitions["default"].duration : 400;
     var is_showing = false;
-    all_items.forEach(function (items) {
-      var parents = items.querySelectorAll('li.has-children');
-      parents.forEach(function (parent) {
-        var button = parent.querySelector('button');
-        button.addEventListener('click', function () {
-          if (!is_showing) {
-            is_showing = true;
-            items.style.opacity = 0;
-          }
-          if (parent.classList.contains('active')) {
-            setTimeout(function () {
-              parent.classList.remove('active');
-              element.classList.remove('show-subitems');
-              items.style.opacity = 1;
-              is_showing = false;
-            }, duration);
-          } else {
-            setTimeout(function () {
-              parents.forEach(function (p) {
-                return p.classList.remove('active');
-              });
-              parent.classList.add('active');
-              element.classList.add('show-subitems');
-              items.style.opacity = 1;
-              is_showing = false;
-            }, duration);
-          }
+    var init_subnavigation = function init_subnavigation(items) {
+      items.forEach(function (items) {
+        var parents = items.querySelectorAll('li.has-children');
+        parents.forEach(function (parent) {
+          var button = parent.querySelector('button');
+          button.addEventListener('click', function () {
+            if (!is_showing) {
+              is_showing = true;
+              items.style.opacity = 0;
+            }
+            if (parent.classList.contains('active')) {
+              setTimeout(function () {
+                parent.classList.remove('active');
+                element.classList.remove('show-subitems');
+                items.style.opacity = 1;
+                is_showing = false;
+              }, duration);
+            } else {
+              setTimeout(function () {
+                parents.forEach(function (p) {
+                  return p.classList.remove('active');
+                });
+                parent.classList.add('active');
+                element.classList.add('show-subitems');
+                items.style.opacity = 1;
+                is_showing = false;
+              }, duration);
+            }
+          });
         });
       });
-    });
+    };
+    init_subnavigation(all_items);
+    init_subnavigation(all_items_mobile);
   });
 };
 document.addEventListener('ContentLoaded', init);

@@ -1,6 +1,6 @@
 :root {
-    --pannel-width: calc(#{get-width-of-columns(5)} + var(--margin));
-}
+    --pannel-width: 100%;
+} 
 
 .component-pannel {
     @apply fixed top-0 bg-light invisible z-[100];
@@ -38,4 +38,11 @@
         @apply opacity-50 visible;
         transition-delay: 0s, 0s;
     }
+}
+
+@include desktop() {
+    
+    :root {
+        --pannel-width: calc(#{get-width-of-columns(5)} + var(--margin));
+    }    
 }

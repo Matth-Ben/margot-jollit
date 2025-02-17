@@ -5,7 +5,7 @@
         @apply flex items-center gap-l;
         
         & > ul {
-            @apply flex items-center gap-xl;
+            @apply hidden items-center gap-xl;
 
             a {
                 @apply ts-cta;
@@ -23,7 +23,13 @@
 }
 
 @include desktop() {
-    //
+    
+    .component-header-desktop {
+
+        & > nav > ul {
+            @apply flex;
+        }
+    }
 }
 
 [wp-class*="home"] .component-header-desktop {

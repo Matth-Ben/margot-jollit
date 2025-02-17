@@ -7,6 +7,10 @@
 
     & > div {
         @apply flex flex-col items-start gap-l;
+        
+        & > div {
+            @apply flex flex-col items-start gap-m;
+        }
     }
 
     h3 {

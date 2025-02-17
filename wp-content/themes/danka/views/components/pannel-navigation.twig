@@ -13,9 +13,45 @@
             {{ button.burger({title: 'Menu', attributes: 'data-focus data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
         </div>
         <div class="component-pannel-navigation__content">
+            
+            {# Desktop #}
             {% if menus['header-secondary'].items %}
                 <ul class="component-pannel-navigation__items" data-lenis-prevent>
                     {% for item in menus['header-secondary'].items %}
+                            {% if item.children %}
+                                <li class="has-children" >
+                                    <button>
+                                        <span>
+                                            {{ svg.default('arrow-left') }}
+                                            <span>{{ item.title }}</span>
+                                        </span>
+                                        {{ svg.default('chevron-right') }}
+                                    </button>
+                                    <ul>
+                                        {% for child in item.children %}
+                                            <li>
+                                                <a href="{{ child.url }}">
+                                                    <span>{{ child.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ item.url }}">
+                                        <span>{{ item.title }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {# Mobile #}
+            {% if menus['mobile'].items %}
+                <ul class="component-pannel-navigation__items-mobile" data-lenis-prevent>
+                    {% for item in menus['mobile'].items %}
                             {% if item.children %}
                                 <li class="has-children" >
                                     <button>

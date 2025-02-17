@@ -1,18 +1,18 @@
 .component-pannel-search {
     --color-dark: #fff; // TODO reprendre variable
-    @apply flex justify-between items-center gap-xxl px-margin py-24 text-dark bg-primary;
+    @apply flex justify-between items-start gap-xxl h-full px-margin py-24 text-dark bg-primary;
 
     & > div {
-        @apply flex items-center;
+        @apply flex flex-col items-start w-full h-full;
 
-        &:first-child {
-            @apply gap-l w-full;
+        & > div {
+            @apply flex items-center gap-l w-full h-full;
 
-            svg {
-                @apply w-24;
+            & > svg {
+                @apply w-24 shrink-0;
             }
 
-            input {
+            & > input {
                 @apply ts-h4 bg-transparent w-full;
 
                 &::placeholder {
@@ -20,13 +20,28 @@
                 }
             }
         }
-        
-        &:last-child {
-            @apply gap-xl;
+    }
 
-            & > button:last-child {
-                @apply border-none;
-            }
+    & > button {
+        @apply border-none h-auto;
+    }
+}
+
+#search-header {
+    @apply h-full;
+}
+
+@include desktop() {
+
+    .component-pannel-search {
+        @apply items-center;
+
+        & > div {
+            @apply flex-row items-center;
         }
+    }
+
+    #search-header {
+        @apply h-auto;
     }
 }

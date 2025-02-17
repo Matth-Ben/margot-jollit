@@ -4,10 +4,10 @@
     @apply flex flex-col h-full p-margin text-dark bg-light;
 
     &__header {
-        @apply flex justify-between items-center;
+        @apply flex justify-between items-start;
 
         & > button {
-            @apply h-auto p-0 border-none;
+            @apply w-auto h-auto p-0 border-none;
         }
     }
     

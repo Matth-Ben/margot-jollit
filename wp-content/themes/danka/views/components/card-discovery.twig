@@ -13,10 +13,12 @@
             {% if type %}
                 {{ label.default({text: type.name}) }}
             {% endif %}
-            <h3>{{ data.post.title }}</h3>
-            {% if data.post.description %}
-                <p>{{ data.post.description }}</p>
-            {% endif %}
+            <div>
+                <h3>{{ data.post.title }}</h3>
+                {% if data.post.description %}
+                    <p>{{ data.post.description }}</p>
+                {% endif %}
+            </div>
         </div>
     </a>
 {% endmacro %}

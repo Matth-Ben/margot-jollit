@@ -21,7 +21,8 @@
         padding-top: calc(4.8rem + var(--margin) * 2);
     }
     
-    &__items {
+    &__items,
+    &__items-mobile {
         @apply flex-grow overflow-auto;
         transition: var(--transition);
 
@@ -100,11 +101,30 @@
         }
     }
 
+    &__items {
+        @apply hidden;
+    }
+
     &__buttons {
         @apply flex justify-between items-center gap-xl;
     }
 
-    &.show-subitems .component-pannel-navigation__items > li:not(.active) {
+    &.show-subitems .component-pannel-navigation__items > li:not(.active),
+    &.show-subitems .component-pannel-navigation__items-mobile > li:not(.active) {
         @apply hidden;
+    }
+}
+
+@include desktop() {
+
+    .component-pannel-navigation {
+
+        &__items {
+            @apply block;
+        }
+        
+        &__items-mobile {
+            @apply hidden;
+        }
     }
 }

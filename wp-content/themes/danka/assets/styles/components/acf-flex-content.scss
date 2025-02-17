@@ -14,7 +14,7 @@
         // }
     }
 
-    & > *:not(.acf-component--fullscreen):not(.acf-component--halfscreen):not(.acf-component--section) {
+    & > *:not(.acf-component--fullscreen):not(.acf-component--section) {
         @apply px-margin;
     }
 
