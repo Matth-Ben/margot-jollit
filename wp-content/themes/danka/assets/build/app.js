@@ -1303,7 +1303,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pannel_filters__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_components_pannel_filters__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/accordions */ "./assets/scripts/components/accordions.js");
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_accordions__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _components_alert__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/alert */ "./assets/scripts/components/alert.js");
+/* harmony import */ var _components_alert__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_alert__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 
 
 // history.scrollRestoration = "manual"
@@ -1323,7 +1325,7 @@ __webpack_require__.r(__webpack_exports__);
 // import './components/header-mobile'
 // import './components/header-desktop'
 // import './components/hero-front-page'
-// import './components/alert'
+
 // import './components/video-or-embed'
 // import './components/pannel'
 // import './components/form-search'
@@ -1374,6 +1376,15 @@ var init_custom_select = function init_custom_select() {
 };
 document.addEventListener('ContentLoaded', init_custom_select);
 document.addEventListener('NewContentLoaded', init_custom_select);
+////
+
+//// header height
+var set_headroom_height = function set_headroom_height() {
+  var headroom = document.querySelector('.component-headroom');
+  document.documentElement.style.setProperty('--headroom-height', headroom.clientHeight + 'px');
+}; // refresh css variable
+document.addEventListener('WindowResized', set_headroom_height);
+document.addEventListener('ContentLoaded', set_headroom_height);
 ////
 
 var focusableElementsString = 'a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), ' + 'textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable]';
@@ -1432,7 +1443,7 @@ var init_pannel = function init_pannel() {
     var openButton;
     var toggleButtons = document.querySelectorAll("[data-pannel-target=\"".concat(pannel_id, "\"]"));
     var firstFocusableElement = (_element$querySelecto = element.querySelector('[data-focus]')) !== null && _element$querySelecto !== void 0 ? _element$querySelecto : element.querySelector(focusableElementsString);
-    var timeline = gsap__WEBPACK_IMPORTED_MODULE_8__["default"].timeline({
+    var timeline = gsap__WEBPACK_IMPORTED_MODULE_9__["default"].timeline({
       paused: true,
       onStart: function onStart() {
         return element.classList.add('is-visible');
@@ -1650,6 +1661,36 @@ document.addEventListener('click', function (event) {
     }
   }
 });
+
+/***/ }),
+
+/***/ "./assets/scripts/components/alert.js":
+/*!********************************************!*\
+  !*** ./assets/scripts/components/alert.js ***!
+  \********************************************/
+/***/ (() => {
+
+var init = function init() {
+  document.querySelectorAll('.component--alert').forEach(function (element) {
+    var button = element.querySelector('button');
+    var link = element.querySelector('a');
+    setTimeout(function () {
+      document.body.classList.add('show-alert');
+      document.documentElement.style.setProperty('--alert-height', element.clientHeight + 'px'); // add css variable
+    }, 1000);
+    button.addEventListener('click', function () {
+      document.body.classList.remove('show-alert');
+    });
+    link.addEventListener('click', function () {
+      document.body.classList.remove('show-alert');
+    });
+    document.addEventListener('WindowResized', function () {
+      document.documentElement.style.setProperty('--alert-height', element.clientHeight + 'px'); // refresh css variable
+    });
+  });
+};
+document.addEventListener('ContentLoaded', init);
+// document.addEventListener( 'NewContentLoaded', init )
 
 /***/ }),
 

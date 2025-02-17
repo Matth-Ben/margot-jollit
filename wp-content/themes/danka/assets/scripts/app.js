@@ -17,7 +17,7 @@ import './components/accordions'
 // import './components/header-mobile'
 // import './components/header-desktop'
 // import './components/hero-front-page'
-// import './components/alert'
+import './components/alert'
 // import './components/video-or-embed'
 // import './components/pannel'
 // import './components/form-search'
@@ -82,8 +82,14 @@ document.addEventListener( 'ContentLoaded', init_custom_select )
 document.addEventListener( 'NewContentLoaded', init_custom_select )
 ////
 
-
-
+//// header height
+const set_headroom_height = () => {
+    const headroom = document.querySelector( '.component-headroom' )
+    document.documentElement.style.setProperty( '--headroom-height', headroom.clientHeight + 'px' )
+} // refresh css variable
+document.addEventListener( 'WindowResized', set_headroom_height )
+document.addEventListener( 'ContentLoaded', set_headroom_height )
+////
 
 
 

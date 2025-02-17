@@ -3,6 +3,8 @@
 {% import "@components/grid-helper.twig" as gridhelper %}
 {% import "@components/alert.twig" as alert %}
 
+{% set options = get_fields('option') %}
+
 <!DOCTYPE html>
 <html lang="{{ get_current_language() }}">
 	<head>
@@ -17,9 +19,11 @@
 	</head>
 	<body class="{% if _context._session.welcome %}welcome{% endif %}" wp-class="{{ body_class }}">
 		{{ quicklinks.default() }}
-		{% if _context._session.welcome %}
-			{{ alert.default() }}
-		{% endif %}
+		{# {% if _context._session.welcome %} #}
+			{% if options.alert.text or (options.alert.button.title and options.alert.button.url) %}
+				{{ alert.default(options.alert) }}
+			{% endif %}
+		{# {% endif %} #}
 		{{ headroom.default() }}
 		<main id="app" role="main" tabindex="-1" data-taxi>
 			<div data-taxi-view>
