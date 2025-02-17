@@ -39,3 +39,12 @@ if ( !is_admin() ) {
     add_filter( 'user_can_richedit', '__return_false', 50 );
     add_filter( 'quicktags_settings', '__return_false', 50 );
 }
+
+/**
+ * Autorise l'upload de fichiers SVG dans la médiathèque WordPress
+ */
+function prefix_allow_svg_uploads( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'prefix_allow_svg_uploads' );

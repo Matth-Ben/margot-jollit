@@ -8,6 +8,7 @@ add_action( 'after_setup_theme', function() {
     register_nav_menu( 'footer-secondary',  'Pied de page (secondaire)' );
     register_nav_menu( 'footer-tertiary',  'Pied de page (tertiaire)' );
     register_nav_menu( 'footer-quaternary',  'Pied de page (quaternaire)' );
+    register_nav_menu( 'footer-copyright',  'Copyright' );
     register_nav_menu( 'mobile',            'Mobile' );
 } );
 
