@@ -1,21 +1,17 @@
 .component--alert {
-    @apply flex justify-between gap-xxl fixed top-0 left-0 w-full p-margin pt-48 z-[150] bg-[#C8B4A5];
+    @apply flex justify-between items-start gap-xxl fixed top-0 left-0 w-full p-margin z-[150] bg-error;
     transform: translate3d(0, -100%, 0);
     transition: var(--transition);
 
     & > div {
         @apply flex flex-col items-start gap-s;
-
-        p {
-            @apply ts-bold;
-        }
     }
 
     & > button {
         @apply shrink-0;
 
         svg {
-            @apply w-auto h-20;
+            @apply w-auto w-24;
         }
     }
 }
@@ -23,7 +19,7 @@
 @include desktop() {
     
     .component--alert {
-        @apply items-center pt-margin;
+        @apply items-center;
     
         & > div {
             @apply flex-row items-center gap-xl;

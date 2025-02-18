@@ -1,5 +1,5 @@
 .component-header-desktop {
-    @apply flex justify-between items-center fixed top-0 left-0 w-full p-margin z-[90];
+    @apply flex justify-between items-center w-full p-margin pb-0 z-[90];
 
     & > nav {
         @apply flex items-center gap-l;

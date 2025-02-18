@@ -1,16 +1,18 @@
-{% macro default() %}
+{% macro default(data) %}
     {% import "@components/button.twig" as button %}
     {% import "@components/svg.twig" as svg %}
-
-    {% set data = get_fields('option') %}
-    {% set data = data.alert %}
 
     {% if data.text %}
         <div class="component component--alert">
             <div>
                 <p>{{ data.text }}</p>
                 {% if data.button.title and data.button.url %}
-                    {{ button.tertiary(data.button) }}
+                    {{ button.simple({
+                        title: data.button.title,
+                        url: data.button.url,
+                        target: data.button.target,
+                        icon: 'arrow-right',
+                    }) }}
                 {% endif %}
             </div>
             <button aria-label="{{ pll__('Fermer') }}">

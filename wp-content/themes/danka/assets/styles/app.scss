@@ -36,7 +36,7 @@
 @import 'components/text-and-image.scss';
 // @import 'components/header-mobile.scss';
 @import 'components/header-desktop.scss';
-// @import 'components/headroom.scss';
+@import 'components/headroom.scss';
 @import 'components/footer.scss';
 // @import 'components/image-links.scss';
 // @import 'components/marquee.scss';
@@ -71,7 +71,7 @@
 // @import 'components/emphasis.scss';
 // @import 'components/focus.scss';
 // @import 'components/logos.scss';
-// @import 'components/alert.scss';
+@import 'components/alert.scss';
 @import 'components/breadcrumbs.scss';
 @import 'components/acf-flex-content.scss';
 // @import 'components/table.scss';
@@ -103,7 +103,7 @@
 
 #app-content {
     padding-top: var(--margin-top);
-    transition: opacity .3s ease;
+    // transition: opacity .3s ease;
 
     article > div {
 
@@ -117,7 +117,7 @@
 body {
 
     main,
-    .component--headroom {
+    .component-headroom {
         transition: var(--transition);
     }
     
@@ -142,7 +142,7 @@ body {
             transform: translate3d(0, 0, 0);
         }
 
-        .component--headroom {
+        .component-headroom {
             transform: translate3d(0, var(--alert-height), 0);
         }
 
@@ -163,5 +163,5 @@ body {
 
 
 :root {
-    --margin-top: 12rem;
+    --margin-top: var(--spacing-xl);
 }

@@ -2,11 +2,11 @@
     {% import "@components/button.twig" as button %}
     {% import "@components/svg.twig" as svg %}
 
-    <form class="component-pannel-search" action="{{ get_home_url() }}">
+    <form class="component-pannel-search" action="/">
         <div>
             <div>
                 {{ svg.default('search') }}
-                <input type="text" name="s" id="s" placeholder="{{ pll__('Votre recherche') }}" />
+                <input type="text" name="s" placeholder="{{ pll__('Votre recherche') }}" />
             </div>
             {{ button.default({title: pll__('Rechercher'), attributes: 'type="submit"', variation: 'soft'}) }}
         </div>

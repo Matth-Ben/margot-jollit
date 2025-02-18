@@ -3,7 +3,7 @@
     @apply flex justify-between items-start gap-xxl h-full px-margin py-24 text-dark bg-primary;
 
     & > div {
-        @apply flex flex-col items-start w-full h-full;
+        @apply flex flex-col items-start gap-l w-full h-full;
 
         & > div {
             @apply flex items-center gap-l w-full h-full;
@@ -23,7 +23,7 @@
     }
 
     & > button {
-        @apply border-none h-auto;
+        @apply border-none h-auto w-auto;
     }
 }
 
