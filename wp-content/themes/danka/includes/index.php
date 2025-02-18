@@ -120,4 +120,8 @@ if ( get_option( 'danka_breadcrumbs' ) ) {
     include_once __DIR__ . '/breadcrumbs/index.php';
 }
 
+include_once __DIR__ . '/duplicate/index.php';
+
+include_once __DIR__ . '/comments.php';
+
 include_once __DIR__ . '/acf-advanced-wysiwyg/init.php';
