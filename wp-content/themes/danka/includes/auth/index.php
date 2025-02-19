@@ -23,7 +23,8 @@ class DankaCustomAuth {
         // 3) Déclarer nos shortcodes
         add_shortcode( 'custom_register_form', array( __CLASS__, 'render_register_form' ) );
         add_shortcode( 'custom_login_form',    array( __CLASS__, 'render_login_form' ) );
-
+        add_shortcode( 'custom_lost_password_form', array( __CLASS__, 'render_lost_password_form' ) );
+        
         // 4) Gérer la soumission (inscription + login)
         add_action( 'init', array( __CLASS__, 'handle_form_submission' ) );
 
@@ -88,19 +89,25 @@ class DankaCustomAuth {
         ?>
 
         <!-- 2) Le formulaire d'inscription -->
-        <form method="post" class="custom-register-form">
-            <p>
-                <label for="reg_email">Email *</label><br>
-                <input type="email" name="reg_email" id="reg_email" required>
-            </p>
-            <p>
-                <label for="reg_password">Mot de passe *</label><br>
-                <input type="password" name="reg_password" id="reg_password" required>
-            </p>
+        <form method="post" class="custom-register-form custom-auth-form">
+            <div class="custom-auth-form__head">
+                <h3>Créer son compte</h3>
+            </div>
+            <div class="custom-auth-form__body">
+                <div class="custom-auth-form__fields">
+                    <label class="custom-auth-form__label" for="reg_email">Email</label>
+                    <input type="text" name="reg_email" id="reg_email" placeholder="Votre email" required>
+                </div>
+                <div class="custom-auth-form__fields">
+                    <label class="custom-auth-form__label" for="reg_password">Mot de passe</label>
+                    <input type="password" name="reg_password" id="reg_password" placeholder="***********" required>
+                </div>
+            </div>
             <?php wp_nonce_field( 'custom_register_action', 'custom_register_nonce' ); ?>
-            <p>
-                <input type="submit" name="custom_register_submit" value="Créer mon compte">
-            </p>
+            <div class="custom-auth-form__bottom">
+                <input type="submit" class="component-button component-button--full" name="custom_register_submit" value="S'inscrire">
+                <p>Déjà un compte ? <a href="/login">Se connecter</a></p>
+            </div>
         </form>
         <?php
 
@@ -113,7 +120,7 @@ class DankaCustomAuth {
     public static function render_login_form() {
         // Si déjà connecté, ne pas afficher le formulaire
         if ( is_user_logged_in() ) {
-            return '<p>Vous êtes déjà connecté.</p>';
+            return '<p>Vous êtes déjà connecté. <a href="'. get_home_url() .'">Retour à l\'accueil</a></p>';
         }
 
         ob_start();
@@ -127,19 +134,28 @@ class DankaCustomAuth {
         ?>
 
         <!-- 2) Le formulaire de connexion -->
-        <form method="post" class="custom-login-form">
-            <p>
-                <label for="log_username">Nom d’utilisateur ou Email *</label><br>
-                <input type="text" name="log_username" id="log_username" required>
-            </p>
-            <p>
-                <label for="log_password">Mot de passe *</label><br>
-                <input type="password" name="log_password" id="log_password" required>
-            </p>
+        <form method="post" class="custom-login-form custom-auth-form">
+            <div class="custom-auth-form__head">
+                <h3>Se connecter</h3>
+            </div>
+            <div class="custom-auth-form__body">
+                <div class="custom-auth-form__fields">
+                    <label class="custom-auth-form__label" for="log_username">Identifiant</label>
+                    <input type="text" name="log_username" id="log_username" placeholder="Votre nom d’identifiant" required>
+                </div>
+                <div class="custom-auth-form__fields">
+                    <label class="custom-auth-form__label" for="log_password">Mot de passe</label>
+                    <input type="password" name="log_password" id="log_password" placeholder="***********" required>
+                </div>
+                <p>
+                    <a href="/lost-password">Mot de passe oublié ?</a>
+                </p>
+            </div>
             <?php wp_nonce_field( 'custom_login_action', 'custom_login_nonce' ); ?>
-            <p>
-                <input type="submit" name="custom_login_submit" value="Se connecter">
-            </p>
+            <div class="custom-auth-form__bottom">
+                <input type="submit" class="component-button component-button--full" name="custom_login_submit" value="Connexion">
+                <p>Pas encore de compte ? <a href="/register">S’inscrire</a></p>
+            </div>
         </form>
         <?php
 
@@ -157,6 +173,10 @@ class DankaCustomAuth {
         // Connexion
         if ( isset( $_POST['custom_login_submit'] ) ) {
             self::process_login();
+        }
+        // Mot de passe oublié
+        if ( isset( $_POST['custom_lost_password_submit'] ) ) {
+            self::process_lost_password();
         }
     }
 
@@ -219,6 +239,62 @@ class DankaCustomAuth {
 
         // On stocke un message de succès (ou on pourrait rediriger)
         self::$register_errors->add('register_success', 'Votre compte a été créé ! Un email de confirmation vous a été envoyé pour valider votre compte.');
+    }
+
+    /**
+     * Shortcode : Formulaire de réinitialisation de mot de passe
+     */
+    public static function render_lost_password_form() {
+        if ( is_user_logged_in() ) {
+            return '<p>Vous êtes déjà connecté.</p>';
+        }
+
+        ob_start();
+        ?>
+        <form method="post" class="custom-lost-password-form custom-auth-form">
+            <div class="custom-auth-form__head">
+                <h3>Réinitialisation du mot de passe</h3>
+            </div>
+            <div class="custom-auth-form__body">
+                <div class="custom-auth-form__fields">
+                    <label class="custom-auth-form__label" for="lost_email">Email</label>
+                    <input type="email" name="lost_email" id="lost_email" placeholder="Votre email" required>
+                </div>
+            </div>
+            <?php wp_nonce_field( 'custom_lost_password_action', 'custom_lost_password_nonce' ); ?>
+            <div class="custom-auth-form__bottom">
+                <input type="submit" class="component-button component-button--full" name="custom_lost_password_submit" value="Envoyer">
+                <p>Se souvenir du mot de passe ? <a href="/login">Se connecter</a></p>
+            </div>
+        </form>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * Traiter le mot de passe oublié
+     */
+    protected static function process_lost_password() {
+        if ( ! isset($_POST['custom_lost_password_nonce']) || 
+             ! wp_verify_nonce( $_POST['custom_lost_password_nonce'], 'custom_lost_password_action' ) ) {
+            wp_die( 'Jeton de sécurité invalide.' );
+        }
+    
+        $email = sanitize_email( $_POST['lost_email'] );
+        if ( empty($email) || ! is_email($email) ) {
+            wp_die( 'Veuillez saisir une adresse email valide.' );
+        }
+    
+        $user = get_user_by( 'email', $email );
+        if ( ! $user ) {
+            wp_die( 'Aucun utilisateur trouvé avec cet email.' );
+        }
+    
+        // Générer un lien de réinitialisation
+        $reset_link = wp_lostpassword_url();
+        wp_mail( $email, 'Réinitialisation de votre mot de passe', "Cliquez ici pour réinitialiser votre mot de passe : $reset_link" );
+    
+        wp_die( 'Un email de réinitialisation a été envoyé.', 'Succès' );
     }
 
     /**

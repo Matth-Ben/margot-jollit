@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Page Register
+ * Template Name: Page Auth
  */
 
  global $wp_query;
@@ -16,7 +16,7 @@
  if ( post_password_required( $timber_post->ID ) ) {
      $templates = array( 'single-password.twig' );
  } else {
-     $templates = array( 'page-' . $timber_post->post_name . '.twig', 'template-register.twig' );
+     $templates = array( 'page-' . $timber_post->post_name . '.twig', 'template-auth.twig' );
  }
  
  \Timber\Timber::render( $templates, $context );

@@ -145,6 +145,7 @@ class DankaAuthSettings {
             <ul style="list-style:disc; margin-left: 20px;">
                 <li><strong>[custom_register_form]</strong> : Formulaire d’inscription</li>
                 <li><strong>[custom_login_form]</strong> : Formulaire de connexion</li>
+                <li><strong>[custom_lost_password_form]</strong> : Formulaire de mot de passe oublié</li>
             </ul>
             <hr>
             <form method="post" action="options.php">

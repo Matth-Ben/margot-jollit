@@ -1,0 +1,19 @@
+{% extends "app-content.twig" %}
+
+{% set data = get_fields() %}
+
+{% block app_content %}
+    <div class="Page">
+        <div class="Page__content Page__auth">
+            <div class="container">
+                <div class="grid grid-cols-6 d:grid-cols-12 gap">
+                    <div class="col-span-6 d:col-span-4 d:col-start-5">
+                        {% if data.description %}
+                            <div class="Custom__auth">{{ fn('do_shortcode', data.description) }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

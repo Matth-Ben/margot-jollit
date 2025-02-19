@@ -1,0 +1,47 @@
+.Page__auth {
+    height: calc(100vh - 12rem);
+}
+
+.Custom__auth {
+    @apply flex flex-col gap-xl mt-[3rem] px-xxl py-[4rem] border border-[#00000029] rounded-[0.1rem];
+
+    .custom-auth-form {
+        @apply flex flex-col gap-[4rem] items-center;
+
+        &__head {
+            @apply w-full;
+
+            h3 {
+                @apply text-center;
+            }
+        }
+
+        &__body {
+            @apply flex flex-col gap-l w-full;
+        }
+
+        &__bottom {
+            @apply flex flex-col gap-[2.4rem] items-center w-full;
+        }
+
+        &__fields {
+            @apply flex flex-col gap-m;
+
+            input {
+                @apply h-xxl px-l border border-[#00000029] rounded-[0.1rem];
+
+                &::placeholder {
+                    @apply text-dark;
+                }
+            }
+        }
+
+        &__label {
+            @apply font-bold;
+        }
+    }
+
+    a {
+        @apply opacity-50;   
+    }
+}

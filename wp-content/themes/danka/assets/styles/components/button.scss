@@ -1,7 +1,14 @@
 .component-button {
-    @apply ts-cta relative inline-flex justify-center items-center gap-s h-48 px-xl bg-primary rounded-full overflow-hidden;
-    // transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+    @apply ts-cta relative inline-flex justify-center items-center gap-s h-48 px-xl bg-primary text-light rounded-full overflow-hidden cursor-pointer;
+    transition: all var(--transition);
     
+    // @media (hover: hover) {
+    //     &:hover {
+    //         @apply text-light;
+    //         background-color: darken(#304ACF, 10%);
+    //     }
+    // }
+
     & > span {
         @apply text-light;
         
@@ -94,5 +101,9 @@
                 }
             }
         }
+    }
+
+    &--full {
+        @apply w-full;
     }
 }
