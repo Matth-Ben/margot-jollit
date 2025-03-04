@@ -1,5 +1,10 @@
 <?php
 
+function is_webpack_dev_server_running($url = 'http://localhost:8080/wp-content/themes/danka/assets/build/app.js') {
+    $headers = @get_headers($url);
+    return $headers && strpos($headers[0], '200') !== false;
+}
+
 add_action( 'wp_enqueue_scripts', function() {
 	$theme = wp_get_theme();
     $path = get_template_directory() . '/mix-manifest.json';
@@ -35,10 +40,21 @@ add_action( 'wp_enqueue_scripts', function($i) {
     }
 }, 100 );
 
+
 if ( !is_admin() ) {
     add_filter( 'user_can_richedit', '__return_false', 50 );
     add_filter( 'quicktags_settings', '__return_false', 50 );
 }
+
+
+// Remplacer les URLS de production par celles du serveur de développement
+add_filter('final_output', function($buffer) {
+    $search = get_site_url();
+    $replace = 'http://localhost:8080';
+
+    return str_replace($search, $replace, $buffer);
+});
+
 
 /**
  * Autorise l'upload de fichiers SVG dans la médiathèque WordPress

@@ -12,6 +12,7 @@ module.exports = (env, argv) => {
     output: {
       filename: 'app.js',
       path: path.resolve(__dirname, './assets/build'),
+      publicPath: 'http://localhost:8080/wp-content/themes/danka/assets/build/',
       clean: true,
     },
     module: {
@@ -29,6 +30,7 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
+            // isProduction ? MiniCssExtractPlugin.loader : '',
             MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
@@ -44,10 +46,29 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin({ filename: 'app.css' }),
     ],
     devServer: {
-      static: path.resolve(__dirname, './assets/build'),
-      watchFiles: ['src/**/*'],
+      // devMiddleware: {
+      //   writeToDisk: true,
+      // },
+      allowedHosts: 'all', // Remplace `host` qui peut causer des erreurs
+      client: {
+        logging: 'info',
+        overlay: true
+      },
       hot: true,
-      open: true,
+      liveReload: true,
+      port: 8080,
+      // watchFiles: ['src/*'], // Active le rechargement automatique
+      // static: {
+      //   directory: path.resolve(__dirname, 'build'), // Dossier où Webpack Dev Server sert les fichiers
+      //   publicPath: '/build/',
+      // },
+      proxy: [
+        {
+          context: () => true, // Proxy toutes les requêtes
+          target: 'http://wp-danka.test',
+          changeOrigin: true
+        }
+      ]
     },
   };
 };
