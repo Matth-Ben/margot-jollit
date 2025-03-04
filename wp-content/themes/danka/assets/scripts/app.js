@@ -1,3 +1,5 @@
+import '../styles/app.css'
+
 import './core'
 
 // history.scrollRestoration = "manual"
@@ -91,7 +93,58 @@ document.addEventListener( 'WindowResized', set_headroom_height )
 document.addEventListener( 'ContentLoaded', set_headroom_height )
 ////
 
+//// custom headroom
+// calculer
+// voir si il y a une animation
+// recalculer à la fin de l'animation
 
+// let animate = false
+// let position = 'top'
+// let state = 'pinned'
+// let lastScrollTop = 0
+// let lastState = 'pinned'
+// let lastPosition = 'top'
+
+
+// const run_headroom = () => {
+//     const scroll = window.scrollY
+//     const limit = window.innerHeight
+
+//     if ( animate ) {
+//         return
+//     }
+
+//     if ( scroll > limit ) {
+//         position = 'not-top'
+//     } else {
+//         position = 'top'
+//     }
+
+//     if ( scroll > lastScrollTop && scroll > limit ) {
+//         state = 'unpinned'
+//     }
+//     else if ( scroll < lastScrollTop && scroll > limit ) {
+//         state = 'pinned'
+//     }
+
+//     document.documentElement.classList.remove( 'headroom--pinned', 'headroom--unpinned', 'headroom--top', 'headroom--not-top' )
+//     document.documentElement.classList.add( `headroom--${state}`, `headroom--${position}` )
+    
+//     if ( state !== lastState || position !== lastPosition ) {
+//         animate = true
+//         setTimeout( () => {
+//             animate = false
+//             run_headroom()
+//         }, 400 )
+//     }
+
+//     lastScrollTop = scroll
+//     lastState = state
+//     lastPosition = position
+// }
+
+// window.addEventListener( 'scroll', run_headroom )
+////
 
 
 

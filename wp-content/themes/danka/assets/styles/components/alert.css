@@ -1,0 +1,21 @@
+@use '../core/mixins.scss' as mixins;
+
+.component--alert {
+    @apply flex justify-between items-start gap-xxl fixed top-0 left-0 w-full px-margin py-l z-[150] bg-error;
+    @apply d:items-center;
+    transform: translate3d(0, -100%, 0);
+    transition: var(--transition);
+
+    & > div {
+        @apply flex flex-col items-start gap-s;
+        @apply d:flex-row d:items-center d:gap-xl;
+    }
+
+    & > button {
+        @apply shrink-0;
+
+        svg {
+            @apply w-auto w-24;
+        }
+    }
+}

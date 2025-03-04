@@ -1,20 +1,20 @@
 // utils
-@import 'functions.scss';
-@import 'mixins.scss';
+@forward 'functions.scss';
+@forward 'mixins.scss';
 
 // lenis
-@import 'lenis.scss';
+@forward 'lenis.scss';
 
 // data
-@import 'generate.scss';
-@import 'tailwind-layers.scss';
-// @import 'dark.scss'; // utile ?
+@forward 'generate.scss';
+@forward 'tailwind-layers.scss';
+// @forward 'dark.scss'; // utile ?
 
 // tailwinds
-@import "tailwindcss";
+@forward "tailwindcss";
 
 // others
-@import 'grid-helper.scss';
+@forward 'grid-helper.scss';
 
 html {
     font-size: 10px;

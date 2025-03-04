@@ -1,0 +1,38 @@
+@use '../core/mixins.scss' as mixins;
+
+.component-pannel-search {
+    --color-dark: #fff;
+    /* TODO reprendre variable */
+    @apply flex justify-between items-start gap-xxl h-full px-margin py-24 text-dark bg-primary;
+    @apply d:items-center;
+
+    & > div {
+        @apply flex flex-col items-start gap-l w-full h-full;
+        @apply d:flex-row d:items-center;
+
+        & > div {
+            @apply flex items-center gap-l w-full h-full;
+
+            & > svg {
+                @apply w-24 shrink-0;
+            }
+
+            & > input {
+                @apply ts-h4 bg-transparent w-full;
+
+                &::placeholder {
+                    @apply text-dark;
+                }
+            }
+        }
+    }
+
+    & > button {
+        @apply border-none h-auto w-auto;
+    }
+}
+
+#search-header {
+    @apply h-full;
+    @apply d:h-auto;
+}

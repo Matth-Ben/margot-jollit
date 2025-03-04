@@ -1,10 +1,10 @@
-// @import 'core';
+@forward 'core';
 
 // @import 'swiper/css';
 // @import 'plyr/dist/plyr.css';
 
-// @forward 'fonts.scss';
-// @forward 'animation.scss';
+@forward 'fonts.scss';
+@forward 'animation.scss';
 
 // // layouts
 // @import 'layouts/FrontPage.scss';
@@ -68,14 +68,14 @@
 ////
 
 ////
-@forward "tailwindcss";
-@forward 'test.scss';
+// @forward "tailwindcss";
+// @forward 'test.scss';
 
-@theme {
-    --color-test: red;
-    --spacing-test: 10px;
-}
+// @theme {
+//     --color-test: red;
+//     // --spacing-test: 10px;
+// }
 
 body {
-    @apply bg-test;
+    @apply text-primary;
 }

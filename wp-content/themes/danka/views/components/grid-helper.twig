@@ -1,6 +1,18 @@
 {% macro default(app_data) %}
+    <div class="component-grid-helper">
+        <div>
+            {% for item in 1..12 %}
+                <div></div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro _default(app_data) %}
+    {% set breakpoints = app_data.breakpoints %}
+
     {% if app_data.maxColumns %}
-        <div class="grid-helper container fixed inset-0 w-full h-full opacity-20 invisible z-[1000]">
+        <div class="component-grid-helper">
             {% for breakpoint, value in app_data.maxColumns %}
                 {% set nextBreakpoint = function('array_slice', app_data.maxColumns, loop.index, 1) %}
 
@@ -12,11 +24,27 @@
                     {% set nextBreakpoint = null %}
                 {% endif %}
 
-                <div class="grid grid-cols-{{value}} gap hidden h-full {{breakpoint}}:grid {% if nextBreakpoint %}{{nextBreakpoint}}:hidden{% endif %}">
+                <div class="display-{{breakpoint}} display-next-{{nextBreakpoint}}" style="--columns: {{value}}">
+                    {% for item in 1..value %}
+                        <div></div>
+                    {% endfor %}
+                </div>
+
+                {# {% if nextBreakpoint %}
+                    <style type="text/css">
+                        @media (min-width: {{breakpoints[nextBreakpoint]}}px) {
+                            .display-{{breakpoint}} {
+                                display: none;
+                            }
+                        }
+                    </style>
+                {% endif %} #}
+
+                {# <div class="display-{{breakpoint}} grid grid-cols-{{value}} gap-gap hidden h-full {{breakpoint}}:grid {% if nextBreakpoint %}{{nextBreakpoint}}:hidden{% endif %}" style="--columns: {{value}}">
                     {% for item in 1..value %}
                         <div class="col-span-1 h-full bg-[red]"></div>
                     {% endfor %}
-                </div>
+                </div> #}
             {% endfor %}
         </div>
     {% endif %}

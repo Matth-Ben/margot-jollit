@@ -1,3 +1,5 @@
+import '../styles/app.scss'
+
 // app.js
 // import Swup from 'swup';
 import gsap from 'gsap';

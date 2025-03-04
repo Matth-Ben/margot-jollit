@@ -1,4 +1,4 @@
-import Splitting from 'splitting'
+// import Splitting from 'splitting'
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
@@ -6,6 +6,7 @@ function randomIntFromInterval(min, max) { // min and max included
 
 export default function()
 {
+    return
     // show elements
     if ( !document.body.classList.contains( 'show-elements-init' ) ) {
         document.addEventListener( 'ElementsInView', event => {

@@ -1,0 +1,47 @@
+@use '../core/mixins.scss' as mixins;
+
+.Archive {
+    @apply px-margin;
+
+    &__breadcrumbs {
+        @apply mb-xxxl;
+    }
+
+    &__header {
+        @apply flex flex-col gap-l my-xxl;
+
+        p {
+            @apply ts-h4;
+        }
+    }
+    
+    &__filters {
+        @apply my-xxl;
+    }
+
+    &__list {
+        @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
+
+        & >  div {
+            @apply col-span-full;
+        }
+    }
+}
+
+@include mixins.desktop() {
+
+    .Archive {
+
+        &__header {
+            @apply max-w-col-8;
+        }
+
+        &__list {
+            @apply gap-y-xl;
+
+            & > div {
+                @apply col-span-4;
+            }
+        }
+    }
+}

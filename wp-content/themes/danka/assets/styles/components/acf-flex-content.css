@@ -1,0 +1,31 @@
+@use '../core/mixins.scss' as mixins;
+
+.component--acf-flex-content {
+    @apply overflow-hidden;
+    
+    &:not(.component--halfscreen) > *,
+    &.component--halfscreen > .component__content > * {
+        @apply my-xxxxl;
+    }
+
+    & > .acf-component--halfscreen {
+        @apply d:max-w-col-6 d:mx-auto;
+    }
+
+    & > *:not(.acf-component--fullscreen):not(.acf-component--section) {
+        @apply px-margin;
+    }
+
+    & > .acf-component--fullscreen + .acf-component--fullscreen,
+    & > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+
+    & > .acf-component--fullscreen + .acf-component--first-is-fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+
+    & > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
+        margin-top: calc(var(--spacing-xxxxl) * -1);
+    }
+}

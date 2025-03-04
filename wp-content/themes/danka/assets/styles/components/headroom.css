@@ -1,0 +1,9 @@
+.component-headroom {
+    @apply sticky left-0 z-[100];
+    top: calc(var(--headroom-height) * -2);
+    transition: top var(--transition);
+}
+
+[wp-class*="home"] #app-content {
+    margin-top: calc(var(--headroom-height) * -1);
+}

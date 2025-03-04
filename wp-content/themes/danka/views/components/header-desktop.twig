@@ -10,24 +10,26 @@
     {% set pannel_search_id = 'search-header' %}
 
     <div class="component-header-desktop">
-        <a href="{{ function('get_bloginfo', 'url') }}">
-            {% include "@assets/svg/logo.svg" %}
-        </a>
         <nav>
-            {% if menus['header-primary'].items %}
-                <ul>
-                    {% for item in menus['header-primary'].items %}
-                        <li>
-                            <a href="{{ item.url }}">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+            <a href="{{ function('get_bloginfo', 'url') }}">
+                {% include "@assets/svg/logo.svg" %}
+            </a>
             <div>
-                {{ button.icon({icon: 'cart'}) }}
-                {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
+                {% if menus['header-primary'].items %}
+                    <ul>
+                        {% for item in menus['header-primary'].items %}
+                            <li>
+                                <a href="{{ item.url }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div>
+                    {{ button.icon({icon: 'cart'}) }}
+                    {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
+                </div>
+                {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
             </div>
-            {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
         </nav>
     </div>
 

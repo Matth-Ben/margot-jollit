@@ -5,8 +5,8 @@ const init = () => {
         const duration = data?.transitions?.default?.duration ? data.transitions.default.duration : 400
         let is_showing = false
 
-        const init_subnavigation = items => {
-            items.forEach( items => {
+        const init_subnavigation = _items => {
+            _items.forEach( items => {
                 const parents = items.querySelectorAll( 'li.has-children' )
     
                 parents.forEach( parent => {

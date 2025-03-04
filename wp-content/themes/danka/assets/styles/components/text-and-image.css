@@ -1,0 +1,20 @@
+.component-text-and-image {
+    @apply grid grid-cols-2 gap-x-gap gap-y-xxl;
+    
+    & > div {
+        @apply col-span-full;
+        @apply d:col-span-1;
+    }
+
+    & > div:first-child {
+        @apply flex flex-col justify-end items-start gap-xl;
+
+        & > div {
+            @apply flex flex-col gap-m;
+        }
+    }
+
+    & img {
+        @apply w-full h-full object-cover;
+    }
+}

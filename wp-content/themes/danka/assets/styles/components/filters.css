@@ -1,0 +1,3 @@
+.component-filters {
+    @apply flex flex-wrap items-center gap-m;
+}

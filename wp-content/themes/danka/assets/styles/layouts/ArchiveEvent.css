@@ -1,0 +1,30 @@
+.ArchiveEvent {
+    @apply px-margin;
+}
+
+.ArchiveEvent__breadcrumbs {
+    @apply mb-xxxl;
+}
+
+.ArchiveEvent__header {
+    @apply flex flex-col items-start gap-xxl my-xxl;
+    @apply d:flex-row d:justify-between d:items-end;
+
+    & > div {
+        @apply flex flex-col gap-l;
+        
+        & p {
+            @apply ts-h4;
+        }
+    }
+}
+
+.ArchiveEvent__list {
+    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
+    @apply d:gap-y-xl;
+
+    & >  div {
+        @apply col-span-full;
+        @apply d:col-span-4;
+    }
+}
