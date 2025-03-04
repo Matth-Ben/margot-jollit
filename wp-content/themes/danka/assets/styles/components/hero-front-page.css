@@ -1,0 +1,24 @@
+.component-hero-front-page {
+    @apply relative w-full min-h-[100svh] overflow-hidden;
+}
+
+.component-hero-front-page__image {
+    @apply absolute top-0 left-0 w-full h-full object-cover;
+
+    & .component-image {
+        @apply w-full h-full aspect-auto;
+    }
+}
+
+.component-hero-front-page__image::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-dark opacity-20;
+}
+
+.component-hero-front-page__content {
+    @apply flex flex-col items-start absolute top-0 left-0 h-full p-margin z-[1] d:max-w-col-8;
+
+    & > div {
+        @apply flex flex-col justify-center gap-xl h-full text-light;
+    }
+}

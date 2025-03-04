@@ -1,0 +1,6 @@
+.acf-component-title {
+    
+    & > * {
+        @apply d:max-w-col-10 d:mx-auto;
+    }
+}

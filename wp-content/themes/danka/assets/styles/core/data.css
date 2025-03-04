@@ -1,0 +1,502 @@
+@theme {
+  --breakpoint-d: 1024px;
+  --breakpoint-m: 768px;
+  --breakpoint-l: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1440px;
+  --spacing-margin: 2rem;
+  --spacing-gap: 1.6rem;
+  --max-columns: 6;
+  --spacing-s: 0.4rem;
+  --spacing-m: 0.8rem;
+  --spacing-l: 1.6rem;
+  --spacing-xl: 2.4rem;
+  --spacing-xxl: 4.8rem;
+  --spacing-xxxl: 9.6rem;
+  --spacing-xxxxl: 12rem;
+  --color-dark: #000;
+  --color-light: #fff;
+  --color-primary: #304ACF;
+  --color-blue: #A6B4FF;
+  --color-orange: #FF8A70;
+  --color-yellow: #F5D276;
+  --color-pink: #F8A9E2;
+  --color-green: #B3DE98;
+  --color-valid: #90E5A9;
+  --color-error: #FC7B7D;
+  --default-transition-duration: 400ms;
+  --default-transition-timing-function: ease;
+  --pannel-width: 100%;
+  --spacing-1: 0.1rem;
+  --spacing-2: 0.2rem;
+  --spacing-3: 0.3rem;
+  --spacing-4: 0.4rem;
+  --spacing-5: 0.5rem;
+  --spacing-6: 0.6rem;
+  --spacing-7: 0.7rem;
+  --spacing-8: 0.8rem;
+  --spacing-9: 0.9rem;
+  --spacing-10: 1rem;
+  --spacing-11: 1.1rem;
+  --spacing-12: 1.2rem;
+  --spacing-13: 1.3rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-19: 1.9rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-23: 2.3rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-28: 2.8rem;
+  --spacing-29: 2.9rem;
+  --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
+  --spacing-32: 3.2rem;
+  --spacing-33: 3.3rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37: 3.7rem;
+  --spacing-38: 3.8rem;
+  --spacing-39: 3.9rem;
+  --spacing-40: 4rem;
+  --spacing-41: 4.1rem;
+  --spacing-42: 4.2rem;
+  --spacing-43: 4.3rem;
+  --spacing-44: 4.4rem;
+  --spacing-45: 4.5rem;
+  --spacing-46: 4.6rem;
+  --spacing-47: 4.7rem;
+  --spacing-48: 4.8rem;
+  --spacing-49: 4.9rem;
+  --spacing-50: 5rem;
+  --spacing-51: 5.1rem;
+  --spacing-52: 5.2rem;
+  --spacing-53: 5.3rem;
+  --spacing-54: 5.4rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-57: 5.7rem;
+  --spacing-58: 5.8rem;
+  --spacing-59: 5.9rem;
+  --spacing-60: 6rem;
+  --spacing-61: 6.1rem;
+  --spacing-62: 6.2rem;
+  --spacing-63: 6.3rem;
+  --spacing-64: 6.4rem;
+  --spacing-65: 6.5rem;
+  --spacing-66: 6.6rem;
+  --spacing-67: 6.7rem;
+  --spacing-68: 6.8rem;
+  --spacing-69: 6.9rem;
+  --spacing-70: 7rem;
+  --spacing-71: 7.1rem;
+  --spacing-72: 7.2rem;
+  --spacing-73: 7.3rem;
+  --spacing-74: 7.4rem;
+  --spacing-75: 7.5rem;
+  --spacing-76: 7.6rem;
+  --spacing-77: 7.7rem;
+  --spacing-78: 7.8rem;
+  --spacing-79: 7.9rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-82: 8.2rem;
+  --spacing-83: 8.3rem;
+  --spacing-84: 8.4rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-87: 8.7rem;
+  --spacing-88: 8.8rem;
+  --spacing-89: 8.9rem;
+  --spacing-90: 9rem;
+  --spacing-91: 9.1rem;
+  --spacing-92: 9.2rem;
+  --spacing-93: 9.3rem;
+  --spacing-94: 9.4rem;
+  --spacing-95: 9.5rem;
+  --spacing-96: 9.6rem;
+  --spacing-97: 9.7rem;
+  --spacing-98: 9.8rem;
+  --spacing-99: 9.9rem;
+  --spacing-100: 10rem;
+  --spacing-101: 10.1rem;
+  --spacing-102: 10.2rem;
+  --spacing-103: 10.3rem;
+  --spacing-104: 10.4rem;
+  --spacing-105: 10.5rem;
+  --spacing-106: 10.6rem;
+  --spacing-107: 10.7rem;
+  --spacing-108: 10.8rem;
+  --spacing-109: 10.9rem;
+  --spacing-110: 11rem;
+  --spacing-111: 11.1rem;
+  --spacing-112: 11.2rem;
+  --spacing-113: 11.3rem;
+  --spacing-114: 11.4rem;
+  --spacing-115: 11.5rem;
+  --spacing-116: 11.6rem;
+  --spacing-117: 11.7rem;
+  --spacing-118: 11.8rem;
+  --spacing-119: 11.9rem;
+  --spacing-120: 12rem;
+  --spacing-121: 12.1rem;
+  --spacing-122: 12.2rem;
+  --spacing-123: 12.3rem;
+  --spacing-124: 12.4rem;
+  --spacing-125: 12.5rem;
+  --spacing-126: 12.6rem;
+  --spacing-127: 12.7rem;
+  --spacing-128: 12.8rem;
+  --spacing-129: 12.9rem;
+  --spacing-130: 13rem;
+  --spacing-131: 13.1rem;
+  --spacing-132: 13.2rem;
+  --spacing-133: 13.3rem;
+  --spacing-134: 13.4rem;
+  --spacing-135: 13.5rem;
+  --spacing-136: 13.6rem;
+  --spacing-137: 13.7rem;
+  --spacing-138: 13.8rem;
+  --spacing-139: 13.9rem;
+  --spacing-140: 14rem;
+  --spacing-141: 14.1rem;
+  --spacing-142: 14.2rem;
+  --spacing-143: 14.3rem;
+  --spacing-144: 14.4rem;
+  --spacing-145: 14.5rem;
+  --spacing-146: 14.6rem;
+  --spacing-147: 14.7rem;
+  --spacing-148: 14.8rem;
+  --spacing-149: 14.9rem;
+  --spacing-150: 15rem;
+  --spacing-151: 15.1rem;
+  --spacing-152: 15.2rem;
+  --spacing-153: 15.3rem;
+  --spacing-154: 15.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-156: 15.6rem;
+  --spacing-157: 15.7rem;
+  --spacing-158: 15.8rem;
+  --spacing-159: 15.9rem;
+  --spacing-160: 16rem;
+  --spacing-161: 16.1rem;
+  --spacing-162: 16.2rem;
+  --spacing-163: 16.3rem;
+  --spacing-164: 16.4rem;
+  --spacing-165: 16.5rem;
+  --spacing-166: 16.6rem;
+  --spacing-167: 16.7rem;
+  --spacing-168: 16.8rem;
+  --spacing-169: 16.9rem;
+  --spacing-170: 17rem;
+  --spacing-171: 17.1rem;
+  --spacing-172: 17.2rem;
+  --spacing-173: 17.3rem;
+  --spacing-174: 17.4rem;
+  --spacing-175: 17.5rem;
+  --spacing-176: 17.6rem;
+  --spacing-177: 17.7rem;
+  --spacing-178: 17.8rem;
+  --spacing-179: 17.9rem;
+  --spacing-180: 18rem;
+  --spacing-181: 18.1rem;
+  --spacing-182: 18.2rem;
+  --spacing-183: 18.3rem;
+  --spacing-184: 18.4rem;
+  --spacing-185: 18.5rem;
+  --spacing-186: 18.6rem;
+  --spacing-187: 18.7rem;
+  --spacing-188: 18.8rem;
+  --spacing-189: 18.9rem;
+  --spacing-190: 19rem;
+  --spacing-191: 19.1rem;
+  --spacing-192: 19.2rem;
+  --spacing-193: 19.3rem;
+  --spacing-194: 19.4rem;
+  --spacing-195: 19.5rem;
+  --spacing-196: 19.6rem;
+  --spacing-197: 19.7rem;
+  --spacing-198: 19.8rem;
+  --spacing-199: 19.9rem;
+  --spacing-200: 20rem;
+  --spacing-201: 20.1rem;
+  --spacing-202: 20.2rem;
+  --spacing-203: 20.3rem;
+  --spacing-204: 20.4rem;
+  --spacing-205: 20.5rem;
+  --spacing-206: 20.6rem;
+  --spacing-207: 20.7rem;
+  --spacing-208: 20.8rem;
+  --spacing-209: 20.9rem;
+  --spacing-210: 21rem;
+  --spacing-211: 21.1rem;
+  --spacing-212: 21.2rem;
+  --spacing-213: 21.3rem;
+  --spacing-214: 21.4rem;
+  --spacing-215: 21.5rem;
+  --spacing-216: 21.6rem;
+  --spacing-217: 21.7rem;
+  --spacing-218: 21.8rem;
+  --spacing-219: 21.9rem;
+  --spacing-220: 22rem;
+  --spacing-221: 22.1rem;
+  --spacing-222: 22.2rem;
+  --spacing-223: 22.3rem;
+  --spacing-224: 22.4rem;
+  --spacing-225: 22.5rem;
+  --spacing-226: 22.6rem;
+  --spacing-227: 22.7rem;
+  --spacing-228: 22.8rem;
+  --spacing-229: 22.9rem;
+  --spacing-230: 23rem;
+  --spacing-231: 23.1rem;
+  --spacing-232: 23.2rem;
+  --spacing-233: 23.3rem;
+  --spacing-234: 23.4rem;
+  --spacing-235: 23.5rem;
+  --spacing-236: 23.6rem;
+  --spacing-237: 23.7rem;
+  --spacing-238: 23.8rem;
+  --spacing-239: 23.9rem;
+  --spacing-240: 24rem;
+  --spacing-241: 24.1rem;
+  --spacing-242: 24.2rem;
+  --spacing-243: 24.3rem;
+  --spacing-244: 24.4rem;
+  --spacing-245: 24.5rem;
+  --spacing-246: 24.6rem;
+  --spacing-247: 24.7rem;
+  --spacing-248: 24.8rem;
+  --spacing-249: 24.9rem;
+  --spacing-250: 25rem;
+  --spacing-251: 25.1rem;
+  --spacing-252: 25.2rem;
+  --spacing-253: 25.3rem;
+  --spacing-254: 25.4rem;
+  --spacing-255: 25.5rem;
+  --spacing-256: 25.6rem;
+  --spacing-257: 25.7rem;
+  --spacing-258: 25.8rem;
+  --spacing-259: 25.9rem;
+  --spacing-260: 26rem;
+  --spacing-261: 26.1rem;
+  --spacing-262: 26.2rem;
+  --spacing-263: 26.3rem;
+  --spacing-264: 26.4rem;
+  --spacing-265: 26.5rem;
+  --spacing-266: 26.6rem;
+  --spacing-267: 26.7rem;
+  --spacing-268: 26.8rem;
+  --spacing-269: 26.9rem;
+  --spacing-270: 27rem;
+  --spacing-271: 27.1rem;
+  --spacing-272: 27.2rem;
+  --spacing-273: 27.3rem;
+  --spacing-274: 27.4rem;
+  --spacing-275: 27.5rem;
+  --spacing-276: 27.6rem;
+  --spacing-277: 27.7rem;
+  --spacing-278: 27.8rem;
+  --spacing-279: 27.9rem;
+  --spacing-280: 28rem;
+  --spacing-281: 28.1rem;
+  --spacing-282: 28.2rem;
+  --spacing-283: 28.3rem;
+  --spacing-284: 28.4rem;
+  --spacing-285: 28.5rem;
+  --spacing-286: 28.6rem;
+  --spacing-287: 28.7rem;
+  --spacing-288: 28.8rem;
+  --spacing-289: 28.9rem;
+  --spacing-290: 29rem;
+  --spacing-291: 29.1rem;
+  --spacing-292: 29.2rem;
+  --spacing-293: 29.3rem;
+  --spacing-294: 29.4rem;
+  --spacing-295: 29.5rem;
+  --spacing-296: 29.6rem;
+  --spacing-297: 29.7rem;
+  --spacing-298: 29.8rem;
+  --spacing-299: 29.9rem;
+  --spacing-300: 30rem;
+  --spacing-col-1: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 1 + (var(--spacing-gap) * (1 - 1)) );
+  --spacing-col-2: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 2 + (var(--spacing-gap) * (2 - 1)) );
+  --spacing-col-3: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 3 + (var(--spacing-gap) * (3 - 1)) );
+  --spacing-col-4: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 4 + (var(--spacing-gap) * (4 - 1)) );
+  --spacing-col-5: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 5 + (var(--spacing-gap) * (5 - 1)) );
+  --spacing-col-6: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 6 + (var(--spacing-gap) * (6 - 1)) );
+  --spacing-col-7: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 7 + (var(--spacing-gap) * (7 - 1)) );
+  --spacing-col-8: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 8 + (var(--spacing-gap) * (8 - 1)) );
+  --spacing-col-9: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 9 + (var(--spacing-gap) * (9 - 1)) );
+  --spacing-col-10: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 10 + (var(--spacing-gap) * (10 - 1)) );
+  --spacing-col-11: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 11 + (var(--spacing-gap) * (11 - 1)) );
+  --spacing-col-12: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 12 + (var(--spacing-gap) * (12 - 1)) );
+}
+
+@media screen and (min-width: 768px) {
+  @theme {
+    --spacing-margin: 2.4rem;
+    --spacing-gap: 2.4rem;
+    --max-columns: 8;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  @theme {
+    --max-columns: 12;
+    --pannel-width: calc(var(--spacing-col-5) + var(--margin));
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  @theme {
+    --spacing-margin: 4.8rem;
+  }
+}
+
+
+@utility transition {
+  transition: var(--transition);
+}
+@utility transition-secondary {
+  transition: var(--transition-secondary);
+}
+@utility ts-h1 {
+  font-size: var(--ts-h1-font-size);
+  line-height: var(--ts-h1-line-height);
+}
+@utility ts-h2 {
+  font-size: var(--ts-h2-font-size);
+  line-height: var(--ts-h2-line-height);
+}
+@utility ts-h3 {
+  font-size: var(--ts-h3-font-size);
+  line-height: var(--ts-h3-line-height);
+}
+@utility ts-h4 {
+  font-size: var(--ts-h4-font-size);
+  line-height: var(--ts-h4-line-height);
+}
+@utility ts-titles {
+  font-family: var(--ts-titles-font-family);
+}
+@utility ts-body {
+  font-size: var(--ts-body-font-size);
+  line-height: var(--ts-body-line-height);
+  font-family: var(--ts-body-font-family);
+}
+@utility ts-body2 {
+  font-size: var(--ts-body2-font-size);
+  line-height: var(--ts-body2-line-height);
+}
+@utility ts-cta {
+  font-size: var(--ts-cta-font-size);
+  line-height: var(--ts-cta-line-height);
+  font-weight: var(--ts-cta-font-weight);
+  font-family: var(--ts-cta-font-family);
+}
+@utility ts-bold {
+  font-weight: var(--ts-bold-font-weight);
+}
+
+:root {
+  --transition-duration: 400ms;
+  --transition-timing-function: ease;
+  --transition: var(--transition-duration) var(--transition-timing-function);
+  --transition-secondary-duration: 800ms;
+  --transition-secondary-timing-function: ease-in-out;
+  --transition-secondary: var(--transition-secondary-duration) var(--transition-secondary-timing-function);
+  --ts-h1-font-size: 5.2rem;
+  --ts-h1-line-height: 5.6rem;
+  --ts-h2-font-size: 3.6rem;
+  --ts-h2-line-height: 4rem;
+  --ts-h3-font-size: 2.8rem;
+  --ts-h3-line-height: 3.2rem;
+  --ts-h4-font-size: 2.4rem;
+  --ts-h4-line-height: 3rem;
+  --ts-titles-font-family: PP Mori, sans-serif;
+  --ts-body-font-size: 1.6rem;
+  --ts-body-line-height: 2.2rem;
+  --ts-body-font-family: Inter, sans-serif;
+  --ts-body2-font-size: 1.4rem;
+  --ts-body2-line-height: 2.4rem;
+  --ts-cta-font-size: 1.4rem;
+  --ts-cta-line-height: 1.8rem;
+  --ts-cta-font-weight: 600;
+  --ts-cta-font-family: PP Mori, sans-serif;
+  --ts-bold-font-weight: 600;
+  --spacing-col-1: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 1 + (var(--spacing-gap) * (1 - 1)) );
+  --spacing-col-2: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 2 + (var(--spacing-gap) * (2 - 1)) );
+  --spacing-col-3: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 3 + (var(--spacing-gap) * (3 - 1)) );
+  --spacing-col-4: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 4 + (var(--spacing-gap) * (4 - 1)) );
+  --spacing-col-5: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 5 + (var(--spacing-gap) * (5 - 1)) );
+  --spacing-col-6: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 6 + (var(--spacing-gap) * (6 - 1)) );
+  --spacing-col-7: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 7 + (var(--spacing-gap) * (7 - 1)) );
+  --spacing-col-8: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 8 + (var(--spacing-gap) * (8 - 1)) );
+  --spacing-col-9: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 9 + (var(--spacing-gap) * (9 - 1)) );
+  --spacing-col-10: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 10 + (var(--spacing-gap) * (10 - 1)) );
+  --spacing-col-11: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 11 + (var(--spacing-gap) * (11 - 1)) );
+  --spacing-col-12: calc( ((var(--layout-width) - (var(--spacing-gap) * (var(--max-columns) - 1))) / var(--max-columns)) * 12 + (var(--spacing-gap) * (12 - 1)) );
+  --layout-width: calc(100vw - 2 * var(--spacing-margin));
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --ts-h1-font-size: 8rem;
+    --ts-h1-line-height: 8.4rem;
+    --ts-h2-font-size: 4.8rem;
+    --ts-h2-line-height: 5.2rem;
+    --ts-h3-font-size: 3.2rem;
+    --ts-h3-line-height: 3.6rem;
+  }
+}
+
+
+
+h1 {
+  @apply ts-h1;
+}
+
+h2 {
+  @apply ts-h2;
+}
+
+h3 {
+  @apply ts-h3;
+}
+
+h4 {
+  @apply ts-h4;
+}
+
+titles {
+  @apply ts-titles;
+}
+
+body {
+  @apply ts-body;
+}
+
+body2 {
+  @apply ts-body2;
+}
+
+cta {
+  @apply ts-cta;
+}
+
+bold {
+  @apply ts-bold;
+}
+
+html {
+  font-size: 10px;
+}

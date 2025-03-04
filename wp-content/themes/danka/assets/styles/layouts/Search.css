@@ -1,0 +1,40 @@
+@use '../core/mixins.scss' as mixins;
+
+.Search {
+    
+    &__main {
+        @apply flex flex-col gap-xxl my-xxxl;
+    }
+
+    &__content {
+        @apply flex flex-col gap-xl;
+    }
+
+    &__post {
+        @apply flex justify-between gap-xxl border-t last:border-b border-[#00000029] py-l transition-colors duration-500 ease-in-out;
+
+        .component-button {
+            @apply transition-colors duration-500 ease-in-out;
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                @apply text-primary border-primary;
+
+                .component-button {
+                    @apply text-primary border-primary;
+                }
+            }
+        }
+    }
+}
+
+@include mixins.desktop() {
+    
+    .Search {
+    
+        &__post {
+            @apply items-center py-xl;
+        }
+    }
+}

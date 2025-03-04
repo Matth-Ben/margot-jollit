@@ -1,0 +1,82 @@
+.component-pannel-filters {
+    --color-dark: #fff;
+    --color-light: #000;
+    /* TODO reprendre variable */
+    @apply flex flex-col h-full p-margin text-dark bg-light;
+}
+
+.component-pannel-filters__header {
+    @apply flex justify-between items-start;
+
+    & > button {
+        @apply w-auto h-auto p-0 border-none;
+    }
+}
+
+.component-pannel-filters__navigation {
+    @apply flex flex-wrap gap-m;
+
+    & > .active {
+        @apply bg-dark;
+
+        & > span {
+            @apply text-primary;
+        }
+    }
+}
+
+.component-pannel-filters__content {
+    @apply grow py-xxxl;
+
+    & > div {
+        @apply hidden;
+    }
+
+    & > div.active {
+        @apply flex;
+    }
+}
+
+.component-pannel-filters__filter-dates {
+    @apply flex flex-col gap-xl;
+
+    & > div {
+        @apply flex flex-col gap-l;
+
+        & > span {
+            @apply ts-h4;
+        }
+
+        & > div {
+            @apply flex gap-m flex-wrap;
+
+            & > button {
+                @apply ts-cta p-m border border-dark rounded-full;
+
+                &.active {
+                    @apply bg-dark text-light;
+                }
+            }
+            
+            & span {
+                @apply ts-cta p-m bg-[#FFFFFF29] rounded-full
+            }
+        }
+    }
+}
+
+.component-pannel-filters__filter-taxonomy {
+    @apply flex gap-m flex-wrap;
+    
+    & > button {
+        @apply ts-cta p-m border border-dark rounded-full;
+    }
+
+    & > button.active {
+        @apply bg-dark text-light;
+    }
+}
+
+.component-pannel-filters__actions {
+    @apply flex justify-between items-center gap-xl;
+}

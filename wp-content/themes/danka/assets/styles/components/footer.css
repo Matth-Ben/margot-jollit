@@ -1,0 +1,45 @@
+@use '../core/mixins.scss' as mixins;
+
+.component-footer {
+    @apply bg-dark text-light;
+
+    .container {
+        @apply pt-96 pb-xxl;
+    }
+
+    &__logo {
+        @apply pt-96;
+
+        img {
+            @apply relative brightness-0 invert;
+        }
+    }
+}
+
+@include mixins.mobile() {
+    
+    .component-footer {
+    
+        &__logo {
+            @apply mt-36 border-t border-[#FFFFFF29];
+        }
+    }
+}
+
+@include mixins.desktop() {
+    
+    .component-footer {
+    
+        .container {
+            @apply py-xxl;
+        }
+    
+        &__logo {
+            @apply pt-96;
+    
+            img {
+                @apply relative brightness-0 invert;
+            }
+        }
+    }
+}

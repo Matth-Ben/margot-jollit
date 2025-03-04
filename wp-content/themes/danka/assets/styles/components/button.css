@@ -1,0 +1,98 @@
+.component-button {
+    @apply ts-cta relative inline-flex justify-center items-center gap-s h-[4.8rem] px-xl bg-primary rounded-full overflow-hidden;
+    // transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+    
+    & > span {
+        @apply text-light;
+        
+        & svg {
+            @apply w-auto h-[2.4rem];
+        }
+    }
+}
+
+.component-button--soft {
+    @apply text-dark bg-transparent border border-[currentColor];
+
+    & > span {
+        @apply text-dark;
+    }
+}
+
+.component-button--simple {
+    @apply h-auto px-0 text-dark bg-transparent rounded-none;
+
+    & > span {
+        @apply text-dark;
+    }
+}
+
+.component-button--icon {
+    @apply w-48 px-0 text-dark bg-transparent border border-[currentColor] rounded-full;
+
+    & > span {
+        @apply text-dark;
+    }
+}
+
+.component-button--pagination {
+    @apply w-48 px-0 border border-dark text-dark bg-transparent rounded-full;
+
+    & > span {
+        @apply text-dark;
+    }
+
+    &.active {
+        @apply bg-dark text-light;
+
+        & > span {
+            @apply text-light;
+        }
+    }
+}
+
+.component-button--burger {
+    @apply gap-10 text-dark bg-transparent border border-[currentColor] rounded-full;
+
+    & > span {
+        @apply flex flex-col justify-center relative w-15 text-dark;
+        transition: transform var(--transition);
+
+        & > span {
+            @apply w-full h-[2px] bg-[currentColor];
+            transition: var(--transition);
+
+            &:first-child {
+                @apply absolute w-full;
+                transform: translate3d(0, -4px, 0);
+            }
+            
+            &:last-child {
+                @apply absolute w-full;
+                transform: translate3d(0, 4px, 0);
+            }
+        }
+    }
+
+    &.active {
+
+        & > span {
+            transform: rotate(45deg);
+
+            & > span {
+
+                &:first-child {
+                    transform: rotate(90deg) translate3d(0, 0, 0);
+                }
+                
+                &:last-child {
+                    transform: translate3d(0, 0, 0);
+                }
+                
+                &:nth-child(2) {
+                    width: 0;
+                }
+            }
+        }
+    }
+}

@@ -5,9 +5,9 @@
 	{% set parallax = params.parallax == true ? true : false %}
 	{% set is_svg = "svg" in image.mime_type or "svg" in image.post_mime_type %}
 
-    <div class="image {{ not is_svg ? aspect_ratio : '' }} bg-darkultrasoft">
+    <div class="component-image {{ is_svg ? 'component-image--svg' : '' }}">
 		{% if image.id %}
-			<div class="relative w-full h-full children:w-full children:h-full child:absolute {% if object_contain %}children:object-contain{% else %}children:object-cover{% endif %} {% if is_svg %}child:h-auto{% endif %}">
+			<div>
 				{% if is_svg %}
 					<img src="{{ image.url }}" alt="{{ image.alt }}" />
 				{% else %}
@@ -16,51 +16,4 @@
 			</div>
 		{% endif %}
     </div>
-{% endmacro %}
-
-{% macro normal(data) %}
-	{% set image = data.id ? data : timber_post(data) %}
-	{% set is_svg = "svg" in image.mime_type or "svg" in image.post_mime_type %}
-
-    <div class="image child:w-full">
-		{% if image.id %}
-			{# {% if "svg" in image.mime_type or "svg" in image.post_mime_type %}
-				{% set path = function('get_attached_file', image.id) %}
-
-				{% if path %}
-					{% include path %}
-				{% endif %}
-			{% else %}
-				{{ get_image_html(image.id) }}
-			{% endif %} #}
-
-			{% if is_svg %}
-				<img src="{{ image.url }}" alt="{{ image.alt }}" />
-			{% else %}
-				{{ get_image_html(image.id) }}
-			{% endif %}
-		{% endif %}
-    </div>
-{% endmacro %}
-
-{% macro full(data, params) %}
-	{% set image = data.id ? data : timber_post(data) %}
-
-	{% if image.id %}
-		{% if "svg" in image.mime_type or "svg" in image.post_mime_type %}
-			{% set path = function('get_attached_file', image.id) %}
-
-			{% if path %}
-				{% include path %}
-			{% endif %}
-		{% else %}
-			<div class="
-				image relative w-full h-full bg-darkultrasoft children:w-full children:h-full child:absolute 
-				{{ aspect_class }} 
-				{% if contain %}children:object-contain{% else %}children:object-cover{% endif %}" 
-				{% if parallax %}parallax{% endif %}>
-				{{ get_image_html(image.id) }}
-			</div>
-		{% endif %}
-	{% endif %}
 {% endmacro %}

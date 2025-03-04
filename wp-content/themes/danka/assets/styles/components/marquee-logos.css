@@ -1,0 +1,39 @@
+.component-marquee-logos {
+    @apply flex relative overflow-hidden;
+    padding-bottom: calc(var(--spacing-xxl) + 4.8rem);
+
+    & > button {
+        @apply absolute bottom-0 left-margin;
+    
+        & > span > svg:last-child {
+            @apply hidden;
+        }
+    }
+}
+
+.component-marquee-logos__container {
+    @apply flex;
+
+    & > div {
+        @apply flex items-center gap-xxl shrink-0 pl-xxl;
+
+        & > * {
+            @apply w-144 shrink-0 saturate-0;
+
+            & img {
+                @apply object-contain;
+            }
+        }
+    }
+}
+
+.component-marquee-logos.paused {
+
+    & > button > span > svg:first-child {
+        @apply hidden;
+    }
+    
+    & > button > span > svg:last-child {
+        @apply block;
+    }
+}

@@ -1,0 +1,64 @@
+@use '../core/mixins.scss' as mixins;
+
+.component--accordions {
+    @apply border-b border-dark;
+
+    .accordion {
+        @apply w-full;
+    
+        &.active {
+    
+            .accordion__header svg {
+                @apply rotate-[180deg]
+            }
+    
+            .accordion__body {
+                @apply grid-rows-[1fr];
+            }
+        }
+    
+        &__header {
+            @apply ts-h4 flex justify-between items-center gap-l w-full py-l border-t border-dark cursor-pointer;
+
+            h3 {
+                @apply ts-h4;
+            }
+    
+            span {
+                @apply shrink-0;
+                
+                svg {
+                    transition: transform var(--transition);
+                    @apply w-auto h-20;
+                }
+            }
+        }
+        
+        &__body {
+            transition: grid-template-rows var(--transition);
+            @apply grid grid-rows-[0fr];
+        }
+    
+        &__content {
+            @apply overflow-hidden;
+    
+            &::after {
+                content: '';
+                @apply block pb-xxl;
+            }
+        }
+    }
+}
+
+@include mixins.desktop() {
+    
+    .component--accordions {
+        
+        .accordion {
+
+            &__header {
+                @apply py-xl;
+            }
+        }
+    }
+}

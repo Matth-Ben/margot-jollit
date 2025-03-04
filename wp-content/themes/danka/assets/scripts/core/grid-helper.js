@@ -10,7 +10,7 @@ export default function()
         
         window.addEventListener( 'keydown', e => {
             if ( e.key && e.key === "G" && e.shiftKey ) {
-                document.querySelectorAll( '.grid-helper' ).forEach( element => {
+                document.querySelectorAll( '.component-grid-helper' ).forEach( element => {
                     element.classList.toggle( 'active' )
                 } )
             }

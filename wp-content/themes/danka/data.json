@@ -1,24 +1,32 @@
 {
     "breakpoints": {
-        "s": 0,
         "m": 768,
         "l": 1024,
         "xl": 1280,
         "xxl": 1440
     },
-    "gutters": {
-        "s": 1.6,
-        "m": 2.4
+    "breakpointDesktop": "l",
+    "rem": {
+        "default": "10px",
+        "xxl": "scale"
     },
     "margins": {
-        "s": 2,
+        "default": 2,
         "m": 2.4,
         "xl": 4.8
     },
-    "breakpointDesktop": "l",
-    "rem": {
-        "s": "10px",
-        "xxl": "scale"
+    "gaps": {
+        "default": 1.6,
+        "m": 2.4
+    },
+    "spacings": {
+        "s": 0.4,
+        "m": 0.8,
+        "l": 1.6,
+        "xl": 2.4,
+        "xxl": 4.8,
+        "xxxl": 9.6,
+        "xxxxl": 12
     },
     "colors": {
         "dark": "#000",
@@ -95,21 +103,14 @@
             }
         }
     },
-    "spacings": {
-        "s": 0.4,
-        "m": 0.8,
-        "l": 1.6,
-        "xl": 2.4,
-        "xxl": 4.8,
-        "xxxl": 9.6,
-        "xxxxl": 12
-    },
+
+    
+    "radius": 0,
     "maxColumns": {
-        "s": 6,
+        "default": 6,
         "m": 8,
         "l": 12
     },
-    "radius": 0,
     "lists": {
         "default": {
             "s": 1,
@@ -128,6 +129,12 @@
         "secondary": {
             "duration": 800,
             "timing": "ease-in-out"
+        }
+    },
+    "custom": {
+        "pannel-width": {
+            "default": "100%",
+            "desktop": "calc(var(--spacing-col-5) + var(--margin))"
         }
     }
 }

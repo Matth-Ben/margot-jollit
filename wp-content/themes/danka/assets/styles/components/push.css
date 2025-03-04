@@ -1,0 +1,20 @@
+@use '../core/mixins.scss' as mixins;
+
+.component-push {
+    @apply flex flex-col items-start gap-xl;
+
+    & > div {
+        @apply flex flex-col gap-l;
+    }
+
+    &__text {
+        @apply ts-h2;
+    }
+}
+
+@include mixins.desktop() {
+
+    .component-push > div {
+        @apply max-w-col-8;
+    }
+}

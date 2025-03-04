@@ -1,0 +1,46 @@
+.component-header-desktop {
+
+    & > nav {
+        @apply flex justify-between items-center w-full p-margin pb-xl z-[90];
+    }
+
+    & > nav > div {
+        @apply flex items-center gap-l;
+        
+        & > ul {
+            @apply hidden items-center gap-xl;
+            @apply d:flex;
+
+            a {
+                @apply ts-cta;
+            }
+        }
+
+        & > div {
+            @apply flex items-center gap-m;
+
+            & > * {
+                @apply p-0 border-none;
+            }
+        }
+    }
+}
+
+body.headroom--not-top .component-header-desktop {
+    // background-color: var(--color-dark);
+}
+
+// body.headroom--not-top .component-header-desktop,
+body[wp-class*="home"] .component-header-desktop {
+
+    & > nav > div > a > svg path {
+        fill: var(--color-light);
+    }
+
+    & > nav > div > ul > li > a,
+    & > nav > div > div > button svg,
+    & > nav > div > button,
+    & > nav > div > button > span {
+        @apply text-light;
+    }
+}

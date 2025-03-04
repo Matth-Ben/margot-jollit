@@ -2,7 +2,7 @@
 import Marquee from "../class/class-marquee"
 
 const init= () => {
-    document.querySelectorAll( '.component--marquee-logos' ).forEach( marquee => {
+    document.querySelectorAll( '.component-marquee-logos' ).forEach( marquee => {
         const button_pause = marquee.querySelector( 'button' )
 
         new Marquee( marquee, false, 0.8 )

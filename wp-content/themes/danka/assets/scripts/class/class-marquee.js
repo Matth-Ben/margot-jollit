@@ -9,7 +9,7 @@ export class Marquee
 	interval
 
 	constructor( element, reverse = false, speed = 0.4 ) {
-		const container = element.querySelector( '.component__container' )
+		const container = element.querySelector( '[class*=container]' )
 
 		this.element = element
 		this.firstElement = container.children[0]

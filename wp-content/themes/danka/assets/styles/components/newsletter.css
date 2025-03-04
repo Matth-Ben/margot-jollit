@@ -1,0 +1,26 @@
+@use '../core/mixins.scss' as mixins;
+
+.component-newsletter {
+    @apply flex flex-col items-center gap-xl px-margin py-xxxl bg-primary text-center;
+    
+    & > div {
+        @apply flex flex-col items-center gap-m text-light;
+    }
+
+    & > a {
+        @apply border border-light bg-transparent;
+    }
+}
+
+@include mixins.desktop() {
+
+    .component-newsletter {
+        
+        & > div {
+
+            p {
+                @apply max-w-col-4;
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+@import './core/data.css';
+@import './core/accessibility.css';
+@import './core/lenis.css';
+@import 'tailwindcss';
+
+@import './variables.css';
+@import './base.css';
+
+@import 'swiper/css';
+
+@import './fonts.css';
+@import './animation.css';
+
+/* acf components */
+@import './acf-components/title.css';
+
+/* components */
+@import './components/image.css';
+@import './components/hero-front-page.css';
+@import './components/some-events.css';
+@import './components/card-discovery.css';
+@import './components/card-event.css';
+@import './components/push.css';
+@import './components/slider.css';
+@import './components/text-and-image.css';
+@import './components//marquee-logos.css';
+@import './components/button.css';
+@import './components/newsletter.css';
+@import './components/label.css';
+@import './components/filters.css';
+@import './components/pagination.css';
+@import './components/text.css';
+@import './components/text-and-image.css';
+@import './components/header-desktop.css';
+@import './components/headroom.css';
+@import './components/footer.css';
+@import './components/accordions.css';
+@import './components/quick-links.css';
+@import './components/alert.css';
+@import './components/breadcrumbs.css';
+@import './components/acf-flex-content.css';
+@import './components/pannel.css';
+@import './components/pannel-navigation.css';
+@import './components/pannel-search.css';
+@import './components/pannel-filters';
+
+/* layouts */
+@import './layouts/FrontPage.css';
+@import './layouts/Archive.css';
+@import './layouts/Page.css';
+@import './layouts/Search.css';
+@import './layouts/ArchiveEvent.css';
+
+
+body {
+
+    & main,
+    & #app-content,
+    & .component-headroom {
+        transition: var(--transition);
+        transition-property: opacity, padding-top, transform;
+    }
+}
+    
+body:not(.content-loaded) #app {
+    opacity: 0;
+}
+
+body.page-switching {
+
+    & #app-content {
+        opacity: 0;
+    }
+}
+
+body.show-alert {
+
+    & .component--alert {
+        transform: translate3d(0, 0, 0);
+    }
+
+    & .component-headroom {
+        transform: translate3d(0, var(--alert-height), 0);
+    }
+
+    & main {
+        padding-top: var(--alert-height);
+    }
+}
+
+/* body.headroom--unpinned {
+
+    & .component--header-desktop:not(.show-submenu),
+    & .component--header-mobile:not(.is-open) {
+        top: -10rem;
+    }
+} */
+
+
+
+
+
+.component-grid-helper {
+    /* @apply fixed inset-0 w-full h-full px-margin opacity-20 invisible z-[1000]; */
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding-right: var(--spacing-margin);
+    padding-left: var(--spacing-margin);
+    opacity: .2;
+    visibility: hidden;
+    z-index: 1000;
+
+    & > * {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        /* grid-template-columns: repeat(var(--columns), minmax(0, 1fr)); */
+        gap: var(--spacing-gap);
+        height: 100%;
+
+        & > * {
+            grid-column: span 1 / span 1;
+            height: 100%;
+            background-color: red;
+        }
+    }
+
+    /* & > .display-default {
+        @apply m:hidden;
+    }
+    
+    & > .display-m {
+        @apply l:hidden;
+    }
+    
+    & > .display-l {
+        @apply xl:hidden;
+    }
+    
+    & > .display-xl {
+        @apply xxl:hidden;
+    }
+    
+    & > .display-xxl {
+        @apply xxxl:hidden;
+    }
+    
+    & > .display-xxxl {
+        @apply xxxxl:hidden;
+    } */
+}
+
+.component-grid-helper.active {
+    visibility: visible;
+    pointer-events: none;
+}
