@@ -136,6 +136,8 @@ global_css_variables.push('--layout-width: calc(100vw - 2 * var(--spacing-margin
 
 // Custom CSS
 custom_css += `\n\nhtml {\n  font-size: 10px;\n}`
+utilities += `\n@utility container {\n  width:100%; max-width: 100%; padding: 0 var(--spacing-margin)\n}`
+utilities += `\n@utility gap {\n gap: var(--spacing-gap); \n}`
 
 
 for ( const [key, item] of Object.entries( responsive_css_variables ) ) {

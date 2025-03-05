@@ -5,7 +5,7 @@
 	{% set parallax = params.parallax == true ? true : false %}
 	{% set is_svg = "svg" in image.mime_type or "svg" in image.post_mime_type %}
 
-    <div class="component-image {{ is_svg ? 'component-image--svg' : '' }}">
+    <div class="component-image {{ is_svg ? 'component-image--svg' : '' }} {{ aspect_ratio }}">
 		{% if image.id %}
 			<div>
 				{% if is_svg %}

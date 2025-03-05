@@ -1,6 +1,4 @@
 .component-image {
-    @apply aspect-[4/3];
-
     & > div {
         @apply w-full h-full;
 

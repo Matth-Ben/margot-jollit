@@ -27,10 +27,10 @@
 }
 
 body.headroom--not-top .component-header-desktop {
-    // background-color: var(--color-dark);
+    /* background-color: var(--color-dark); */
 }
 
-// body.headroom--not-top .component-header-desktop,
+/* body.headroom--not-top .component-header-desktop, */
 body[wp-class*="home"] .component-header-desktop {
 
     & > nav > div > a > svg path {

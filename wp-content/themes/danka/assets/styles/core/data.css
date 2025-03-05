@@ -406,6 +406,12 @@
 @utility ts-bold {
   font-weight: var(--ts-bold-font-weight);
 }
+@utility container {
+  width:100%; max-width: 100%; padding: 0 var(--spacing-margin)
+}
+@utility gap {
+ gap: var(--spacing-gap); 
+}
 
 :root {
   --transition-duration: 400ms;
