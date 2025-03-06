@@ -20,18 +20,11 @@ class TimelineAnimation
 
                     elements.push( [e, delay] )
                 } )
-                
-                // console.log(max_delay)
-                // console.log(elements)
-                // debugger
 
                 elements.forEach( ( item, index ) => {
                     item[1] = item[1] - max_delay
                     item[1] = item[1] < 0 ? item[1] * -1 : item[1]
                 } )
-
-                // console.log(elements)
-                // debugger
 
                 elements.forEach( item => {
                     setTimeout( () => {
@@ -96,10 +89,14 @@ class TimelineAnimation
     }
 
     show_element = ( element, delay ) => {
-        setTimeout( () => {
-            element.classList.add( 'is-in-view' )
-            document.dispatchEvent( new CustomEvent( 'ElementsInView', { detail: { elements: [element] } } ) )
-        }, delay )
+        if ( !element.classList.contains( 'is-in-view' ) ) {
+            setTimeout( () => {
+                if ( !element.classList.contains( 'is-in-view' ) ) {
+                    element.classList.add( 'is-in-view' )
+                    document.dispatchEvent( new CustomEvent( 'ShowElements', { detail: { elements: [element] } } ) )
+                }
+            }, delay )
+        }
     }
 
     show_elements = ( parent, delay ) => {

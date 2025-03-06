@@ -1,4 +1,4 @@
-const init= () => {
+const init = () => {
     document.querySelectorAll( '.component-slider' ).forEach( element => {
         const items = element.querySelectorAll( '.component-slider__item' )
         const previous_button = element.querySelector( '.component-slider__previous' )

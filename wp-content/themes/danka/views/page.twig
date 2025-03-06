@@ -13,7 +13,7 @@
             {{ breadcrumbs.default() }}
         </div>
         <div class="Page__header">
-            <h1>{{ post.title }}</h1>
+            <h1 show-element animate-words>{{ post.title }}</h1>
             {% if data.description %}
                 <p>{{ data.description }}</p>
             {% endif %}

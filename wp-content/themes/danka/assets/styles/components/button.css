@@ -59,7 +59,7 @@
         transition: transform var(--transition);
 
         & > span {
-            @apply w-full h-[2px] bg-[currentColor];
+            @apply w-full h-[2px] bg-dark;
             transition: var(--transition);
 
             &:first-child {

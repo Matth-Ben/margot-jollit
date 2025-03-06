@@ -11,7 +11,7 @@
             @apply hidden items-center gap-xl;
             @apply d:flex;
 
-            a {
+            & a {
                 @apply ts-cta;
             }
         }
@@ -23,6 +23,14 @@
                 @apply p-0 border-none;
             }
         }
+    }
+
+    & > nav > div > ul > li > a,
+    & > nav > div > div > button svg,
+    & > nav > div > button,
+    & > nav > div > button > span,
+        & > nav > a > svg > path {
+        @apply transition;
     }
 }
 
@@ -39,8 +47,15 @@ body[wp-class*="home"] .component-header-desktop {
 
     & > nav > div > ul > li > a,
     & > nav > div > div > button svg,
-    & > nav > div > button,
-    & > nav > div > button > span {
+    & > nav > div > button {
         @apply text-light;
+    }
+    
+    & > nav > div > button > span span {
+        @apply bg-light;
+    }
+
+    & > nav > a > svg > path {
+        fill: var(--color-light);
     }
 }

@@ -3,7 +3,7 @@ import smoothScroll from './smooth-scroll'
 import taxi from './taxi'
 import headroom from './headroom'
 import timelineAnimation from './timeline-animation'
-import splitText from './split-text'
+// import splitText from './split-text'
 import parallax from './parallax'
 import gridHelper from './grid-helper'
 import scrollbarWidth from './scrollbar-width'
@@ -12,6 +12,7 @@ import windowResizeEvent from './window-resize-event'
 import refreshBodyClasslist from './refresh-body-classlist'
 import fixScrollBehavior from './fix-scroll-behavior'
 import quickLinks from './quick-links'
+import animateWords from './animate-words'
 
 /*
 Transition de page:
@@ -28,7 +29,8 @@ export default ( () => {
         windowResizeEvent()
         taxi()
         headroom()
-        splitText()
+        // splitText()
+        animateWords()
         timelineAnimation()
         smoothScroll()
         parallax()
@@ -43,7 +45,8 @@ export default ( () => {
     document.addEventListener( 'NewContentLoaded', () => {
         lenis.scrollTo( 0, { immediate: true } )
         refreshBodyClasslist()
-        splitText()
+        // splitText()
+        animateWords()
         timelineAnimation()
         parallax()
         scrollbarWidth()

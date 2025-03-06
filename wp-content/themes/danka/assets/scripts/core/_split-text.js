@@ -6,7 +6,6 @@ function randomIntFromInterval(min, max) { // min and max included
 
 export default function()
 {
-    return
     // show elements
     if ( !document.body.classList.contains( 'show-elements-init' ) ) {
         document.addEventListener( 'ElementsInView', event => {

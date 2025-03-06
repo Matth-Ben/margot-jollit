@@ -11,36 +11,9 @@ import './components/slider'
 import './components/marquee-logos'
 import './components/pannel-navigation'
 import './components/pannel-filters'
-// import './components/modal'
-// import './components/filters'
-// import './components/video'
 import './components/accordions'
-// import './components/marquee'
-// import './components/header-mobile'
-// import './components/header-desktop'
-// import './components/hero-front-page'
+import './components/pannel'
 import './components/alert'
-// import './components/video-or-embed'
-// import './components/pannel'
-// import './components/form-search'
-// import './components/marquee-images'
-// import './components/header-desktop'
-
-// acf components
-// import './acf-components/studies'
-// import './acf-components/video'
-// import './acf-components/map-structures'
-
-// layouts
-// import './layouts/SingleCollection'
-
-import gsap from 'gsap';
-// import modal, { destroyModals, closeModal, currentOpenModal } from './components/modal';
-
-// document.addEventListener('ContentLoaded', () => {
-//     modal();
-// });
-
 
 
 //// custom input checkbox
@@ -147,178 +120,14 @@ document.addEventListener( 'ContentLoaded', set_headroom_height )
 ////
 
 
-
-
-
-
-
-
-const focusableElementsString = 'a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), ' +
-    'textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"]), [contenteditable]';
-
-const trapFocus = ( element, escape_function ) => { ////
-    const focusableElements = element.querySelectorAll(focusableElementsString);
-
-    if (focusableElements.length === 0) {
-        element.setAttribute('tabindex', '-1');
-        element.focus();
-    } else {
-        const firstFocusableElement = focusableElements[0];
-        const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-        firstFocusableElement.focus();
-
-        function handleFocusTrap(event) {
-            if (event.key === 'Tab') {
-                if (event.shiftKey) {
-                    if (document.activeElement === firstFocusableElement) {
-                        event.preventDefault();
-                        lastFocusableElement.focus();
-                    }
-                } else {
-                    if (document.activeElement === lastFocusableElement) {
-                        event.preventDefault();
-                        firstFocusableElement.focus();
-                    }
-                }
-            } else if (event.key === 'Escape' && escape_function) {
-                escape_function()
+// Séparer les fonctionnalités en modules
+document.addEventListener( 'ShowElements', data => {
+    if (data?.detail?.elements) {
+        data.detail.elements.forEach( element => {
+            if (element.getAttribute('animate-words') !== null) {
+                // console.log('animate words')
+                document.dispatchEvent(new CustomEvent('AnimateWords', { detail: { elements: [element] } }))
             }
-        }
-
-        element.addEventListener('keydown', handleFocusTrap);
-        element._handleFocusTrap = handleFocusTrap;
+        } )
     }
-}
-
-
-
-////
-const init_pannel = () => {
-
-    // create overlay
-    const overlay = document.createElement( 'div' )
-    overlay.classList.add( 'component-pannel-overlay' )
-    document.body.appendChild( overlay )
-
-    document.body.addEventListener( 'click', event => {
-        if ( event.target.classList.contains( 'component-pannel-overlay' ) ) {
-            document.dispatchEvent( new CustomEvent( 'ClosePannel' ) )
-        }
-    } )
-
-    document.querySelectorAll( '.component-pannel' ).forEach( element => {
-        if ( element.classList.contains( 'component-pannel--init' ) ) {
-            return
-        } else {
-            element.classList.add( 'component-pannel--init' )
-        }
-
-        const pannel_id = element.getAttribute( 'id' )
-        
-        if ( !pannel_id ) return
-
-        let openButton
-        let toggleButtons = document.querySelectorAll( `[data-pannel-target="${pannel_id}"]` )
-        
-        const firstFocusableElement = element.querySelector( '[data-focus]' ) ?? element.querySelector( focusableElementsString )
-        const timeline = gsap.timeline( {
-            paused: true,
-            onStart: () => element.classList.add( 'is-visible' ),
-            onReverseComplete: () => element.classList.remove( 'is-visible' )
-        } )
-        const from_parameters = {}
-        const parameters = {
-            duration: data?.transitions?.secondary?.duration ? data.transitions.secondary.duration / 1000 : 1.4,
-            ease: 'power2.inOut',
-            onComplete: () => {},
-            onReverseComplete: () => {},
-        }
-    
-        const open = toggleButton => {
-            timeline.play()
-            overlay.classList.add( 'is-visible' )
-            toggleButtons.forEach( button => button.classList.add( 'active' ) )
-            openButton = toggleButton
-            openButton.setAttribute( 'aria-expanded', 'true' )
-            
-            if ( firstFocusableElement ) {
-                setTimeout( () => firstFocusableElement.focus(), 10 )
-            }
-        }
-    
-        const close = () => {
-            timeline.reverse()
-            overlay.classList.remove( 'is-visible' )
-            toggleButtons.forEach( button => button.classList.remove( 'active' ) )
-
-            if ( openButton ) {
-                openButton.focus()
-                openButton.setAttribute( 'aria-expanded', 'false' )
-            }
-        }
-
-        if ( element.classList.contains( 'component-pannel--right' ) ) {
-            parameters.right = "0"
-            from_parameters.right = () => element.clientWidth * -1
-        }
-        else if ( element.classList.contains( 'component-pannel--left' ) ) {
-            parameters.left = "0"
-            from_parameters.left = () => element.clientWidth * -1
-        }
-        else if ( element.classList.contains( 'component-pannel--top' ) ) {
-            parameters.top = "0"
-            from_parameters.top = () => element.clientHeight * -1
-        }
-        else if ( element.classList.contains( 'component-pannel--bottom' ) ) {
-            parameters.bottom = "0"
-            from_parameters.bottom = () => element.clientHeight * -1
-        }
-
-        timeline.fromTo( element, from_parameters, parameters )
-        trapFocus( element, close )
-        
-        document.addEventListener( 'click', event => {
-            let button, id
-            
-            if ( event.target.closest( '[data-pannel-target]' ) ) {
-                button = event.target.closest( '[data-pannel-target]' )
-            }
-            else if ( event.target.getAttribute( 'data-pannel-close' ) !== null ) {
-                button = event.target
-            }
-
-            id = button?.getAttribute( 'data-pannel-target' )
-
-            if ( id !== pannel_id ) {
-                return
-            }
-
-            toggleButtons = document.querySelectorAll( `[data-pannel-target="${pannel_id}"]` )
-            element.classList.toggle( 'active' )
-            
-            if ( element.classList.contains( 'active' ) ) {
-                document.dispatchEvent( new CustomEvent( 'ClosePannel' ) ) // close other pannels
-                element.classList.add( 'active' ) // add active class
-                open( button )
-            } else {
-                close()
-            }
-        } )
-
-        document.addEventListener( 'ClosePannel', () => {
-            if ( element.classList.contains( 'active' ) ) {
-                close()
-                toggleButtons.forEach( button => button.classList.remove( 'active' ) )
-                element.classList.remove( 'active' )
-            }
-        } )
-
-        document.addEventListener( 'WindowResized', () => {
-            timeline.invalidate()
-        } )
-    } )
-}
-
-document.addEventListener( 'ContentLoaded', init_pannel )
-document.addEventListener( 'NewContentLoaded', init_pannel )
+} )
