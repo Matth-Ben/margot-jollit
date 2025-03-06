@@ -559,6 +559,9 @@ html {
   .inline {
     display: inline;
   }
+  .inline-flex {
+    display: inline-flex;
+  }
   .aspect-\[2\/1\] {
     aspect-ratio: 2/1;
   }
@@ -1958,7 +1961,7 @@ button {
     & > span {
       height: 2px;
       width: 100%;
-      background-color: currentColor;
+      background-color: var(--color-dark);
       transition: var(--transition);
       &:first-child {
         position: absolute;
@@ -2114,7 +2117,7 @@ button {
       @media (width >= 1024px) {
         display: flex;
       }
-      a {
+      & a {
         font-size: var(--ts-cta-font-size);
         line-height: var(--ts-cta-line-height);
         font-weight: var(--ts-cta-font-weight);
@@ -2132,13 +2135,25 @@ button {
       }
     }
   }
+  & > nav > div > ul > li > a, & > nav > div > div > button svg, & > nav > div > button, & > nav > div > button > span, & > nav > a > svg > path {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    transition: var(--transition);
+  }
 }
 body[wp-class*="home"] .component-header-desktop {
   & > nav > div > a > svg path {
     fill: var(--color-light);
   }
-  & > nav > div > ul > li > a, & > nav > div > div > button svg, & > nav > div > button, & > nav > div > button > span {
+  & > nav > div > ul > li > a, & > nav > div > div > button svg, & > nav > div > button {
     color: var(--color-light);
+  }
+  & > nav > div > button > span span {
+    background-color: var(--color-light);
+  }
+  & > nav > a > svg > path {
+    fill: var(--color-light);
   }
 }
 .component-headroom {

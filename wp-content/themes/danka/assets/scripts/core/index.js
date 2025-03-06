@@ -1,6 +1,7 @@
 import data from '../../../data.json'
 import smoothScroll from './smooth-scroll'
-import taxi from './taxi'
+// import taxi from './taxi'
+import page_transition from './page-transition'
 import headroom from './headroom'
 import timelineAnimation from './timeline-animation'
 // import splitText from './split-text'
@@ -27,7 +28,8 @@ export default ( () => {
 
     document.addEventListener( 'ContentLoaded', () => {
         windowResizeEvent()
-        taxi()
+        // taxi()
+        page_transition()
         headroom()
         // splitText()
         animateWords()

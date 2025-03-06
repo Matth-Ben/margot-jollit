@@ -1,5 +1,3 @@
-const { default: taxi } = require("../core/taxi")
-
 const init = () => {
     document.querySelectorAll( '.component-pannel-filters' ).forEach( element => {
         const navigation_buttons = element.querySelectorAll( '.component-pannel-filters__navigation button' )
@@ -61,7 +59,7 @@ const init = () => {
             setTimeout( () => {
                 // Recharger la page sans les paramètres de l'URL
                 const url = new URL( window.location.href )
-                window.taxi.navigateTo( url.origin + url.pathname )
+                window.swup.navigate( url.origin + url.pathname )
             }, data?.transitions?.secondary?.duration ? data.transitions.secondary.duration : 1400 )
         } )
 
@@ -108,7 +106,7 @@ const init = () => {
 
             setTimeout( () => {
                 window.history.pushState( {}, '', url )
-                window.taxi.navigateTo( url.href )
+                window.swup.navigate( url.href )
             }, data?.transitions?.secondary?.duration ? data.transitions.secondary.duration : 1400 )
         } )
 
