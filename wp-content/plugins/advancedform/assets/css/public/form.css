@@ -1,0 +1,14 @@
+form.advancedform div.required label::after {
+    content: '*';
+    margin-left: 5px;
+}
+form.advancedform .error {
+    color: red;
+}
+
+.container-advancedform.error .message {
+    color: red;
+}
+.container-advancedform.success .message {
+    color: green;
+}

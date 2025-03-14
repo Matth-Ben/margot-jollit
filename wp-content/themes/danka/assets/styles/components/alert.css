@@ -1,21 +1,38 @@
-@use '../core/mixins.scss' as mixins;
+/* :root {
+    --alert-height: 5.6rem;
+} */
 
 .component--alert {
-    @apply flex justify-between items-start gap-xxl fixed top-0 left-0 w-full px-margin py-l z-[150] bg-error;
-    @apply d:items-center;
-    transform: translate3d(0, -100%, 0);
-    transition: var(--transition);
+    /* transform: translate3d(0, -100%, 0); */
+    @apply flex flex-col justify-end relative h-0 invisible z-[100];
+    transition: height var(--transition), visibility 0s;
+    transition-delay: 0s, var(--transition-duration);
 
-    & > div {
-        @apply flex flex-col items-start gap-s;
-        @apply d:flex-row d:items-center d:gap-xl;
-    }
-
-    & > button {
-        @apply shrink-0;
-
-        svg {
-            @apply w-auto w-24;
+    & .component-alert__content {
+        @apply flex justify-between items-start gap-xxl w-full px-margin py-l bg-error;
+        @apply d:items-center;
+        height: var(--alert-height);
+    
+        & > div {
+            @apply flex flex-col items-start gap-s;
+            @apply d:flex-row d:items-center d:gap-xl;
         }
+    
+        & > button {
+            @apply shrink-0;
+    
+            & svg {
+                @apply w-auto w-24;
+            }
+        }
+    }
+}
+
+body.show-alert {
+
+    & .component--alert {
+        @apply visible;
+        height: var(--alert-height);
+        transition-delay: 0s, 0s;
     }
 }

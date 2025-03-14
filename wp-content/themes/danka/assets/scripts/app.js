@@ -57,66 +57,66 @@ document.addEventListener( 'ContentLoaded', init_custom_select )
 document.addEventListener( 'NewContentLoaded', init_custom_select )
 ////
 
-//// header height
-const set_headroom_height = () => {
-    const headroom = document.querySelector( '.component-headroom' )
-    document.documentElement.style.setProperty( '--headroom-height', headroom.clientHeight + 'px' )
-} // refresh css variable
-document.addEventListener( 'WindowResized', set_headroom_height )
-document.addEventListener( 'ContentLoaded', set_headroom_height )
-////
 
 //// custom headroom
 // calculer
 // voir si il y a une animation
 // recalculer à la fin de l'animation
 
-// let animate = false
-// let position = 'top'
-// let state = 'pinned'
-// let lastScrollTop = 0
-// let lastState = 'pinned'
-// let lastPosition = 'top'
+let state = 'unpinned'
+let lastState = ''
+let direction = 'down'
+let lastDirection = ''
+let lastScrollTop = 0
 
+const run_headroom = () => {
+    const scroll = window.scrollY
+    const limit = window.innerHeight
 
-// const run_headroom = () => {
-//     const scroll = window.scrollY
-//     const limit = window.innerHeight
+    if ( document.documentElement.classList.contains( `headroom--hidden` ) ) {
+        return
+    }
 
-//     if ( animate ) {
-//         return
-//     }
+    // Scroll vers le bas
+    if ( scroll > lastScrollTop && scroll > limit ) {
+        state = 'pinned'
+    }
+    // Scroll vers le haut
+    else if ( scroll < lastScrollTop && scroll < limit ) {
+        state = 'unpinned'
+    }
 
-//     if ( scroll > limit ) {
-//         position = 'not-top'
-//     } else {
-//         position = 'top'
-//     }
-
-//     if ( scroll > lastScrollTop && scroll > limit ) {
-//         state = 'unpinned'
-//     }
-//     else if ( scroll < lastScrollTop && scroll > limit ) {
-//         state = 'pinned'
-//     }
-
-//     document.documentElement.classList.remove( 'headroom--pinned', 'headroom--unpinned', 'headroom--top', 'headroom--not-top' )
-//     document.documentElement.classList.add( `headroom--${state}`, `headroom--${position}` )
+    if ( lastState !== state ) {
+        document.documentElement.classList.remove( `headroom--${lastState}` )
+        document.documentElement.classList.add( `headroom--${state}` )
+    }
     
-//     if ( state !== lastState || position !== lastPosition ) {
-//         animate = true
-//         setTimeout( () => {
-//             animate = false
-//             run_headroom()
-//         }, 400 )
-//     }
+    // Scroll vers le bas
+    if ( scroll > lastScrollTop ) {
+        direction = 'down'
+    }
+    // Scroll vers le haut
+    else if ( scroll < lastScrollTop) {
+        direction = 'up'
+    }
 
-//     lastScrollTop = scroll
-//     lastState = state
-//     lastPosition = position
-// }
+    if ( lastDirection !== direction ) {
+        document.documentElement.classList.remove( `headroom--${lastDirection}` )
+        document.documentElement.classList.add( `headroom--${direction}` )
+    }
+    
+    if ( state === 'unpinned' && direction === 'up' && scroll < limit && scroll > (limit - 100) ) {
+        console.log(data?.transitions?.default?.duration)
+        document.documentElement.classList.add( `headroom--hidden` )
+        setTimeout( () => document.documentElement.classList.remove( `headroom--hidden` ), data?.transitions?.default?.duration + 10 )
+    }
 
-// window.addEventListener( 'scroll', run_headroom )
+    lastScrollTop = scroll
+    lastState = state
+    lastDirection = direction
+}
+
+window.addEventListener( 'scroll', run_headroom )
 ////
 
 

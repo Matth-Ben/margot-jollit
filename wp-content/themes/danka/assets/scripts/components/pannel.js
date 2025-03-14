@@ -1,5 +1,8 @@
 import gsap from 'gsap';
+import CustomEase from 'gsap/CustomEase';
 import { trap_focus, focusableElementsString } from '../utils/trap-focus';
+
+gsap.registerPlugin(CustomEase) 
 
 const init_pannel = () => {
 
@@ -23,6 +26,8 @@ const init_pannel = () => {
             element.classList.add( 'component-pannel--init' )
         }
 
+        const content = element.querySelector( '.component-pannel__content' )
+
         // Récupérer l'id du pannel
         const pannel_id = element.getAttribute( 'id' )
 
@@ -35,26 +40,35 @@ const init_pannel = () => {
         const firstFocusableElement = element.querySelector( '[data-focus]' ) ?? element.querySelector( focusableElementsString )
         const timeline = gsap.timeline( {
             paused: true,
-            onStart: () => element.classList.add( 'is-visible' ),
-            onReverseComplete: () => element.classList.remove( 'is-visible' )
+            onStart: () => {
+                element.classList.add( 'is-visible' )
+                // document.body.setAttribute( 'data-lenis-prevent', '' )
+                // document.body.style.overflow = 'hidden'
+            },
+            onReverseComplete: () => {
+                element.classList.remove( 'is-visible' )
+                // document.body.removeAttribute( 'data-lenis-prevent', '' )
+                // document.body.style.overflow = ''
+            }
         } )
 
         const from_parameters = {} // Dépend de la position du pannel
         const parameters = {
             duration: data?.transitions?.secondary?.duration ? data.transitions.secondary.duration / 1000 : 1.4,
-            ease: 'power2.inOut',
+            // ease: 'power2.inOut',
+            ease: CustomEase.create("custom", "M0,0 C0.503,0 0.198,1 1,1 "),
             onComplete: () => {},
             onReverseComplete: () => {},
         }
 
         // Définir les paramètres de l'animation en fonction de la position du pannel
         if ( element.classList.contains( 'component-pannel--right' ) ) {
-            parameters.right = "0"
-            from_parameters.right = () => element.clientWidth * -1
+            from_parameters.width = "0"
+            parameters.width = () => content.clientWidth
         }
         else if ( element.classList.contains( 'component-pannel--left' ) ) {
-            parameters.left = "0"
-            from_parameters.left = () => element.clientWidth * -1
+            from_parameters.left = "0"
+            parameters.left = () => content.clientWidth
         }
         else if ( element.classList.contains( 'component-pannel--top' ) ) {
             parameters.top = "0"
@@ -68,12 +82,13 @@ const init_pannel = () => {
         const open = toggleButton => {
             timeline.play()
             overlay.classList.add( 'is-visible' )
+            element.classList.add( 'is-visible' )
             toggleButtons.forEach( button => button.classList.add( 'active' ) )
             openButton = toggleButton
             openButton.setAttribute( 'aria-expanded', 'true' )
             
             if ( firstFocusableElement ) {
-                setTimeout( () => firstFocusableElement.focus(), 10 )
+                requestAnimationFrame( () => firstFocusableElement.focus() )     
             }
         }
     

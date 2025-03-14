@@ -1,0 +1,1 @@
+advancedform.create_all_preview_default_files()

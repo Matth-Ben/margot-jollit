@@ -18,11 +18,11 @@
                 <p>{{ data.description }}</p>
             {% endif %}
         </div>
-        <div class="Page__thumbnail">
-            {% if post.thumbnail %}
+        {% if post.thumbnail %}
+            <div class="Page__thumbnail">
                 {{ image.default(post.thumbnail, {'aspect_ratio' : 'aspect-[2/1]'}) }}
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
         <div class="Page__content">
             {{ acf_flex_content.default(data.content) }}
         </div>

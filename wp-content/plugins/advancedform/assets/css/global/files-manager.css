@@ -1,0 +1,74 @@
+.container-preview-files {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 212px;
+    padding: 5px;
+    border: solid 1px #ccd0d4;
+}
+.container-preview-files > div {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    background-color: #F9F9F9;
+    border: solid 1px #E1E1E1;
+}
+.container-preview-files .filename {
+    /* content: attr(data-filename); */
+    display: block;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #F9F9F9;
+    font-weight: bold;
+    border-top: solid 1px #E1E1E1;
+    overflow: hidden;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+.container-preview-files > div.file img {
+    height: 60px;
+    margin-top: calc(50% - 50px);
+}
+.container-preview-files > div img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.container-preview-files > div a.open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.container-preview-files > div a.delete {
+    position: absolute;
+    top: 6px;
+    right: -8px;
+    visibility: hidden;
+}
+.container-preview-files > div:hover a.delete {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    right: -8px;
+    cursor: pointer;
+    visibility: visible;
+}
+.container-preview-files > div a.delete svg {
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    background-color: #1d2327;
+    color: white;
+    border-radius: 100%;
+}
+.container-preview-files > div a.delete:hover svg {
+    color: #D54E21;
+}

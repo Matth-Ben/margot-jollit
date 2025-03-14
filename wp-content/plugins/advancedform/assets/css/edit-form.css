@@ -1,0 +1,151 @@
+/* remove default style of metabox */
+[id^="metabox--af-form"]  > .inside {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* hide metabox title */
+[id^="metabox--af-form"]  > .postbox-header {
+    display: none;
+}
+
+
+/*  */
+/*  */
+#metabox--af-form--shortcode .advancedform-admin-input span {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* replace the metabox title  */
+#container-fields-index {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* advancedform fields */
+#container-fields .field {
+    margin-top: -1px;
+    border-top: solid 1px #E1E1E1;
+}
+
+/* disabled advancedform fields */
+#container-fields .field.disabled {
+    opacity: .5;
+}
+
+
+/* drag and drop */
+#container-fields .field.ui-sortable-helper {
+    background-color: white;
+    border-right: solid 1px #E1E1E1;
+    border-left: solid 1px #E1E1E1;
+}
+
+
+/* field selected */
+#container-fields .field.show .field-head * {
+    color: white;
+    background-color: #2a9bd9;
+}
+#container-fields .field.show .field-head input {
+    background-color: white;
+}
+#container-fields .field-body {
+    display: none;
+}
+
+
+/* files */
+#container-fields [data-parameter="default_thumbnail"],
+#container-fields [data-parameter="default_files"] {
+    display: none;
+}
+
+
+/* hide form data input */
+#af-form-data {
+    display: none;
+}
+
+
+/* display parameters for a post or entry  */
+.advancedform-admin-field.entry-title {
+    display: flex;
+}
+
+/* hide parameter choices linked to a post */
+[data-parameter="type"] optgroup:first-of-type,
+[data-parameter="type"] optgroup:first-of-type option {
+    display: none;
+}
+/* hide parameter choices linked to a post */
+body.advancedform-new-post [data-parameter="type"] optgroup:first-of-type,
+body.advancedform-new-post [data-parameter="type"] optgroup:first-of-type option {
+    display: block;
+}
+
+
+/* hide postmeta-key parameter */
+body.advancedform-new-entry .advancedform-admin-field.postmeta-key {
+    display: none!important;
+}
+
+/* hide link "see entries" */
+body:not(.advancedform-new-entry) #advancedform-see-entries {
+    display: none;
+}
+
+/* hide entry title setting */
+body.advancedform-new-post .advancedform-admin-field.entry-title {
+    /* display: none; */
+}
+
+/* hide post status setting */
+body.advancedform-new-entry .advancedform-admin-field.post-status {
+    display: none;
+}
+
+
+/* hide ducplicate action in recpatcha fields */
+.field[data-type="recaptcha_v2"] .container-field-actions .duplicate {
+    display: none;
+}
+
+/* hide recpatcha in choices */
+option[value="recaptcha_v2"] {
+    display: none;
+}
+
+/* display recpatcha in choices */
+body.recaptcha-v2 option[value="recaptcha_v2"] {
+    display: block;
+}
+
+
+/* alerts */
+.alert .container-cc > div {
+    margin-bottom: 10px;
+}
+.alert .container-cc > div:last-child {
+    margin-bottom: 0;
+}
+.alert .container-cc > div > a {
+    opacity: 0;
+}
+.alert .container-cc > div:hover > a {
+    opacity: 1;
+}
+
+
+/* error message */
+.error-message label {
+    color: #3c434a;
+}
+.error-message {
+    color: black;
+    font-weight: normal;
+}

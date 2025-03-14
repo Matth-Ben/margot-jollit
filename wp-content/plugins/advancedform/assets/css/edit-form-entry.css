@@ -1,0 +1,20 @@
+form {
+    margin-top: 33px;
+}
+
+#post-body-content {
+    margin-bottom: 24px;
+}
+
+.wrap > h1.wp-heading-inline {
+    display: none;
+}
+
+#metabox--af-entry  > .inside {
+    margin: 0;
+    padding: 0;
+}
+
+#metabox--af-entry  > .postbox-header {
+    display: none;
+}

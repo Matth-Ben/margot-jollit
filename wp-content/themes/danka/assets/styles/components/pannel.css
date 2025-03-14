@@ -1,16 +1,26 @@
 .component-pannel {
-    @apply fixed top-0 bg-light invisible z-[100];
+    @apply fixed top-0 bg-light invisible overflow-hidden z-[100];
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    & > * {
+        @apply h-full;
+    }
 }
 
 .component-pannel--right {
     @apply right-0 h-[100svh];
-    width: var(--pannel-width);
+
+    & .component-pannel__content {
+        width: var(--pannel-width);
+    }
 }
 
 .component-pannel--left {
     @apply left-0 h-[100svh];
-    width: var(--pannel-width);
+
+    & .component-pannel__content {
+        width: var(--pannel-width);
+    }
 }
 
 .component-pannel--top {
@@ -26,7 +36,7 @@
 }
 
 .component-pannel-overlay {
-    @apply fixed top-0 left-0 w-full h-full bg-dark opacity-0 invisible z-[99];
+    @apply fixed top-0 left-0 w-full h-full bg-dark opacity-0 invisible z-[89];
     transition: opacity var(--transition-secondary), visibility 0s;
     transition-delay: 0s, var(--transition-secondary-duration);
 }

@@ -1,6 +1,8 @@
 {% macro default(data) %}
 
     <div id="{{ data.id }}" class="component-pannel {% if data.direction %}component-pannel--{{ data.direction }}{% endif %}" data-lenis-prevent>
-        {{ data.html }}
+        <div class="component-pannel__content">
+            {{ data.html }}
+        </div>
     </div>
 {% endmacro %}

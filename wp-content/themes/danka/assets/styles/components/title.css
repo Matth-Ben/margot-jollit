@@ -1,0 +1,6 @@
+.component-title {
+    
+    & > * {
+        @apply text-balance;
+    }
+}

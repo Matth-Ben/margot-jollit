@@ -1,0 +1,62 @@
+.component-form {
+    @apply grid grid-cols-12 gap-x-gap;
+
+    & > div:first-child {
+        @apply col-span-full flex flex-col items-start gap-xl;
+        @apply d:col-span-4;
+
+        & > div {
+            @apply flex flex-col gap-l;
+
+            & h3 {
+                @apply ts-h4 text-balance;
+            }
+        }
+    }
+    
+    & > div:last-child {
+        @apply col-span-full flex flex-col gap-xxl;
+        @apply d:col-span-6 d:col-start-7;
+
+        & > p {
+            @apply ts-bold;
+        }
+    }
+
+    & .advancedform {
+        @apply grid grid-cols-2 gap-xl;
+
+        & > * {
+            @apply col-span-full;
+        }
+
+        & .advancedform-field-container {
+
+            & > p {
+                @apply flex flex-col items-start gap-m;
+
+                & br {
+                    @apply hidden;
+                }
+
+                & label {
+                    @apply ts-bold;
+                }
+                
+                & > span {
+                    @apply w-full;
+
+                    & input,
+                    & select,
+                    & textarea {
+                        @apply w-full p-l border border-dark;
+                    }
+                }
+            }
+
+            &.required label::after {
+                @apply content-['*'];
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{% macro default(post) %}
+    {% set share = get_share() %}
+    {% set list = share["social-network-share-list"] %}
+    {% set title = post.title %}
+
+    <div class="share flex items-center gap-8">
+        {% for index, item in list %}
+            {% if item == "twitter" %} <a class="ts-mini" target="_blank" href="https://twitter.com/intent/tweet?url={{post.link}}&text={{post.title}}"><i class="fa-brands fa-twitter"></i> {{ item }}</a> {% endif %}
+            {% if item == "facebook" %} <a class="ts-mini" target="_blank" href="https://www.facebook.com/sharer.php?u={{post.link}}"><i class="fa-brands fa-facebook-f"></i> {{ item }}</a> {% endif %}
+            {% if item == "linkedin" %} <a class="ts-mini" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{post.link}}&title={{post.title}}&summary={{post.post_excerpt}}"><i class="fa-brands fa-linkedin-in"></i> {{ item }}</a> {% endif %}
+        
+
+            {% if index + 1 < (list|length) %}
+                <span class="flex -mt-[.2rem] child:h-7">/</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endmacro %}

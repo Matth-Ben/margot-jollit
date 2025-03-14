@@ -1,7 +1,9 @@
 .component-header-desktop {
-
+    transition: background-color 0s;
+    
     & > nav {
         @apply flex justify-between items-center w-full p-margin pb-xl z-[90];
+        transition: padding-top var(--transition);
     }
 
     & > nav > div {
@@ -25,13 +27,13 @@
         }
     }
 
-    & > nav > div > ul > li > a,
+    /* & > nav > div > ul > li > a,
     & > nav > div > div > button svg,
     & > nav > div > button,
     & > nav > div > button > span,
-        & > nav > a > svg > path {
+    & > nav > a > svg > path {
         @apply transition;
-    }
+    } */
 }
 
 body.headroom--not-top .component-header-desktop {
@@ -39,7 +41,7 @@ body.headroom--not-top .component-header-desktop {
 }
 
 /* body.headroom--not-top .component-header-desktop, */
-body[wp-class*="home"] .component-header-desktop {
+html:not(.headroom--pinned):not(.headroom--hidden) body[wp-class*="home"] .component-header-desktop {
 
     & > nav > div > a > svg path {
         fill: var(--color-light);

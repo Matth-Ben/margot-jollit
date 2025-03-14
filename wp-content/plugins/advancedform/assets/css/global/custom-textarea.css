@@ -1,0 +1,8 @@
+[id^="metabox-advancedform"] textarea {
+    resize: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+[id^="metabox-advancedform"] textarea::-webkit-scrollbar {
+    display: none;
+}

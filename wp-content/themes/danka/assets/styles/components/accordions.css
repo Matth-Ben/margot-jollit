@@ -1,64 +1,50 @@
-@use '../core/mixins.scss' as mixins;
-
-.component--accordions {
+.component-accordions {
     @apply border-b border-dark;
+}
 
-    .accordion {
-        @apply w-full;
-    
-        &.active {
-    
-            .accordion__header svg {
-                @apply rotate-[180deg]
-            }
-    
-            .accordion__body {
-                @apply grid-rows-[1fr];
-            }
-        }
-    
-        &__header {
-            @apply ts-h4 flex justify-between items-center gap-l w-full py-l border-t border-dark cursor-pointer;
+.component-accordions__accordion {
+    @apply w-full;
+}
 
-            h3 {
-                @apply ts-h4;
-            }
-    
-            span {
-                @apply shrink-0;
-                
-                svg {
-                    transition: transform var(--transition);
-                    @apply w-auto h-20;
-                }
-            }
-        }
+.component-accordions__accordion.active {
+
+    & .component-accordions__accordion-header svg {
+        @apply rotate-[180deg]
+    }
+
+    & .component-accordions__accordion-body {
+        @apply grid-rows-[1fr];
+    }
+}
+
+.component-accordions__accordion-header {
+    @apply ts-h4 flex justify-between items-center gap-l w-full py-l border-t border-dark cursor-pointer;
+    @apply d:py-xl;
+
+    & h3 {
+        @apply ts-h4;
+    }
+
+    & span {
+        @apply shrink-0;
         
-        &__body {
-            transition: grid-template-rows var(--transition);
-            @apply grid grid-rows-[0fr];
-        }
-    
-        &__content {
-            @apply overflow-hidden;
-    
-            &::after {
-                content: '';
-                @apply block pb-xxl;
-            }
+        & svg {
+            transition: transform var(--transition);
+            @apply w-auto h-20;
         }
     }
 }
 
-@include mixins.desktop() {
-    
-    .component--accordions {
-        
-        .accordion {
+.component-accordions__accordion-body {
+    transition: grid-template-rows var(--transition);
+    @apply grid grid-rows-[0fr];
+}
 
-            &__header {
-                @apply py-xl;
-            }
-        }
-    }
+.component-accordions__accordion-content {
+    @apply overflow-hidden;
+}
+
+.component-accordions__accordion-content::after {
+    content: '';
+    @apply block pb-xxl;
 }

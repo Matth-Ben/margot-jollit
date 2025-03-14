@@ -6,8 +6,6 @@
     {% import "@components/pannel-search.twig" as pannel_search %}
 
     {% set menus = get_menus() %}
-    {% set pannel_navigation_id = 'menu-header-primary' %}
-    {% set pannel_search_id = 'search-header' %}
 
     <div class="component-header-desktop">
         <nav>
@@ -26,22 +24,12 @@
                 {% endif %}
                 <div>
                     {{ button.icon({icon: 'cart'}) }}
-                    {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_search_id ~ '"'}) }}
+                    {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ data.pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.pannel_search_id ~ '"'}) }}
                 </div>
-                {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ pannel_navigation_id ~ '"'}) }}
+                {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ data.pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.pannel_navigation_id ~ '"'}) }}
             </div>
         </nav>
     </div>
 
-    {{ pannel.default({
-        id: pannel_navigation_id,
-        html: pannel_navigation.default(pannel_navigation_id, pannel_search_id)|raw,
-        direction: 'right'
-    }) }}
     
-    {{ pannel.default({
-        id: pannel_search_id,
-        html: pannel_search.default(pannel_search_id)|raw,
-        direction: 'top'
-    }) }}
 {% endmacro %}

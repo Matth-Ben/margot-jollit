@@ -1,9 +1,11 @@
 .component-image {
+    @apply relative overflow-hidden;
+    
     & > div {
         @apply w-full h-full;
 
         & > img {
-            @apply w-full h-full object-cover;
+            @apply absolute top-0 left-0 w-full h-full object-cover;
         }
     }
 }

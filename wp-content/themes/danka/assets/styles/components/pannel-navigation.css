@@ -7,6 +7,7 @@
 
 .component-pannel-navigation__menu {
     @apply fixed flex items-center gap-l top-margin right-margin;
+    transition: top var(--transition);
 
     & > div {
         @apply flex items-center gap-m;
@@ -20,6 +21,7 @@
 .component-pannel-navigation__content {
     @apply flex flex-col gap-xl h-full px-margin pb-margin;
     padding-top: calc(4.8rem + var(--spacing-margin) * 2);
+    transition: padding-top var(--transition);
 }
 
 .component-pannel-navigation__items,
@@ -118,4 +120,15 @@
 
 .component-pannel-navigation__items-mobile {
     @apply d:hidden;
+}
+
+.show-alert {
+
+    & .component-pannel-navigation__menu {
+        top: calc(var(--spacing-margin) + var(--alert-height));
+    }
+
+    & .component-pannel-navigation__content {
+        padding-top: calc(4.8rem + var(--spacing-margin) * 2 + var(--alert-height));
+    }
 }

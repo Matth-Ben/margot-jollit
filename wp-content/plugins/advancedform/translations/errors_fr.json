@@ -1,0 +1,70 @@
+{
+    "length_min": {
+        "type": "dynamic",
+        "text": "Le champ doit contenir au moins %a% caractères"
+    },
+    "length_max": {
+        "type": "dynamic",
+        "text": "Le champ doit contenir au plus %a% caractères"
+    },
+    "file_extensions_allowed" : {
+        "type": "dynamic",
+        "text": "Seuls les fichiers de types %a% sont autorisés"
+    },
+    "file_extensions_disallowed" : {
+        "type": "dynamic",
+        "text": "Les fichiers de types %a% ne sont pas autorisés"
+    },
+    "files_multiple" : {
+        "type": "static",
+        "text": "Un seul fichier est autorisé"
+    },
+    "number_min" : {
+        "type": "dynamic",
+        "text": "La valeur doit être supérieure ou égale à %a%"
+    },
+    "number_max" : {
+        "type": "dynamic",
+        "text": "La valeur doit être inférieure ou égale à %a%"
+    },
+    "size_min" : {
+        "type": "dynamic",
+        "text": "La taille des fichiers doivent être supérieure ou égale à %a%Mo"
+    },
+    "size_max" : {
+        "type": "dynamic",
+        "text": "La taille des fichiers doivent être inférieure ou égale à %a%Mo"
+    },
+    "date_min" : {
+        "type": "dynamic",
+        "text": "La date doit être supérieure ou égale au %a%"
+    },
+    "date_max" : {
+        "type": "dynamic",
+        "text": "La date doit être inférieure ou égale au %a%"
+    },
+    "datetime_min" : {
+        "type": "dynamic",
+        "text": "La date doit être supérieure ou égale au %a%"
+    },
+    "datetime_max" : {
+        "type": "dynamic",
+        "text": "La date doit être inférieure ou égale au %a%"
+    },
+    "time_min" : {
+        "type": "dynamic",
+        "text": "L'heure doit être supérieure ou égale à %a%"
+    },
+    "time_max" : {
+        "type": "dynamic",
+        "text": "L'heure doit être inférieure ou égale à %a%"
+    },
+    "regex" : {
+        "type": "static",
+        "text": "Le format requis n'est pas respecté"
+    },
+    "required" : {
+        "type": "static",
+        "text": "Le champ est requis"
+    }
+}

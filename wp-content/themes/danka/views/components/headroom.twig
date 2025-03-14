@@ -1,9 +1,30 @@
 {% macro default(data) %}
-    {% import "@components/header-mobile.twig" as header_mobile %}
+    {# {% import "@components/header-mobile.twig" as header_mobile %} #}
     {% import "@components/header-desktop.twig" as header_desktop %}
+    {% import "@components/pannel.twig" as pannel %}
+    {% import "@components/pannel-navigation.twig" as pannel_navigation %}
+    {% import "@components/pannel-search.twig" as pannel_search %}
+
+    {% set pannel_navigation_id = 'menu-header-primary' %}
+    {% set pannel_search_id = 'search-header' %}
 
     <header id="navigation" class="component-headroom">
         {# {{ header_mobile.default() }} #}
-        {{ header_desktop.default() }}
+        {{ header_desktop.default({
+            pannel_navigation_id: pannel_navigation_id,
+            pannel_search_id: pannel_search_id
+        }) }}
     </header>
+
+    {{ pannel.default({
+        id: pannel_navigation_id,
+        html: pannel_navigation.default(pannel_navigation_id, pannel_search_id)|raw,
+        direction: 'right'
+    }) }}
+    
+    {{ pannel.default({
+        id: pannel_search_id,
+        html: pannel_search.default(pannel_search_id)|raw,
+        direction: 'top'
+    }) }}
 {% endmacro %}

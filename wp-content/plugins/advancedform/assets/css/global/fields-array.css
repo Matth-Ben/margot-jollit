@@ -1,0 +1,106 @@
+#poststuff .inside {
+    margin: 0;
+}
+
+
+.advancedform-admin-field {
+    display: flex;
+}
+
+.advancedform-admin-field .container-field-actions a {
+    margin-right: 4px;
+    visibility: hidden;
+}
+.advancedform-admin-field:hover .container-field-actions a {
+    visibility: visible;
+}
+.advancedform-admin-field .delete {
+    color: #a00;
+}
+
+
+/* input & label */
+.advancedform-admin-field label,
+.advancedform-admin-field input[type="text"],
+.advancedform-admin-field input[type="number"],
+.advancedform-admin-field input[type="email"],
+.advancedform-admin-field input[type="password"],
+.advancedform-admin-field input[type="date"],
+.advancedform-admin-field input[type="datetime-local"],
+.advancedform-admin-field input[type="time"],
+.advancedform-admin-field textarea,
+.advancedform-admin-field select {
+    display: block;
+    width: 100%;
+}
+
+
+/* container button */
+.container-button {
+    background-color: #F9F9F9;
+}
+.container-button-end {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 12px;
+    background-color: #F9F9F9;
+    border-bottom: solid 1px #E1E1E1;
+}
+.container-button button,
+.container-button-end button,
+.container-button.advancedform-admin-field .advancedform-admin-input button,
+.container-button-end.advancedform-admin-field .advancedform-admin-input button {
+    margin-top: 0;
+}
+
+
+/* field label part (right) */
+.advancedform-admin-field .advancedform-admin-label {
+    width: 20%;
+    padding: 15px 12px;
+    background: #F9F9F9;
+    border-right: solid 1px #E1E1E1;
+    border-bottom: solid 1px #E1E1E1;
+}
+.advancedform-admin-field .advancedform-admin-label label {
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+
+/* field input part (left) */
+.advancedform-admin-field .advancedform-admin-input {
+    width: 80%;
+    padding: 15px 12px;
+    border-bottom: solid 1px #E1E1E1;
+}
+.advancedform-admin-field .advancedform-admin-input button {
+    margin-top: 10px;
+}
+
+
+/* inside the fields */
+#container-fields-index .field-head > div > div,
+#container-fields .field-head > div > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border-right: none;
+}
+#container-fields .field-head .advancedform-field-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    width: 28px;
+    border: solid 1px #E1E1E1;
+    border-radius: 100%;
+    cursor: move;
+}
+#container-fields .field-head .advancedform-field-name {
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}

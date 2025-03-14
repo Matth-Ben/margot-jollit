@@ -1,0 +1,7 @@
+{% macro default(data) %}
+    {% import "@components/form.twig" as form %}
+
+    <div class="acf-component-form">
+        {{ form.default(data) }}
+    </div>
+{% endmacro %}

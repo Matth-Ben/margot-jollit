@@ -1,47 +1,30 @@
-@use '../core/mixins.scss' as mixins;
-
 .Archive {
     @apply px-margin;
+}
 
-    &__breadcrumbs {
-        @apply mb-xxxl;
-    }
+.Archive__breadcrumbs {
+    @apply mb-xxxl;
+}
 
-    &__header {
-        @apply flex flex-col gap-l my-xxl;
+.Archive__header {
+    @apply flex flex-col gap-l my-xxl;
+    @apply d:max-w-col-8;
 
-        p {
-            @apply ts-h4;
-        }
-    }
-    
-    &__filters {
-        @apply my-xxl;
-    }
-
-    &__list {
-        @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
-
-        & >  div {
-            @apply col-span-full;
-        }
+    & p {
+        @apply ts-h4;
     }
 }
 
-@include mixins.desktop() {
+.Archive__filters {
+    @apply my-xxl;
+}
 
-    .Archive {
+.Archive__list {
+    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
+    @apply d:gap-y-xl;
 
-        &__header {
-            @apply max-w-col-8;
-        }
-
-        &__list {
-            @apply gap-y-xl;
-
-            & > div {
-                @apply col-span-4;
-            }
-        }
+    & >  div {
+        @apply col-span-full;
+        @apply d:col-span-4;
     }
 }

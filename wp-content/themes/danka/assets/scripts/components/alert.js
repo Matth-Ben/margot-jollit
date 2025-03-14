@@ -2,10 +2,11 @@ const init = () => {
     document.querySelectorAll( '.component--alert' ).forEach( element => {
         const button = element.querySelector( 'button' )
         const link = element.querySelector( 'a' )
+        const content = element.querySelector( '.component-alert__content' )
 
         setTimeout( () => {
+            document.documentElement.style.setProperty( '--alert-height', content.clientHeight + 'px' ) // add css variable
             document.body.classList.add( 'show-alert' )
-            document.documentElement.style.setProperty( '--alert-height', element.clientHeight + 'px' ) // add css variable
         }, 1000 )
         
         button.addEventListener( 'click', () => {
@@ -17,7 +18,7 @@ const init = () => {
         } )
 
         document.addEventListener( 'WindowResized', () => {
-            document.documentElement.style.setProperty( '--alert-height', element.clientHeight + 'px' ) // refresh css variable
+            document.documentElement.style.setProperty( '--alert-height', content.clientHeight + 'px' ) // refresh css variable
         } )
     } )
 }

@@ -1,6 +1,6 @@
 {% macro default(data) %}    
     {% if data %}
-        <section class="component--acf-flex-content">
+        <section class="component-acf-flex-content">
             {% for component in data %}
                 {% if component.acf_fc_layout %}
                     {% set filename = component.acf_fc_layout|replace({'_': '-'}) %}
@@ -33,7 +33,7 @@
     {% set display_title = true %}
 
     {% if content %}
-        <div class="component component--acf-flex-content component--halfscreen">
+        <div class="component-acf-flex-content component-acf-flex-content--halfscreen">
             {% if not function('is_array', content[0]) and title %}
                 {% set display_title = false %}
                 <div class="component__title">

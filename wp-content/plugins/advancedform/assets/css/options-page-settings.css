@@ -1,0 +1,3 @@
+.form-table input[type="text"] {
+    width: calc(100% - 20px);
+}

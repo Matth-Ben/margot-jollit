@@ -6,8 +6,8 @@
     @apply flex flex-col gap-l px-margin my-xxl;
     @apply d:max-w-col-8;
 
-    & p {
-        @apply d:max-w-col-6;
+    & h1 {
+        @apply text-balance d:max-w-col-6;
     }
 }
 

@@ -1,9 +1,53 @@
+:root {
+    --headroom-height: calc(4.8rem + var(--spacing-margin) + var(--spacing-xl));
+}
+
 .component-headroom {
-    @apply sticky left-0 z-[100];
-    top: calc(var(--headroom-height) * -2);
+    @apply sticky left-0 z-[90];
+    top: calc(var(--headroom-height) * -1 - 2px);
+    transform: translate3d(0, 0, 0);
     transition: top var(--transition);
+}
+
+.headroom--pinned.headroom--up .component-headroom {
+    @apply top-0;
+}
+
+.headroom--hidden .component-headroom {
+    transform: translate3d(0, calc(var(--headroom-height) * -1 - 2px), 0);
+}
+
+.headroom--pinned {
+
+    & .component-header-desktop {
+        @apply bg-light;
+
+        & > nav > div > ul > li > a,
+        & > nav > div > div > button svg,
+        & > nav > div > button,
+        & > nav > div > button > span,
+        & > nav > a > svg > path {
+            @apply text-dark;
+        }
+    }
+    
+    & .component-header-desktop > nav {
+        @apply pt-xl;
+    }
+    
+    & .component-pannel-navigation__menu {
+        @apply top-xl;
+    }
+    
+    & .component-pannel-navigation__content {
+        padding-top: calc(4.8rem + var(--spacing-xl) * 2);
+    }
 }
 
 [wp-class*="home"] #app-content {
     margin-top: calc(var(--headroom-height) * -1);
+}
+
+.headroom--unpinned .component-header-desktop {
+    transition-delay: var(--transition-duration);
 }

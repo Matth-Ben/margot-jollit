@@ -1,6 +1,6 @@
 :root {
     --header-height: 4.8rem;
-    --pannel-width: 100%;
+    --pannel-width: 100vw;
 }
 
 @media (width >=  theme(--breakpoint-d)) {

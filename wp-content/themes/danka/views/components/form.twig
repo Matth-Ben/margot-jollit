@@ -1,0 +1,25 @@
+{% macro default(data) %}
+    {% import "@components/button.twig" as button %}
+
+    <div class="component-form">
+        <div>
+            <div>
+                {% if data.title %}
+                    <h3>{{ data.title }}</h3>
+                {% endif %}
+                {% if data.description %}
+                    <p>{{ data.description }}</p>
+                {% endif %}
+            </div>
+            {% if data.button.url and data.button.title %}
+                {{ button.default(data.button) }}
+            {% endif %}
+        </div>
+        <div>
+            {% if data.post %}
+                <p>{{ pll__('*champs obligatoires') }}</p>
+                {{ function('af_form', data.post) }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}

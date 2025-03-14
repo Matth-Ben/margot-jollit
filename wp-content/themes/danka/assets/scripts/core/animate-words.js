@@ -13,6 +13,7 @@ const animateWords = ( element, delay = 100 ) => {
         paused: true,
         onComplete: () => {
             element.classList.add( 'visible' )
+            wordElements.forEach( wordElement => wordElement.parentElement.style.clipPath = "" )
         },
         onReverseComplete: () => {
             element.classList.remove( 'visible' )

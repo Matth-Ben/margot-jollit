@@ -1,7 +1,9 @@
 <?php
 
 require_once get_template_directory() . '/core/init.php';
+require_once get_template_directory() . '/core/_icons.php';
 require_once get_template_directory() . '/core/_buffer.php';
+require_once get_template_directory() . '/core/_fn-generate-template.php';
 require_once get_template_directory() . '/core/_fn-danka-add-cpt.php';
 require_once get_template_directory() . '/core/_fn-danka-sort-terms.php';
 require_once get_template_directory() . '/core/_acf-synchronisation.php';
