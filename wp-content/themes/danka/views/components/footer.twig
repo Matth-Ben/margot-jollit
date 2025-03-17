@@ -4,71 +4,46 @@
     {% set menus = get_menus() %}
     {% set data = get_fields('option') %}
 
-    {% set array = {
-        'facebook': 'FB',
-        'twitter': 'X',
-        'instagram': 'IN',
-        'linkedin': 'LK',
-        'youtube': 'YT',
-    } %}
-
-    <footer class="component component-footer">
-        <div class="container">
-            <div class="grid grid-cols-6 d:grid-cols-12 gap">
-                <div class="col-span-6 max-d:pb-xxl max-d:mb-36 max-d:border-b max-d:border-[#FFFFFF29]">
-                    <div class="flex flex-col gap-l">
-                        <div class="ts-body max-d:text-center">{{ fn('wpautop', data.footer_content) }}</div>
-                    </div>
-
-                    <ul class="flex items-center max-d:justify-center gap-10 mt-xl d:mt-xxl">
-                        {% for key, item in data.social_network_links %}
-                            {% if item is not empty %}
-                                <li class="social-network__item">
-                                    <a href="{{item}}" style="color: #fff;" class="component-button component-button--icon" target="_blank">{{ array[key] }}</a>
-                                </li>
-                            {% endif %}
+    <footer class="component-footer">
+        <div>
+            <div>
+                <p>
+                    Danka<br>
+                    24 avenue Joannes Masset<br>
+                    69009 Lyon<br>
+                    Tél. 09 54 10 02 54
+                </p>
+                <div>
+                    <a href="#0">FB</a>
+                    <a href="#0">X</a>
+                </div>
+            </div>
+            <div>
+                {% if menus['header-primary'].items %}
+                    <ul>
+                        {% for item in menus['header-primary'].items %}
+                            <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.title }}</a></li>
                         {% endfor %}
                     </ul>
-                </div>
-
-                {% if menus['footer-primary'].items|length > 0 %}
-                    <div class="col-span-3 d:col-span-2 d:col-start-9">
-                        <ul class="flex flex-col gap-l ts-cta">
-                            {% for item in menus['footer-primary'].items %}
-                                <li class="leading-none"><a href="{{item.url}}" target="{{item.target}}">{{item.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
                 {% endif %}
-
-                {% if menus['footer-secondary'].items|length > 0 %}
-                    <div class="col-span-3 d:col-span-2 d:col-start-11">
-                        <ul class="flex flex-col gap-l ts-cta">
-                            {% for item in menus['footer-secondary'].items %}
-                                <li class="leading-none"><a href="{{item.url}}" target="{{item.target}}">{{item.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-
-                {% if data.logo %}
-                    <div class="col-span-6 d:col-span-12">
-                        <div class="component-footer__logo">
-                            {{ _image.default(data.logo, { aspect_ratio: 'aspect-auto' }) }}
-                        </div>
-                    </div>
-                {% endif %}
-
-                {% if menus['footer-copyright'].items|length > 0 %}
-                    <div class="col-span-6 d:col-span-12 pt-36 d:pt-xl">
-                        <ul class="flex items-center flex-col d:flex-row gap ts-cta">
-                            {% for item in menus['footer-copyright'].items %}
-                                <li><a href="{{item.url}}" target="{{item.target}}">{{item.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                {% if menus['header-secondary'].items %}
+                    <ul>
+                        {% for item in menus['header-secondary'].items %}
+                            <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.title }}</a></li>
+                        {% endfor %}
+                    </ul>
                 {% endif %}
             </div>
+        </div>
+        <div>
+            {% include "@assets/svg/logo.svg" %}
+            {% if menus['mobile'].items %}
+                <ul>
+                    {% for item in menus['mobile'].items %}
+                        <li><a href="{{ item.url }}" target="{{ item.target }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </footer>
 {% endmacro %}

@@ -30,7 +30,6 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
-            // isProduction ? MiniCssExtractPlugin.loader : '',
             MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
@@ -38,17 +37,10 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    optimization: {
-      minimize: isProduction,
-      minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
-    },
     plugins: [
       new MiniCssExtractPlugin({ filename: 'app.css' }),
     ],
     devServer: {
-      // devMiddleware: {
-      //   writeToDisk: true,
-      // },
       allowedHosts: 'all', // Remplace `host` qui peut causer des erreurs
       client: {
         logging: 'info',

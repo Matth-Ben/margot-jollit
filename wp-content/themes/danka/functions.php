@@ -100,3 +100,29 @@ function get_flex_content( $content, $type = null ) {
 
     return $new_content;
 }
+
+
+
+
+// function custom_acf_json_save_paths( $paths, $post ) {
+//     if ( $post['title'] === 'Theme Settings' ) {
+//         $paths = array( get_stylesheet_directory() . '/options-pages' );
+//     }
+
+//     if ( $post['title'] === 'Theme Settings Fields' ) {
+//         $paths = array( get_stylesheet_directory() . '/field-groups' );
+//     }
+
+//     return $paths;
+// }
+// add_filter( 'acf/json/save_paths', 'custom_acf_json_save_paths', 10, 2 );
+
+// function my_acf_cpt_save_folder( $path ) {
+//     return get_stylesheet_directory() . '/acf-json/post-types'; 
+// }
+// add_filter( 'acf/settings/save_json/type=acf-post-type', 'my_acf_cpt_save_folder' );
+
+// function my_acf_json_save_point( $path ) {
+//     return get_stylesheet_directory() . '/my-custom-folder';
+// }
+// add_filter( 'acf/settings/save_json', 'my_acf_json_save_point' );

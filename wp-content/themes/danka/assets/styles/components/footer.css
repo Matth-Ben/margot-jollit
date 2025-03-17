@@ -1,45 +1,53 @@
-@use '../core/mixins.scss' as mixins;
-
 .component-footer {
-    @apply bg-dark text-light;
+    @apply flex flex-col gap-xxxl px-margin pt-xxxxl pb-xxl bg-dark text-light;
+    @apply d:py-margin;
 
-    .container {
-        @apply pt-96 pb-xxl;
-    }
+    & > div:first-child {
+        @apply grid grid-cols-12 gap-x-gap gap-y-xxl;
 
-    &__logo {
-        @apply pt-96;
+        & > div:first-child {
+            @apply col-span-full flex flex-col items-center gap-xl;
+            @apply d:col-span-4 d:items-start;
 
-        img {
-            @apply relative brightness-0 invert;
-        }
-    }
-}
-
-@include mixins.mobile() {
-    
-    .component-footer {
-    
-        &__logo {
-            @apply mt-36 border-t border-[#FFFFFF29];
-        }
-    }
-}
-
-@include mixins.desktop() {
-    
-    .component-footer {
-    
-        .container {
-            @apply py-xxl;
-        }
-    
-        &__logo {
-            @apply pt-96;
-    
-            img {
-                @apply relative brightness-0 invert;
+            & > p {
+                @apply text-center;
+                @apply d:text-left;
             }
+
+            & > div {
+                @apply flex flex-wrap justify-center gap-x-10;
+
+                & > a {
+                    @apply flex justify-center items-center w-48 h-48 border border-[currentColor] rounded-full uppercase;
+                }
+            }
+        }
+        
+        & > div:last-child {
+            @apply col-span-full grid grid-cols-2 gap-x-gap py-xxl border-t border-b border-light;
+            @apply d:col-span-4 d:col-start-9 d:py-0 d:border-t-0 d:border-b-0;
+
+            & > ul {
+                @apply flex flex-col gap-l;
+            }
+        }
+    }
+
+    & > div:last-child {
+        @apply flex flex-col items-center gap-xxl;
+        @apply d:items-start;
+
+        & > svg {
+            @apply w-full h-auto;
+
+            & path {
+                @apply fill-light;
+            }
+        }
+
+        & > ul {
+            @apply flex flex-col flex-wrap gap-l;
+            @apply d:flex-row
         }
     }
 }

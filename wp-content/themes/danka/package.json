@@ -1,9 +1,5 @@
 {
   "scripts": {
-    "_dev": "node data-tailwind.js && mix",
-    "_watch": "npm run mix watch",
-    "_prod": "node data-tailwind.js && mix --production",
-    "json-to-scss": "json-to-scss ./data.json ./assets/styles/core/data.scss",
     "build": "node data-tailwind.js && webpack --mode development",
     "watch": "node data-tailwind.js && webpack --watch --mode development",
     "dev": "node data-tailwind.js && webpack serve --mode development",
@@ -28,6 +24,7 @@
     "@tailwindcss/postcss": "^4.0.8",
     "@unseenco/taxi": "^1.8.0",
     "css-minimizer-webpack-plugin": "^7.0.0",
+    "cssnano": "^7.0.6",
     "gsap": "^3.12.7",
     "headroom.js": "^0.12.0",
     "lenis": "^1.1.20",

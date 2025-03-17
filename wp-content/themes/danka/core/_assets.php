@@ -49,7 +49,7 @@ if ( !is_admin() ) {
 
 // Remplacer les URLS de production par celles du serveur de développement
 add_filter('final_output', function($buffer) {
-    if ( !is_webpack_dev_server_running() && is_admin() ) {
+    if ( !is_webpack_dev_server_running() || is_admin() ) {
         return $buffer;
     }
     

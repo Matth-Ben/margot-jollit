@@ -1,0 +1,26 @@
+{
+    "key": "ui_options_page_67b352e87ebba",
+    "title": "Autres données",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Autres données",
+    "menu_slug": "otherdata",
+    "parent_slug": "none",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "",
+    "position": 40,
+    "redirect": 0,
+    "description": "",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-ellipsis"
+    },
+    "update_button": "Mettre à jour",
+    "updated_message": "Mis à jour",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1742206518
+}
