@@ -1,34 +1,34 @@
 export default class CookiesManager
 {
-    element
+    element // Élément HTML
 
-    main
+    main // Interface principale
 
-    title
+    title // Titre
 
-    description
+    description // Description
 
-    privacy_policy
+    privacy_policy // Lien vers la politique de confidentialité
 
-    preferences
+    preferences // Interface de personnalisation
 
-    services
+    services // Conteneur des services
 
-    all_services
+    all_services // Tous les services
 
-    button_personalize
+    button_personalize // Bouton de personnalisation
 
-    button_decline
+    button_decline // Bouton de refus
 
-    button_accept
+    button_accept  // Bouton d'acceptation
 
-    button_confirm
+    button_confirm // Bouton de confirmation
 
-    buttons_back
+    buttons_back // Boutons de retour
 
-    buttons_consent
+    buttons_consent // Boutons de consentement
 
-    cookie
+    cookie // Cookie
 
     cookie_name = 'app_cookie'
 
@@ -37,6 +37,8 @@ export default class CookiesManager
     constructor( element, data ) {
         this.element = element
         this.data = data
+        this.data.scripts = this.data.json_scripts ? JSON.parse( this.data.json_scripts ) : []
+        delete this.data.json_scripts
 
         // text
         this.title = element.querySelector( '.component__title' )
@@ -71,7 +73,7 @@ export default class CookiesManager
         
         this.refresh_states()
         this.create_events()
-        this.update_youtube_iframe()
+        this.update_iframes()
         this.update_script()
     }
 
@@ -96,16 +98,23 @@ export default class CookiesManager
     }
     
     create_services() {
-        for ( const [key, item] of Object.entries(this.data) ) {
+        for ( const [key, item] of Object.entries(this.data.iframes) ) {
 
             if ( item.is_active ) {
                 this.services.innerHTML += `<div class="component__service" data-name="${key}"><span>${item.name}</span><button type="button"></button></div>`
             }
         }
+        
+        this.data.scripts.forEach( item => {
+            if ( item.is_active ) {
+                this.services.innerHTML += `<div class="component__service" data-name="${item.name}"><span>${item.name}</span><button type="button"></button></div>`
+            }
+        } )
     }
     
     refresh_states() {
         const real_services = this.services.querySelectorAll( '.component__service:not([data-name="necessary"])' )
+        let cookie_names = []
 
         if ( real_services.length > 0 || true ) {
             if ( this.services.querySelectorAll( '.component__service:not([data-name="necessary"])' ) && this.cookie === '' ) {
@@ -117,9 +126,15 @@ export default class CookiesManager
                     const name = item_splited[0]
                     const is_active = parseInt( item_splited[1] )
                     const service = Array.from( this.all_services ).find( i => i.getAttribute( 'data-name' ) === name )
+                    cookie_names.push( name )
         
                     if ( service && is_active === 1 ) {
                         service.classList.add( 'active' )
+                    }
+                } )
+                this.all_services.forEach( item => {
+                    if ( item.getAttribute( 'data-name' ) !== 'necessary' && !cookie_names.includes( item.getAttribute( 'data-name' ) ) ) {
+                        this.element.classList.add( 'active' )
                     }
                 } )
             }
@@ -206,7 +221,7 @@ export default class CookiesManager
             }
         } )
 
-        document.addEventListener( 'NewContentLoaded', () => this.update_youtube_iframe() )
+        document.addEventListener( 'NewContentLoaded', () => this.update_iframes() )
     }
 
     select_pannel( pannel ) {
@@ -229,7 +244,7 @@ export default class CookiesManager
         
         date.setMonth(date.getMonth() + 10)
         document.cookie = `${this.cookie_name}=${active_services.join( ',' )}; expires=${date.toUTCString()}; path=/; samesite`
-        this.update_youtube_iframe()
+        this.update_iframes()
         this.update_script()
     }
 
@@ -259,6 +274,10 @@ export default class CookiesManager
         return is_active
     }
 
+    update_iframes() {
+        this.update_youtube_iframe()
+    }
+
     update_youtube_iframe() {
 
         if ( this.service_is_active( 'youtube' ) ) {
@@ -283,15 +302,26 @@ export default class CookiesManager
             const name = item.getAttribute( 'data-name' )
 
             if ( name && this.service_is_active( name ) ) {
-                if ( this.data?.[name] && this.data?.[name]?.script ) {
+                if ( this.data?.iframes?.[name] && this.data?.iframes?.[name]?.script ) {
                     let uniqid = this.uniqid()
-                    document.head.innerHTML += `<div class="script-${uniqid}">${this.data?.[name]?.script}</div>`
+                    document.head.innerHTML += `<div class="script-${uniqid}">${this.data?.iframes?.[name]?.script}</div>`
                     let script = document.querySelector( `.script-${uniqid} script` )
         
                     if ( script ) {
                         eval( script.innerHTML )
                     }
                 }
+                this.data.scripts.forEach( item => {
+                    if ( item.name === name && item.script ) {
+                        let uniqid = this.uniqid()
+                        document.head.innerHTML += `<div class="script-${uniqid}">${item.script}</div>`
+                        let script = document.querySelector( `.script-${uniqid} script` )
+            
+                        if ( script ) {
+                            eval( script.innerHTML )
+                        }
+                    }
+                } )
             }
         } )
     }

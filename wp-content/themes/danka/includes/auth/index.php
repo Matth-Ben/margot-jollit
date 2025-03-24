@@ -83,34 +83,12 @@ class DankaCustomAuth {
         // --- 1) Afficher les erreurs éventuelles ---
         if ( ! empty( self::$register_errors ) && is_wp_error( self::$register_errors ) ) {
             foreach ( self::$register_errors->get_error_messages() as $error ) {
-                echo '<div class="custom-error" style="color:red;">' . esc_html( $error ) . '</div>';
+                echo '<div class="custom-error" style="color:red;">' . $error . '</div>';
             }
         }
-        ?>
 
-        <!-- 2) Le formulaire d'inscription -->
-        <form method="post" class="custom-register-form custom-auth-form">
-            <div class="custom-auth-form__head">
-                <h3>Créer son compte</h3>
-            </div>
-            <div class="custom-auth-form__body">
-                <div class="custom-auth-form__fields">
-                    <label class="custom-auth-form__label" for="reg_email">Email</label>
-                    <input type="text" name="reg_email" id="reg_email" placeholder="Votre email" required>
-                </div>
-                <div class="custom-auth-form__fields">
-                    <label class="custom-auth-form__label" for="reg_password">Mot de passe</label>
-                    <input type="password" name="reg_password" id="reg_password" placeholder="***********" required>
-                </div>
-            </div>
-            <?php wp_nonce_field( 'custom_register_action', 'custom_register_nonce' ); ?>
-            <div class="custom-auth-form__bottom">
-                <input type="submit" class="component-button component-button--full" name="custom_register_submit" value="S'inscrire">
-                <p>Déjà un compte ? <a href="/login">Se connecter</a></p>
-            </div>
-        </form>
-        <?php
-
+        \Timber\Timber::render( 'form-signup.twig' );
+        
         return ob_get_clean();
     }
 
@@ -128,36 +106,11 @@ class DankaCustomAuth {
         // --- 1) Afficher les erreurs éventuelles ---
         if ( ! empty( self::$login_errors ) && is_wp_error( self::$login_errors ) ) {
             foreach ( self::$login_errors->get_error_messages() as $error ) {
-                echo '<div class="custom-error" style="color:red;">' . esc_html( $error ) . '</div>';
+                echo '<div class="custom-error" style="color:red;">' . $error . '</div>';
             }
         }
-        ?>
-
-        <!-- 2) Le formulaire de connexion -->
-        <form method="post" class="custom-login-form custom-auth-form">
-            <div class="custom-auth-form__head">
-                <h3>Se connecter</h3>
-            </div>
-            <div class="custom-auth-form__body">
-                <div class="custom-auth-form__fields">
-                    <label class="custom-auth-form__label" for="log_username">Identifiant</label>
-                    <input type="text" name="log_username" id="log_username" placeholder="Votre nom d’identifiant" required>
-                </div>
-                <div class="custom-auth-form__fields">
-                    <label class="custom-auth-form__label" for="log_password">Mot de passe</label>
-                    <input type="password" name="log_password" id="log_password" placeholder="***********" required>
-                </div>
-                <p>
-                    <a href="/lost-password">Mot de passe oublié ?</a>
-                </p>
-            </div>
-            <?php wp_nonce_field( 'custom_login_action', 'custom_login_nonce' ); ?>
-            <div class="custom-auth-form__bottom">
-                <input type="submit" class="component-button component-button--full" name="custom_login_submit" value="Connexion">
-                <p>Pas encore de compte ? <a href="/register">S’inscrire</a></p>
-            </div>
-        </form>
-        <?php
+        
+        \Timber\Timber::render( 'form-signin.twig' );
 
         return ob_get_clean();
     }
@@ -167,11 +120,11 @@ class DankaCustomAuth {
      */
     public static function handle_form_submission() {
         // Inscription
-        if ( isset( $_POST['custom_register_submit'] ) ) {
+        if ( isset( $_POST['custom_register_nonce'] ) ) {
             self::process_registration();
         }
         // Connexion
-        if ( isset( $_POST['custom_login_submit'] ) ) {
+        if ( isset( $_POST['custom_login_nonce'] ) ) {
             self::process_login();
         }
         // Mot de passe oublié
@@ -358,11 +311,11 @@ class DankaCustomAuth {
         }
 
         // Vérifier si le compte est confirmé
-        $confirmed = get_user_meta( $user->ID, self::META_KEY_CONFIRMED, true );
-        if ( '1' !== (string)$confirmed ) {
-            self::$login_errors->add('account_not_confirmed', 'Votre compte n’est pas encore activé. Vérifiez vos emails.');
-            return;
-        }
+        // $confirmed = get_user_meta( $user->ID, self::META_KEY_CONFIRMED, true );
+        // if ( '1' !== (string)$confirmed ) {
+        //     self::$login_errors->add('account_not_confirmed', 'Votre compte n’est pas encore activé. Vérifiez vos emails.');
+        //     return;
+        // }
 
         // Tenter la connexion
         $creds = array(
@@ -497,7 +450,8 @@ class DankaCustomAuth {
         // self::send_welcome_email( $user_id );
 
         // Rediriger vers la liste des comptes, avec un param
-        wp_redirect( admin_url( 'users.php?validated=1' ) );
+        // wp_redirect( admin_url( 'users.php?validated=1' ) );
+        wp_redirect( home_url( '/' ) );
         exit;
     }
 

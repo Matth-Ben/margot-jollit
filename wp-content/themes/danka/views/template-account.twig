@@ -1,0 +1,48 @@
+{% extends "app-content.twig" %}
+
+{% import "@components/image.twig" as image %}
+{% import "@components/acf-flex-content.twig" as acf_flex_content %}
+{% import "@components/button.twig" as button %}
+{% import "@components/breadcrumbs.twig" as breadcrumbs %}
+
+{% set data = get_fields() %}
+
+{% block app_content %}
+    <div class="PageSignup">
+        <div class="PageSignup__breadcrumbs">
+            {{ breadcrumbs.default() }}
+        </div>
+        <div class="PageSignup__header">
+            <h1 show-element animate-words>{{ post.title }}</h1>
+        </div>
+        <div class="PageSignup__content">
+            {% if message %}
+                <h3>{{message}}</h3>
+                <br>
+                <hr>
+                <br>
+            {% endif %}
+            <h2>{{ user.user_nicename }}</h2>
+            <br>
+            <p>Abonnement : {{ is_active != false ? 'Actif ✅' : 'Inactif' }}</p>
+            {% if is_active == 'end' %}
+                <br>
+                <p>(Votre abonnement prendra fin le {{ end|date('d/m/Y') }})</p>
+            {% endif %}
+            <br>
+            {% if user.paywall %}
+                {{ button.default({
+                    title: 'Arrêter l\'abonnement',
+                    url: '?cancel',
+                }) }}
+            {% else %}
+                {% if not is_active %}
+                    {{ button.default({
+                        title: 'Activer l\'abonnement pour 8€/mois',
+                        url: '?payment',
+                    }) }}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,8 +1,8 @@
-.Page__breadcrumbs {
+.PageSignup__breadcrumbs {
     @apply mb-xxxl px-margin;
 }
 
-.Page__header {
+.PageSignup__header {
     @apply flex flex-col gap-l px-margin my-xxl;
     @apply d:max-w-col-8;
 
@@ -11,10 +11,6 @@
     }
 }
 
-.Page__thumbnail {
-    @apply aspect-[2/1] mt-xxl overflow-hidden;
-
-    & > div {
-        @apply scale-[1.1];
-    }
+.PageSignup__content {
+    @apply px-margin mb-xxxl;
 }

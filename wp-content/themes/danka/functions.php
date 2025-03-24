@@ -21,27 +21,6 @@ function search_filter( $query ) {
 add_action( 'pre_get_posts', 'search_filter' );
 
 
-function get_month_list( $end_date ) {
-    if ( ! $end_date ) {
-        return [];
-    }
-
-    $month_list = array();
-    $end_date = new DateTime( $end_date );
-
-    // set first day of the month
-    $start_date = new DateTime( 'first day of this month' );
-    $start_date->setTime( 0, 0, 0 );
-
-    while ( $start_date <= $end_date ) {
-        $month_list[] = $start_date->format( 'Y-m' );
-        $start_date->modify( '+1 month' );
-    }
-
-    return $month_list;
-}
-
-
 function mapped_implode( $glue, $array, $symbol = '=' ) {
     return implode( $glue, array_map(
             function( $k, $v ) use( $symbol ) {
@@ -70,7 +49,7 @@ function get_url_parameters() {
 
 
 
-function get_flex_content( $content, $type = null ) {
+function get_flex_content( $content ) {
     $new_content = array();
     $halfscreen_content = array();
 

@@ -1,0 +1,25 @@
+{% import "@components/button.twig" as button %}
+
+<form method="post" class="custom-login-form custom-auth-form">
+    <div class="custom-auth-form__body">
+        <div class="custom-auth-form__fields">
+            <label class="custom-auth-form__label" for="log_username">Identifiant</label>
+            <input type="text" name="log_username" id="log_username" placeholder="Votre nom d’identifiant" required>
+        </div>
+        <div class="custom-auth-form__fields">
+            <label class="custom-auth-form__label" for="log_password">Mot de passe</label>
+            <input type="password" name="log_password" id="log_password" placeholder="***********" required>
+        </div>
+    </div>
+    {{ function('wp_nonce_field', 'custom_login_action', 'custom_login_nonce', true, false) }}
+    <div class="custom-auth-form__bottom">
+        {{ button.default({
+            'title': 'Connexion',
+            'attributes': 'type="submit"',
+        }) }}
+        <p>Pas encore de compte ? <a href="/inscription">S’inscrire</a></p>
+        <p>
+            <a href="/lost-password">Mot de passe oublié ?</a>
+        </p>
+    </div>
+</form>

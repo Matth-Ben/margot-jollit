@@ -6,6 +6,7 @@ require_once get_template_directory() . '/core/_buffer.php';
 require_once get_template_directory() . '/core/_fn-generate-template.php';
 require_once get_template_directory() . '/core/_fn-danka-add-cpt.php';
 require_once get_template_directory() . '/core/_fn-danka-sort-terms.php';
+require_once get_template_directory() . '/core/_fn-get-month-list.php';
 require_once get_template_directory() . '/core/_acf-synchronisation.php';
 require_once get_template_directory() . '/core/_admin-menu.php';
 require_once get_template_directory() . '/core/_custom-timber-class.php';

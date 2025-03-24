@@ -82,6 +82,27 @@
                     "allow_in_bindings": 0
                 }
             ]
+        },
+        {
+            "key": "field_67e17e87c1946",
+            "label": "Clé secrète Stripe",
+            "name": "stripe_secret_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -102,5 +123,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742207278
+    "modified": 1742831313
 }

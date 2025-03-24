@@ -45,11 +45,14 @@
 @import './components/pannel-search.css';
 @import './components/pannel-filters';
 @import './components/title.css';
+@import './components/cookies-manager.css';
 
 /* layouts */
 @import './layouts/FrontPage.css';
 @import './layouts/Archive.css';
 @import './layouts/Page.css';
+@import './layouts/PageSignup.css';
+@import './layouts/PageSignin.css';
 @import './layouts/Search.css';
 @import './layouts/Archive.css';
 @import './layouts/ArchiveEvent.css';

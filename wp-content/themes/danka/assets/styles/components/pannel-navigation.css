@@ -107,6 +107,10 @@
 
 .component-pannel-navigation__buttons {
     @apply flex justify-between items-center gap-xl;
+
+    & a > span {
+        @apply text-dark;
+    }
 }
 
 .component-pannel-navigation.show-subitems .component-pannel-navigation__items > li:not(.active),

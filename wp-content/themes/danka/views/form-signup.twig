@@ -1,0 +1,22 @@
+{% import "@components/button.twig" as button %}
+
+<form method="post" class="custom-register-form custom-auth-form">
+    <div class="custom-auth-form__body">
+        <div class="custom-auth-form__fields">
+            <label class="custom-auth-form__label" for="reg_email">Email*</label>
+            <input type="text" name="reg_email" id="reg_email" placeholder="Votre email" required>
+        </div>
+        <div class="custom-auth-form__fields">
+            <label class="custom-auth-form__label" for="reg_password">Mot de passe</label>
+            <input type="password" name="reg_password" id="reg_password" placeholder="***********" required>
+        </div>
+    </div>
+    {{ function('wp_nonce_field', 'custom_register_action', 'custom_register_nonce', true, false) }}
+    <div class="custom-auth-form__bottom">
+        {{ button.default({
+            'title': 'S\'inscrire',
+            'attributes': 'type="submit"',
+        }) }}
+        <p>Déjà un compte ? <a href="/connexion">Se connecter</a></p>
+    </div>
+</form>

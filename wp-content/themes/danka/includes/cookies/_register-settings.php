@@ -86,7 +86,7 @@ function danka_register_settings__cookies()
 
     $cookies = array(
         'youtube' => 'Youtube',
-        'google_analytics' => 'Google Analytics'
+        // 'google_analytics' => 'Google Analytics'
     );
 
     foreach ( $cookies as $slug => $cookie ) {
@@ -128,6 +128,24 @@ function danka_register_settings__cookies()
             );
         }
     }
+
+
+    $name = $section_name . "_fields";
+
+    add_settings_field(
+        $name,                                     // id
+        "Autres cookies",                                  // title
+        "danka_settings__cookies__render_custom",               // callback
+        DANKA_SETTINGS_COOKIES_SLUG,                               // page
+        $section_name,                                          // section
+        array( 'name' => $name )
+    );
+
+    register_setting(
+        DANKA_SETTINGS_COOKIES_SLUG,                           // option group
+        $name,                                 // option name
+        array( 'type' => 'string' )
+    );
 }
 
 
@@ -146,6 +164,96 @@ function danka_settings__cookies__render_script( $args )
     $value = get_option( $name );
     
     echo "<textarea id='$name' class='regular-text' name='$name'>$value</textarea>";
+}
+
+function danka_settings__cookies__render_custom( $args )
+{
+    $name = $args['name'];
+    $value = get_option( $name );
+    $value = esc_attr( $value );
+    
+    echo "<div><input id='$name' type='hidden' name='$name' value='$value' /></div>";
+    echo "<div id='container-danka-cookies-fields'>Chargement...<br><br></div>";
+    echo "<div><button class='button' type='button' data-add-cookie>Ajouter un cookie</button></div>";
+
+    ?>
+
+    <script>
+        const input = document.querySelector('#danka_cookies_fields')
+        const container = document.querySelector('#container-danka-cookies-fields')
+
+        const get_field_html = (is_active = true, name = "", script = "") => {
+            return `
+                <div>
+                    <div><label><input type='checkbox' ${is_active ? 'checked' : ''} /> Actif</label></div>
+                    <br>
+                    <div><input type='text' value='${name}' /></div>
+                    <br>
+                    <div><textarea class='regular-text'>${script}</textarea></div>
+                    <br>
+                    <div><button class='button' type='button' data-remove-cookie>Supprimer</button></div>
+                    <br>
+                    <br>
+                </div>
+            `
+        }
+
+        const create_json = () => {
+            const json = []
+
+            document.querySelectorAll('#container-danka-cookies-fields > div').forEach(element => {
+                const checkbox = element.querySelector('input[type="checkbox"]')
+                const name = element.querySelector('input[type="text"]')
+                const script = element.querySelector('textarea')
+
+                json.push({
+                    name: name.value,
+                    is_active: checkbox.checked,
+                    script: script.value
+                })
+            })
+            
+            input.value = JSON.stringify(json)
+        }
+        
+        const parse_json = () => {
+            const json = input.value ? JSON.parse(input.value) : null
+
+            if (json && json.length) {
+                container.innerHTML = ''
+                json.forEach(cookie => {
+                    container.innerHTML += get_field_html(cookie.is_active, cookie.name, cookie.script)
+                })
+            } else {
+                container.innerHTML = '<p>Aucun cookie n\'est enregistré pour le moment !<br><br></p>'
+            }
+        }
+
+        document.addEventListener("click", () => {
+
+            // Ajouter un cookie
+            if (event.target.tagName === 'BUTTON' && event.target.getAttribute('data-add-cookie') !== null) {
+                document.querySelector('#container-danka-cookies-fields p')?.remove()
+                document.querySelector('#container-danka-cookies-fields').innerHTML += get_field_html()
+            }
+            
+            // Supprimer un cookie
+            if (event.target.tagName === 'BUTTON' && event.target.getAttribute('data-remove-cookie') !== null) {
+                event.target.parentElement.parentElement.remove()
+                create_json()
+            }
+        })
+
+        document.addEventListener('change', event => {
+            if (event.target.closest('#container-danka-cookies-fields') !== null) {
+                create_json()
+            }
+        })
+
+        document.addEventListener('DOMContentLoaded', parse_json)
+    </script>
+
+    <?php
 }
 
 add_action( 'admin_init', 'danka_register_settings__cookies' );

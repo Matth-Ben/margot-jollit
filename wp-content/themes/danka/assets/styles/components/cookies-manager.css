@@ -14,120 +14,116 @@
         display: none;
     }
 
-    .component {
-        
-        &__main {
-            @apply flex flex-col gap-l;
+    & .component__main {
+        @apply flex flex-col gap-l;
 
-            & > div:first-child {
-                @apply flex flex-col gap-s;
-            }
-        }
-
-        &__main,
-        &__preferences {
-            @apply flex flex-col gap-xl p-xxl bg-light border border-gray2;
-        }
-        
-        &__preferences {
-
-            & > div:first-child {
-                @apply flex flex-col gap-l;
-            }
-        }
-
-        &__title {
-            @apply ts-bold;
-        }
-        
-        &__description {
-            @apply ts-body2;
-        }
-        
-        &__privacy-policy {
-            @apply underline;
-        }
-
-        &__buttons {
-            @apply flex justify-between gap-xl;
-
-            & > span {
-                @apply flex gap-xl;
-            }
-        }
-
-        &__button-personalize,
-        &__back {
-            @apply text-gray1 border-gray1;
-        }
-        
-        &__button-accept,
-        &__button-confirm {
-            @apply component--button;
-        }
-
-        &__services {
+        & > div:first-child {
             @apply flex flex-col gap-s;
-        }
-
-        &__service {
-            @apply flex justify-between gap-l;
-
-            span {
-                @apply ts-body2;
-            }
-
-            button {
-                width: 4rem;
-                height: 2rem;
-                position: relative;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    inset: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: var(--color-light);
-                    border: solid 1px var(--color-dark);
-                    border-radius: 10rem;
-                    transition: background-color .3s ease;
-                }
-                
-                &::after {
-                    content: '';
-                    position: absolute;
-                    inset: 0;
-                    width: calc(2rem - 6px);
-                    height: calc(2rem - 6px);
-                    margin: 3px;
-                    background-color: var(--color-dark);
-                    border-radius: 10rem;
-                    transition: background-color .3s ease, left .3s ease;
-                }
-            }
-
-            &.active button,
-            &[data-name="necessary"] button {
-
-                &::before {
-                    background-color: var(--color-dark);
-                }
-
-                &::after {
-                    background-color: var(--color-light);
-                    left: calc(100% - 2rem);
-                }
-            }
-
-            &[data-name="necessary"] button {
-                opacity: .3;
-            }
-
         }
     }
 
-    @include desktop() {
+    & .component__main,
+    & .component__preferences {
+        @apply flex flex-col gap-xl p-xxl bg-light border border-[gray];
+    }
+    
+    & .component__preferences {
+
+        & > div:first-child {
+            @apply flex flex-col gap-l;
+        }
+    }
+
+    & .component__title {
+        @apply ts-bold;
+    }
+    
+    & .component__description {
+        /* @apply ts-body2; */
+    }
+    
+    & .component__privacy-policy {
+        @apply underline;
+    }
+
+    & .component__buttons {
+        @apply flex justify-between gap-xl;
+
+        & > span {
+            @apply flex gap-xl;
+        }
+    }
+
+    & .component__button-personalize,
+    & .component__back {
+        @apply text-[gray] border-[gray];
+    }
+    
+    & .component__button-accept,
+    & .component__button-confirm {
+        /* @apply component--button; */
+    }
+
+    & .component__services {
+        @apply flex flex-col gap-s;
+    }
+
+    & .component__service {
+        @apply flex justify-between gap-l;
+
+        span {
+            @apply ts-body2;
+        }
+
+        button {
+            width: 4rem;
+            height: 2rem;
+            position: relative;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-light);
+            border: solid 1px var(--color-dark);
+            border-radius: 10rem;
+            transition: background-color .3s ease;
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: calc(2rem - 6px);
+            height: calc(2rem - 6px);
+            margin: 3px;
+            background-color: var(--color-dark);
+            border-radius: 10rem;
+            transition: background-color .3s ease, left .3s ease;
+        }
+
+        &.active button,
+        &[data-name="necessary"] button {
+
+            &::before {
+                background-color: var(--color-dark);
+            }
+
+            &::after {
+                background-color: var(--color-light);
+                left: calc(100% - 2rem);
+            }
+        }
+
+        &[data-name="necessary"] button {
+            opacity: .3;
+        }
+    }
+
+    /* @include desktop() {
         bottom: var(--spacing-xxl);
         right: var(--spacing-xxl);
     }
@@ -138,5 +134,5 @@
         .component__buttons {
             flex-direction: column;
         }
-    }
+    } */
 }
