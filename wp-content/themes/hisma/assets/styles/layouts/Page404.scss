@@ -1,9 +1,0 @@
-.Page404 {
-    @apply flex items-end min-h-lvh pt-xxl pb-24 d:py-xxl;
-}
-
-body[wp-class*="error404"] {
-    footer {
-        @apply hidden invisible;
-    }
-}

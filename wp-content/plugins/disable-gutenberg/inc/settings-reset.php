@@ -30,14 +30,14 @@ function disable_gutenberg_admin_notice() {
 			
 			?>
 			
-			<div class="notice notice-success notice-margin">
+			<div class="notice notice-success notice-margin notice-custom">
 				<p>
-					<strong><?php esc_html_e('Fall Sale!', 'disable-gutenberg'); ?></strong> 
-					<?php esc_html_e('Take 25% OFF any of our', 'disable-gutenberg'); ?> 
+					<strong><?php esc_html_e('Spring Sale!', 'disable-gutenberg'); ?></strong> 
+					<?php esc_html_e('Take 30% OFF any of our', 'disable-gutenberg'); ?> 
 					<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/"><?php esc_html_e('Pro WordPress plugins', 'disable-gutenberg'); ?></a> 
 					<?php esc_html_e('and', 'disable-gutenberg'); ?> 
 					<a target="_blank" rel="noopener noreferrer" href="https://books.perishablepress.com/"><?php esc_html_e('books', 'disable-gutenberg'); ?></a>. 
-					<?php esc_html_e('Apply code', 'disable-gutenberg'); ?> <code>FALL2024</code> <?php esc_html_e('at checkout. Sale ends 12/21/24.', 'disable-gutenberg'); ?> 
+					<?php esc_html_e('Apply code', 'disable-gutenberg'); ?> <code>SPRING2025</code> <?php esc_html_e('at checkout. Sale ends 6/25/2025.', 'disable-gutenberg'); ?> 
 					<?php echo disable_gutenberg_dismiss_notice_link(); ?>
 				</p>
 			</div>
@@ -116,7 +116,7 @@ function disable_gutenberg_dismiss_notice_link() {
 
 function disable_gutenberg_check_date_expired() {
 	
-	$expires = apply_filters('disable_gutenberg_check_date_expired', '2024-12-21');
+	$expires = apply_filters('disable_gutenberg_check_date_expired', '2025-06-25');
 	
 	return (new DateTime() > new DateTime($expires)) ? true : false;
 	

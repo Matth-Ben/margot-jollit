@@ -1,7 +1,0 @@
-input {
-    all: unset;
-
-    &::placeholder {
-        @apply opacity-100 text-white;
-    }
-}

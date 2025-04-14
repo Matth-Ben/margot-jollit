@@ -3,15 +3,15 @@
 Plugin Name: Disable Gutenberg
 Plugin URI: https://perishablepress.com/disable-gutenberg/
 Description: Disables Gutenberg Block Editor and restores the Classic Editor and original Edit Post screen. Provides options to enable on specific post types, user roles, and more.
-Tags: classic editor, block editor, block-editor, gutenberg, blocks
+Tags: classic editor, block editor, editor, gutenberg
 Author: Jeff Starr
 Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.9
-Tested up to: 6.7
-Stable tag: 3.2.2
-Version:    3.2.2
+Tested up to: 6.8
+Stable tag: 3.2.3
+Version:    3.2.3
 Requires PHP: 5.6.20
 Text Domain: disable-gutenberg
 Domain Path: /languages
@@ -82,7 +82,7 @@ _Automatically replaces Gutenberg with the Classic Editor._
 
 > Works great with Google AMP and the WordPress [AMP plugin](https://wordpress.org/plugins/amp/).
 
-Disable Gutenberg is developed and maintained by [Jeff Starr](https://twitter.com/perishable), 15-year [WordPress developer](https://plugin-planet.com/) and [book author](https://books.perishablepress.com/).
+Disable Gutenberg is developed and maintained by [Jeff Starr](https://x.com/perishable), 15-year [WordPress developer](https://plugin-planet.com/) and [book author](https://books.perishablepress.com/).
 
 _Super light & fast plugin, super easy on server resources!_
 
@@ -115,6 +115,7 @@ And/or purchase one of my premium WordPress plugins:
 * [Blackhole Pro](https://plugin-planet.com/blackhole-pro/) - Automatically block bad bots
 * [Banhammer Pro](https://plugin-planet.com/banhammer-pro/) - Monitor traffic and ban the bad guys
 * [GA Google Analytics Pro](https://plugin-planet.com/ga-google-analytics-pro/) - Connect WordPress to Google Analytics
+* [Head Meta Pro](https://plugin-planet.com/head-meta-pro/) - Ultimate Meta Tags for WordPress
 * [Simple Ajax Chat Pro](https://plugin-planet.com/simple-ajax-chat-pro/) - Unlimited chat rooms
 * [USP Pro](https://plugin-planet.com/usp-pro/) - Unlimited front-end forms
 
@@ -305,10 +306,12 @@ Thank you to everyone for using Disable Gutenberg and for all the [awesome 5-sta
 If you have any feedback or suggestions to make this plugin the absolute best it can be, and/or would like to help with development, please reach me via the [contact form](https://plugin-planet.com/support/#contact) at Plugin Planet.
 
 
-**3.2.2 (2024/11/02)**
+**3.2.3 (2025/03/24)**
 
-* Fixes bug with textdomain loading ([Thanks](https://wordpress.org/support/topic/not-compatible-with-6-7/) [@opajaap](https://wordpress.org/support/users/opajaap/))
-* Tests on WordPress 6.7
+* Removes `load_i18n()` function
+* Adds uninstall option `disable-gutenberg-dismiss-notice`
+* Generates new language template
+* Tests on WordPress 6.8
 
 
 Full changelog @ [https://plugin-planet.com/wp/changelog/disable-gutenberg.txt](https://plugin-planet.com/wp/changelog/disable-gutenberg.txt)

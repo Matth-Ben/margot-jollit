@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Disable Gutenberg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-04 21:25+0000\n"
+"POT-Creation-Date: 2025-03-24 14:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: disable-gutenberg.php:228
+#: disable-gutenberg.php:227
 msgid " or higher, and has been deactivated! "
 msgstr ""
 
@@ -35,7 +35,7 @@ msgid "Apply code"
 msgstr ""
 
 #: inc/settings-reset.php:40
-msgid "at checkout. Sale ends 12/21/24."
+msgid "at checkout. Sale ends 6/25/2025."
 msgstr ""
 
 #: inc/plugin-features.php:86
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Click here"
 msgstr ""
 
-#: disable-gutenberg.php:184
+#: disable-gutenberg.php:183
 msgid "Click here to rate and review this plugin on WordPress.org"
 msgstr ""
 
@@ -87,7 +87,6 @@ msgid "Disable for"
 msgstr ""
 
 #. Name of the plugin
-#: disable-gutenberg.php:82
 msgid "Disable Gutenberg"
 msgstr ""
 
@@ -162,10 +161,6 @@ msgid ""
 "Editor). Or, disable this setting to display more options."
 msgstr ""
 
-#: inc/settings-reset.php:35
-msgid "Fall Sale!"
-msgstr ""
-
 #: inc/settings-register.php:50
 msgid "Gutenberg Menu Item"
 msgstr ""
@@ -178,7 +173,7 @@ msgstr ""
 msgid "Hide this plugin&rsquo;s menu item"
 msgstr ""
 
-#: disable-gutenberg.php:179
+#: disable-gutenberg.php:178
 msgid "Homepage"
 msgstr ""
 
@@ -198,7 +193,7 @@ msgstr ""
 msgid "learn more"
 msgstr ""
 
-#: disable-gutenberg.php:203
+#: disable-gutenberg.php:202
 msgid "Like this plugin? Give it a"
 msgstr ""
 
@@ -214,11 +209,11 @@ msgstr ""
 msgid "Please give a 5-star rating! A huge THANK YOU for your support!"
 msgstr ""
 
-#: disable-gutenberg.php:229
+#: disable-gutenberg.php:228
 msgid "Please return to the"
 msgstr ""
 
-#: disable-gutenberg.php:178
+#: disable-gutenberg.php:177
 msgid "Plugin Homepage"
 msgstr ""
 
@@ -250,11 +245,11 @@ msgstr ""
 msgid "Rate Plugin"
 msgstr ""
 
-#: disable-gutenberg.php:185
+#: disable-gutenberg.php:184
 msgid "Rate this plugin"
 msgstr ""
 
-#: disable-gutenberg.php:227
+#: disable-gutenberg.php:226
 msgid "requires WordPress "
 msgstr ""
 
@@ -302,7 +297,7 @@ msgstr ""
 msgid "Separate multiple templates with commas"
 msgstr ""
 
-#: disable-gutenberg.php:163
+#: disable-gutenberg.php:162
 msgid "Settings"
 msgstr ""
 
@@ -318,12 +313,16 @@ msgstr ""
 msgid "Show support with a small donation&nbsp;&raquo;"
 msgstr ""
 
-#: disable-gutenberg.php:250 disable-gutenberg.php:256
+#: disable-gutenberg.php:243 disable-gutenberg.php:249
 msgid "Sorry, pal!"
 msgstr ""
 
+#: inc/settings-reset.php:35
+msgid "Spring Sale!"
+msgstr ""
+
 #: inc/settings-reset.php:36
-msgid "Take 25% OFF any of our"
+msgid "Take 30% OFF any of our"
 msgstr ""
 
 #: inc/settings-register.php:167
@@ -332,7 +331,7 @@ msgid ""
 "when hidden on this page."
 msgstr ""
 
-#: disable-gutenberg.php:230
+#: disable-gutenberg.php:229
 msgid "to upgrade WordPress and try again."
 msgstr ""
 
@@ -360,7 +359,7 @@ msgstr ""
 msgid "Whitelist Post Titles"
 msgstr ""
 
-#: disable-gutenberg.php:230
+#: disable-gutenberg.php:229
 msgid "WP Admin Area"
 msgstr ""
 
@@ -368,6 +367,6 @@ msgstr ""
 msgid "Yes, make it so."
 msgstr ""
 
-#: disable-gutenberg.php:207
+#: disable-gutenberg.php:206
 msgid "★★★★★ rating&nbsp;&raquo;"
 msgstr ""

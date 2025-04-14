@@ -1,7 +1,0 @@
-{% macro default(data) %}
-    {% if data.text %}
-        <div class="component component--wysiwyg">
-            <div>{{ fn('wpautop', data.text) }}</div>
-        </div>
-    {% endif %}
-{% endmacro %}

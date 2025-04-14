@@ -3,3 +3,4 @@
 if (!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN')) exit();
 
 delete_option('disable_gutenberg_options');
+delete_option('disable-gutenberg-dismiss-notice');
