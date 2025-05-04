@@ -14,6 +14,7 @@ import './components/pannel-filters'
 import './components/accordions'
 import './components/pannel'
 import './components/alert'
+import './components/hero-front-page'
 
 
 //// custom input checkbox

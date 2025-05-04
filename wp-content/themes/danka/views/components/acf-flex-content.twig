@@ -3,24 +3,16 @@
         <section class="component-acf-flex-content">
             {% for component in data %}
                 {% if component.acf_fc_layout %}
-                    {% set filename = component.acf_fc_layout|replace({'_': '-'}) %}
-                    {% set filename = filename ~ ".twig" %}
-                    {% set path = function('get_template_directory') ~ '/views/blocks/' ~ filename %}
+                    {% set filename = component.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
+                    {% set path = 'blocks/' ~ filename %}
 
-                    {% if function('file_exists', path) %}
+                    {% if function('locate_template', 'views/' ~ path) %}
                         {% import path as c %}
                         {% set source = source(path) %}
 
                         {% if 'macro default' in source %}
                             {{ c.default(component[component.acf_fc_layout]) }}
                         {% endif %}
-
-                        {# {% set variation = component.variation ? component.variation : 'default' %} #}
-
-                        {# {% include path with {
-                            variation: variation,
-                            data: component[component.acf_fc_layout]
-                        } %} #}
                     {% endif %}
                 {% endif %}
             {% endfor %}

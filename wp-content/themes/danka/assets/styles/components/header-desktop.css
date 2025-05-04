@@ -2,7 +2,7 @@
     transition: background-color 0s;
     
     & > nav {
-        @apply flex justify-between items-center w-full p-margin pb-xl z-[90];
+        @apply flex justify-between items-center w-full px-margin py-s z-[90];
         transition: padding-top var(--transition);
     }
 

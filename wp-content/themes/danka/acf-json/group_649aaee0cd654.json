@@ -37,53 +37,6 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_672904a15a8cc",
-                    "label": "Image",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "allow_in_bindings": 0,
-                    "preview_size": "medium"
-                },
-                {
-                    "key": "field_672904b65a8cd",
-                    "label": "Titre",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
                     "key": "field_672907b8cb40c",
                     "label": "Texte",
                     "name": "text",
@@ -105,11 +58,11 @@
                     "new_lines": ""
                 },
                 {
-                    "key": "field_672904de5a8ce",
-                    "label": "Bouton",
-                    "name": "button",
+                    "key": "field_6817530dbee61",
+                    "label": "Projets à mettre en avant",
+                    "name": "feature_realisation",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "relationship",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -118,8 +71,22 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "allow_in_bindings": 0
+                    "post_type": [
+                        "realisation"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "filters": [
+                        "search",
+                        "taxonomy"
+                    ],
+                    "return_format": "object",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "elements": "",
+                    "bidirectional": 0,
+                    "bidirectional_target": []
                 }
             ]
         },
@@ -355,5 +322,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1744638080
+    "modified": 1746360268
 }

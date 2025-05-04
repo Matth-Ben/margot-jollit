@@ -1,24 +1,57 @@
-.component-hero-front-page {
-    @apply relative w-full min-h-[100svh] overflow-hidden;
+.component--hero-front {
+    @apply w-full h-screen;
 }
 
-.component-hero-front-page__image {
-    @apply absolute top-0 left-0 w-full h-full object-cover;
-
-    & .component-image {
-        @apply w-full h-full aspect-auto;
-    }
+.component--hero-front__wrapper {
+    @apply relative overflow-hidden;
 }
 
-.component-hero-front-page__image::after {
-    content: '';
-    @apply absolute top-0 left-0 w-full h-full bg-dark opacity-20;
+.component--hero-front__wrapper--title {
+    @apply relative flex gap-[0.5rem] mt-10 ts-body text-primary overflow-hidden;
 }
 
-.component-hero-front-page__content {
-    @apply flex flex-col items-start absolute top-0 left-0 h-full p-margin z-[1] d:max-w-col-8;
+.component--hero-front__wrapper--title .number-wrapper,
+.component--hero-front__wrapper--title .title-wrapper {
+    @apply relative;
+}
 
-    & > div {
-        @apply flex flex-col justify-center gap-xl h-full text-light;
-    }
+.component--hero-front__wrapper--title .number-wrapper {
+    @apply w-[1.5rem];
+}
+
+.component--hero-front__wrapper--title .number,
+.component--hero-front__wrapper--title .title {
+    @apply absolute inset-0 w-max;
+}
+
+.component--hero-front__wrapper--title .digit {
+    @apply relative;
+}
+
+.component--hero-front__wrapper--title .unit-digit {
+    @apply relative w-max ml-[-0.3rem];
+}
+
+.component--hero-front__image {
+    @apply absolute inset-0 z-0 w-full h-full object-cover overflow-hidden;
+}
+
+.component--hero-front__image--contain {
+    @apply relative;
+}
+
+.component--hero-front__title {
+    @apply max-d:w-full;
+}
+
+.component--hero-front__title svg {
+    @apply w-full;
+}
+
+.component--hero-front__icon-1 svg {
+    @apply h-[6.3rem] d:h-[12rem];
+}
+
+.component--hero-front__icon-2 svg {
+    @apply h-[7.7rem] d:h-[14.8rem];
 }

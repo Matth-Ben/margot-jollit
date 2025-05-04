@@ -1,23 +1,125 @@
 {% macro default(data) %}
-    {% import "@components/button.twig" as button %}
-    {% import "@components/svg.twig" as svg %}
-    {% import "@components/image.twig" as image %}
+    {% import "@components/image.twig" as _image %}
+    {% import "@components/svg.twig" as _svg %}
+    {% import "@components/button.twig" as _button %}
 
     {% if data %}
-        <div class="component component-hero-front-page">
-            {% if data.image %}
-                <div class="component-hero-front-page__image">
-                    {{ image.default(data.image) }}
+        <div class="component component--hero-front" show-elements>
+            <div class="container relative d:h-full pt-[10rem] d:pt-[13.5rem] d:pb-[14.5rem]">
+                <div class="grid grid-cols-8 d:grid-cols-12 gap-x-10 gap-y-30 d:gap-10 d:h-full">
+                    <div class="invisble hidden d:visible d:block col-span-3 col-start-2">
+                        <div class="component--hero-front__wrapper">
+                            <div class="animation--translate-up w-full h-full aspect-[326/211]" show-element>
+                                {% for item in data.feature_realisation %}
+                                    {% set fields = get_fields(item) %}
+                                    <a href="{{ fn('get_permalink', item.ID) }}" class="component--hero-front__image {% if loop.index == 1 %}active{% endif %}">
+                                        <div class="component--hero-front__image--contain {% if loop.index == 1 %}active{% endif %} aspect-[326/211] w-full">
+                                            {{ _image.default(fields.images.0, { 'aspect_ratio': 'aspect-[326/211]' }) }}
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                            <div class="component--hero-front__wrapper--title max-d:hidden">
+                                <div class="number-wrapper">
+                                    {% for item in data.feature_realisation %}
+                                        {% set index = loop.index %}
+                                        <div class="number {% if index == 1 %}active{% endif %}">
+                                            {% if index < 10 %}
+                                                <span class="digit leading-zero">0</span>
+                                            {% else %}
+                                                <span class="digit leading-zero" style="visibility: hidden;">0</span>
+                                            {% endif %}
+                                            <span class="digit unit-digit">{{ index < 10 ? index : index % 10 }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <span>/</span>
+                                <div class="title-wrapper">
+                                    {% for item in data.feature_realisation %}
+                                        <div class="title {% if loop.index == 1 %}active{% endif %}">
+                                            {{ item.post_title }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-4 d:col-span-2 d:col-start-6 max-d:order-2 d:mt-auto">
+                        <div class="component--hero-front__wrapper">
+                            <div class="animation--translate-up w-full h-full aspect-[214/268]" show-element>
+                                {% for item in data.feature_realisation %}
+                                    {% set fields = get_fields(item) %}
+                                    <a href="{{ fn('get_permalink', item.ID) }}" class="component--hero-front__image {% if loop.index == 1 %}active{% endif %}">
+                                        <div class="component--hero-front__image--contain {% if loop.index == 1 %}active{% endif %} aspect-[214/268] w-full">
+                                            {{ _image.default(fields.images.1, { 'aspect_ratio': 'aspect-[214/268]' }) }}
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                            <div class="component--hero-front__wrapper--title d:hidden">
+                                <div class="number-wrapper">
+                                    {% for item in data.feature_realisation %}
+                                        {% set index = loop.index %}
+                                        <div class="number {% if index == 1 %}active{% endif %}">
+                                            {% if index < 10 %}
+                                                <span class="digit leading-zero">0</span>
+                                            {% else %}
+                                                <span class="digit leading-zero" style="visibility: hidden;">0</span>
+                                            {% endif %}
+                                            <span class="digit unit-digit">{{ index < 10 ? index : index % 10 }}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <span>/</span>
+                                <div class="title-wrapper">
+                                    {% for item in data.feature_realisation %}
+                                        <div class="title {% if loop.index == 1 %}active{% endif %}">
+                                            {{ item.post_title }}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2 d:col-span-1 max-d:order-3">
+                        <div class="flex flex-col items-end gap">
+                            <button class="component component__button component__button--icon navigation--right">{% include "@icons/arrow-right.svg" %}</button>
+                            <button class="component component__button component__button--icon navigation--left">{% include "@icons/arrow-left.svg" %}</button>
+                        </div>
+                    </div>
+
+                    <div class="col-span-7 d:col-span-4 max-d:col-start-2 max-d:order-1 max-d:mr-[-2rem]">
+                        <div class="component--hero-front__wrapper">
+                            <div class="animation--translate-up w-full h-full aspect-[305/210] d:aspect-[429/351]" show-element>
+                                {% for item in data.feature_realisation %}
+                                    {% set fields = get_fields(item) %}
+                                    <a href="{{ fn('get_permalink', item.ID) }}" class="component--hero-front__image {% if loop.index == 1 %}active{% endif %}">
+                                        <div class="component--hero-front__image--contain {% if loop.index == 1 %}active{% endif %} aspect-[305/210] d:aspect-[429/351] w-full">
+                                            {{ _image.default(fields.images.2, { 'aspect_ratio': 'aspect-[305/210] d:aspect-[429/351]' }) }}
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            {% endif %}
-            <div class="component-hero-front-page__content">
-                <div>
-                    <h1 show-element animate-words>{{ data.title }}</h1>
-                    <p>{{ data.text }}</p>
+            </div>
+            <div class="absolute bottom-0 w-full">
+                <div class="container max-d:pb-m">
+                    <div class="grid grid-cols-6 d:grid-cols-12 gap-20 pb-s">
+                        <div class="col-span-6 d:col-span-5">
+                            <p class="ts-headline text-primary max-d:text-center split animation--text" show-element>{{ data.text_cover }}</p>
+                        </div>
+                        <div class="col-span-6 d:col-span-12">
+                            <div class="flex max-d:flex-col items-start justify-between max-d:gap-20">
+                                <span class="component--hero-front__title component--hero-front__icon-1">{% include "@icons/logo-1.svg" %}</span>
+                                <span class="component--hero-front__title component--hero-front__icon-2">{% include "@icons/logo-2.svg" %}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {% if data.button.title and data.button.url %}
-                    {{ button.default(data.button) }}
-                {% endif %}
             </div>
         </div>
     {% endif %}
