@@ -1,5 +1,5 @@
 .component-footer {
-    @apply flex flex-col gap-xxxl px-margin pt-xxxxl pb-xxl bg-dark text-light;
+    @apply flex flex-col gap-xxl px-margin pt-xxl pb-xxl bg-dark text-light;
     @apply d:py-margin;
 
     & > div:first-child {

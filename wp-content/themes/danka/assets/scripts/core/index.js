@@ -1,10 +1,7 @@
 import data from '../../../data.json'
 import smoothScroll from './smooth-scroll'
-// import taxi from './taxi'
 import page_transition from './page-transition'
-// import headroom from './headroom'
 import timelineAnimation from './timeline-animation'
-// import splitText from './split-text'
 import parallax from './parallax'
 import gridHelper from './grid-helper'
 import scrollbarWidth from './scrollbar-width'
@@ -14,6 +11,7 @@ import refreshBodyClasslist from './refresh-body-classlist'
 import fixScrollBehavior from './fix-scroll-behavior'
 import quickLinks from './quick-links'
 import animateWords from './animate-words'
+import animateLines from './animate-lines'
 
 /*
 Transition de page:
@@ -33,6 +31,7 @@ export default ( () => {
         // headroom()
         // splitText()
         animateWords()
+        animateLines()
         timelineAnimation()
         smoothScroll()
         parallax()
@@ -47,8 +46,8 @@ export default ( () => {
     document.addEventListener( 'NewContentLoaded', () => {
         lenis.scrollTo( 0, { immediate: true } )
         refreshBodyClasslist()
-        // splitText()
         animateWords()
+        animateLines()
         timelineAnimation()
         parallax()
         scrollbarWidth()
@@ -61,12 +60,7 @@ export default ( () => {
     } )
 
     document.addEventListener( 'DOMContentLoaded', () => {
-
-        // if ( document.body.classList.contains( 'welcome' ) ) { // pour chaque nouvelle session
-            document.dispatchEvent( new CustomEvent( 'Welcome' ) )
-            return
-        // }
-
-        document.dispatchEvent( new CustomEvent( 'ContentLoaded' ) )
+        document.dispatchEvent( new CustomEvent( 'Welcome' ) )
+        return
     } )
 } )()

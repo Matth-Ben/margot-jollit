@@ -30,7 +30,7 @@ add_filter( 'timber/loader/loader', function ( $loader ) {
     $loader->addPath( get_template_directory() . "/assets/icons", "icons" );
     $loader->addPath( get_template_directory() . "/assets/svg", "svg" );
     $loader->addPath( get_template_directory() . "/views/components", "components" );
-    $loader->addPath( get_template_directory() . "/views/acf-components", "acf-components" );
+    $loader->addPath( get_template_directory() . "/views/blocks", "blocks" );
 
     return $loader;
 } );

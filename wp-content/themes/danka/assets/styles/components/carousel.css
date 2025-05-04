@@ -1,5 +1,5 @@
 .component--carousel {
-    @apply flex flex-col gap-xxxl overflow-hidden;
+    @apply flex flex-col gap-xxl overflow-hidden;
 
     .component {
 

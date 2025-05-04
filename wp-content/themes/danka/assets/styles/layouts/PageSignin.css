@@ -1,5 +1,5 @@
 .PageSignin__breadcrumbs {
-    @apply mb-xxxl px-margin;
+    @apply mb-xxl px-margin;
 }
 
 .PageSignin__header {
@@ -12,5 +12,5 @@
 }
 
 .PageSignin__content {
-    @apply px-margin mb-xxxl;
+    @apply px-margin mb-xxl;
 }

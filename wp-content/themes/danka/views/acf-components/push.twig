@@ -1,9 +1,0 @@
-{% macro default(data) %}
-    {% import "@components/push.twig" as push %}
-
-    {% if data.text %}
-        <div class="acf-component--push">
-            {{ push.default(data) }}    
-        </div>
-    {% endif %}
-{% endmacro %}

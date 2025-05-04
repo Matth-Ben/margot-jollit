@@ -56,7 +56,7 @@ function get_flex_content( $content ) {
     foreach ( $content as $item ) {
         $name = $item['acf_fc_layout'];
         $filename = str_replace( '_', '-', $name ) . '.twig';
-        $path = "acf-components/" . $filename;
+        $path = "blocks/" . $filename;
 
         if ( file_exists( get_template_directory() . '/views/' . $path ) && isset( $item[$name] ) ) {
             $compile = \Timber\Timber::compile( $path, array( 'data' => $item[$name] ) );

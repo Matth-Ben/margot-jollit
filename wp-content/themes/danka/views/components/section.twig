@@ -3,8 +3,8 @@
 
     {% set first_item = data.content|first %}
     {% set last_item = data.content|last %}
-    {% set first_path = function('get_template_directory') ~ '/views/acf-components/' ~ first_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
-    {% set last_path = function('get_template_directory') ~ '/views/acf-components/' ~ last_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
+    {% set first_path = function('get_template_directory') ~ '/views/blocks/' ~ first_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
+    {% set last_path = function('get_template_directory') ~ '/views/blocks/' ~ last_item.acf_fc_layout|replace({'_': '-'}) ~ '.twig' %}
     {% set first_is_fullscreen = false %}
     {% set last_is_fullscreen = false %}
     

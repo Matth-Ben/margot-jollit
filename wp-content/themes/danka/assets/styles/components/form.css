@@ -9,7 +9,7 @@
             @apply flex flex-col gap-l;
 
             & h3 {
-                @apply ts-h4 text-balance;
+                @apply ts-h3 text-balance;
             }
         }
     }

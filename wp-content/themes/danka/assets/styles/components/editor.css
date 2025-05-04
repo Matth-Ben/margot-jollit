@@ -13,11 +13,11 @@
     }
     
     h2 {
-        @apply ts-h3 mt-xxxl;
+        @apply ts-h3 mt-xxl;
     }
     
     h3 {
-        @apply ts-h4 mt-xxxl;
+        @apply ts-h3 mt-xxl;
     }
 
     ul {

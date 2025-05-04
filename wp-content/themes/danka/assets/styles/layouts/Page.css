@@ -1,20 +1,12 @@
-.Page__breadcrumbs {
-    @apply mb-xxxl px-margin;
-}
-
-.Page__header {
+/* .Page__header {
     @apply flex flex-col gap-l px-margin my-xxl;
     @apply d:max-w-col-8;
 
     & h1 {
         @apply text-balance d:max-w-col-6;
     }
-}
+} */
 
 .Page__thumbnail {
-    @apply aspect-[2/1] mt-xxl overflow-hidden;
-
-    & > div {
-        @apply scale-[1.1];
-    }
+    @apply d:absolute d:right-113 d:w-[32.6rem] d:h-[43.5rem] overflow-hidden rounded-t-[50rem];
 }

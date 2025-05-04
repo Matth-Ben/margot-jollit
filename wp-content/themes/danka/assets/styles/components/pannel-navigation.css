@@ -61,7 +61,7 @@
             border-color: #FFFFFF29;
 
             & > li > a {
-                @apply ts-h4;
+                @apply ts-h3;
             }
 
             & > li:first-child {

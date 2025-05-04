@@ -1,7 +1,7 @@
 @use '../core/mixins.scss' as mixins;
 
 .component-newsletter {
-    @apply flex flex-col items-center gap-xl px-margin py-xxxl bg-primary text-center;
+    @apply flex flex-col items-center gap-xl px-margin py-xxl bg-primary text-center;
     
     & > div {
         @apply flex flex-col items-center gap-m text-light;

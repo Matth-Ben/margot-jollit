@@ -4,7 +4,7 @@
 
 .component-acf-flex-content:not(.component--halfscreen) > *,
 .component-acf-flex-content.component--halfscreen > .component__content > * {
-    @apply my-xxxxl;
+    @apply my-xxl;
 }
 
 .component-acf-flex-content > .acf-component--halfscreen {
@@ -17,13 +17,13 @@
 
 .component-acf-flex-content > .acf-component--fullscreen + .acf-component--fullscreen,
 .component-acf-flex-content > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
-    margin-top: calc(var(--spacing-xxxxl) * -1);
+    margin-top: calc(var(--spacing-xxl) * -1);
 }
 
 .component-acf-flex-content > .acf-component--fullscreen + .acf-component--first-is-fullscreen {
-    margin-top: calc(var(--spacing-xxxxl) * -1);
+    margin-top: calc(var(--spacing-xxl) * -1);
 }
 
 .component-acf-flex-content > .acf-component--last-is-fullscreen + .acf-component--fullscreen {
-    margin-top: calc(var(--spacing-xxxxl) * -1);
+    margin-top: calc(var(--spacing-xxl) * -1);
 }

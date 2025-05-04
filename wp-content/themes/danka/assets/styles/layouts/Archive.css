@@ -3,7 +3,7 @@
 }
 
 .Archive__breadcrumbs {
-    @apply mb-xxxl;
+    @apply mb-xxl;
 }
 
 .Archive__header {
@@ -11,7 +11,7 @@
     @apply d:max-w-col-8;
 
     & p {
-        @apply ts-h4;
+        @apply ts-h3;
     }
 }
 
@@ -20,7 +20,7 @@
 }
 
 .Archive__list {
-    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
+    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxl;
     @apply d:gap-y-xl;
 
     & >  div {

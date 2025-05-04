@@ -18,11 +18,11 @@
 }
 
 .component-accordions__accordion-header {
-    @apply ts-h4 flex justify-between items-center gap-l w-full py-l border-t border-dark cursor-pointer;
+    @apply ts-h3 flex justify-between items-center gap-l w-full py-l border-t border-dark cursor-pointer;
     @apply d:py-xl;
 
     & h3 {
-        @apply ts-h4;
+        @apply ts-h3;
     }
 
     & span {

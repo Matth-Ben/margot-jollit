@@ -9,7 +9,7 @@
     transition-delay: 0s, var(--transition-duration);
 
     & .component-alert__content {
-        @apply flex justify-between items-start gap-xxl w-full px-margin py-l bg-error;
+        @apply flex justify-between items-start gap-xxl w-full px-margin py-l bg-dark;
         @apply d:items-center;
         height: var(--alert-height);
     

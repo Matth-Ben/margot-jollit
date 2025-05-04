@@ -94,7 +94,7 @@
         }
         
         &__navigation-main {
-            @apply flex flex-col gap-xxxxl p-xl;
+            @apply flex flex-col gap-xxl p-xl;
 
             & > ul {
                 @apply flex flex-col gap-l;

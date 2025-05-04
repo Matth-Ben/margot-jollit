@@ -1,9 +1,0 @@
-{% macro default(data) %}
-    {% import "@components/marquee-logos.twig" as marquee_logos %}
-
-    <div class="acf-component-marquee-logos acf-component--fullscreen">
-        {{ marquee_logos.default(data) }}
-    </div>
-{% endmacro %}
-
-{{ _self.default(data) }}

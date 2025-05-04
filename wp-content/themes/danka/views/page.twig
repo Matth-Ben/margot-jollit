@@ -9,22 +9,60 @@
 
 {% block app_content %}
     <div class="Page">
-        <div class="Page__breadcrumbs">
-            {{ breadcrumbs.default() }}
-        </div>
-        <div class="Page__header">
-            <h1 show-element animate-words>{{ post.title }}</h1>
-            {% if data.description %}
-                <p>{{ data.description }}</p>
-            {% endif %}
-        </div>
-        {% if post.thumbnail %}
-            <div class="Page__thumbnail">
-                <div parallax>
-                    {{ image.default(post.thumbnail, {'aspect_ratio' : 'aspect-[2/1]'}) }}
+        <div class="Page__header max-d:hidden">
+            <div class="container relative">
+                <div class="grid grid-cols-8 d:grid-cols-12 relative">
+                    <div class="col-span-8 d:col-span-11 d:col-start-2 pt-173">
+                        <h1 class="text-gold" show-element animate-lines>{{ data.title ? data.title : post.title }}</h1>
+                    </div>
+
+                    {% if post.thumbnail %}
+                        <div class="Page__thumbnail">
+                            <div>
+                                {{ image.default(post.thumbnail, {'aspect_ratio' : 'aspect-[326/435]'}) }}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
+
+                {% if data.description %}
+                    <div class="absolute left-0 -bottom-20 w-full">
+                        <div class="grid grid-cols-8 d:grid-cols-12 relative">
+                            <div class="col-span-3 d:col-start-9">
+                                <div show-element animate-lines>{{ data.description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-        {% endif %}
+        </div>
+
+        <div class="Page__header d:hidden">
+            <div class="container relative">
+                <div class="grid grid-cols-8 d:grid-cols-12 relative">
+                    {% if post.thumbnail %}
+                        <div class="Page__thumbnail col-span-8">
+                            <div>
+                                {{ image.default(post.thumbnail, {'aspect_ratio' : 'aspect-[326/435]'}) }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="col-span-8 mt-m">
+                        <h1 class="text-gold" show-element animate-lines>{{ data.title ? data.title : post.title }}</h1>
+                    </div>
+                </div>
+
+                {% if data.description %}
+                    <div class="grid grid-cols-8 mt-m">
+                        <div class="col-span-6 col-start-3">
+                            <div show-element animate-lines>{{ data.description }}</div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
         <div class="Page__content">
             {{ acf_flex_content.default(data.content) }}
         </div>

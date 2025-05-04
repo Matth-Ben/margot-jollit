@@ -39,7 +39,7 @@
     }
     
     & .component__description {
-        /* @apply ts-body2; */
+        /* @apply ts-body; */
     }
     
     & .component__privacy-policy {
@@ -72,7 +72,7 @@
         @apply flex justify-between gap-l;
 
         span {
-            @apply ts-body2;
+            @apply ts-body;
         }
 
         button {

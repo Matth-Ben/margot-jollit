@@ -1,0 +1,116 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as _image %}
+    {% import "@components/button.twig" as _button %}
+
+    <div class="block--content-2">
+        <div class="grid grid-cols-12 max-d:hidden">
+            <div class="col-span-5 d:col-start-7 d:mb-[10rem]">
+                <h2 class="italic text-gold" show-element animate-lines>{{ data.right.title }}</h2>
+            </div>
+
+            <div class="col-span-3 col-start-3">
+                <div show-element animate-lines>
+                    {{ data.left.content }}
+                </div>
+            </div>
+
+            <div class="col-span-12 mt-m">
+                <div class="grid grid-cols-12 gap">
+                    <div class="col-span-5 col-start-1">
+                        <div>
+                            {{ _image.default(data.left.image, { aspect_ratio: 'aspect-[551/900]' }) }}
+                        </div>
+                    </div>
+                    <div class="col-span-6 col-start-7">
+                        <div class="flex flex-col justify-between h-full">
+                            <div class="grid grid-cols-6">
+                                <div class="col-span-4 col-start-3">
+                                    {% if data.right.image %}
+                                        <div class="-mr-margin">
+                                            {{ _image.default(data.right.image, { aspect_ratio: 'aspect-[488/275]' }) }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-span-3 col-start-3 mt-30">
+                                    {% if data.right.content %}
+                                        <div show-element animate-lines>
+                                            {{ data.right.content }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-6">
+                                <div class="col-span-3 col-start-4">
+                                    <div class="flex items-end">
+                                        {% if data.right.button.url %}
+                                            <div class="ml-auto">
+                                                {{ _button.default({
+                                                    'title': data.right.button.title,
+                                                    'url': data.right.button.url,
+                                                    'target': data.right.button.target,
+                                                    'icon': 'chevron-right'
+                                                }) }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-8 items-stretch gap gap-y-0 d:hidden">
+            <div class="col-span-6 col-start-3 mb-30">
+                <h2 class="italic text-gold" show-element animate-lines>{{ data.right.title }}</h2>
+            </div>
+
+            <div class="col-span-7 col-start-2 mb-xl">
+                {% if data.right.image %}
+                    {{ _image.default(data.right.image, { aspect_ratio: 'aspect-[331/214]' }) }}
+                {% endif %}
+            </div>
+
+            {% if data.left.content %}
+                <div class="col-span-6 mb-l">
+                    <div show-element animate-lines>
+                        {{ data.left.content }}
+                    </div>
+                </div>
+            {% endif %}
+            
+
+            <div class="col-span-8 mb-xl">
+                <div>
+                    {{ _image.default(data.left.image, { aspect_ratio: 'aspect-[380/500]' }) }}
+                </div>
+            </div>
+
+            <div class="col-span-8">
+                <div class="flex flex-col gap-30">
+                    {% if data.right.content %}
+                        <div class="grid grid-cols-8">
+                            <div class="col-span-6">
+                                <div show-element animate-lines>
+                                    {{ data.right.content }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    {% if data.right.button.url %}
+                        <div class="ml-auto">
+                            {{ _button.default({
+                                'title': data.right.button.title,
+                                'url': data.right.button.url,
+                                'target': data.right.button.target,
+                                'icon': 'chevron-right'
+                            }) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

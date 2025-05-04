@@ -20,9 +20,9 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "@activetheory/split-text": "^1.1.2",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/postcss": "^4.0.8",
-    "@unseenco/taxi": "^1.8.0",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "cssnano": "^7.0.6",
     "gsap": "^3.12.7",

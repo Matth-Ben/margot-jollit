@@ -1,0 +1,11 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as image %}
+
+    {% if data.image %}
+        <div class="acf-component acf-component--image" show-element>
+            {{ image.default(data.image, {aspect_ratio: 'aspect-video', parallax: true}) }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{{ _self.default(data) }}

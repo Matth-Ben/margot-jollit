@@ -1,0 +1,50 @@
+{% macro default(data) %}
+    {% import "@components/image.twig" as _image %}
+    {% import "@components/button.twig" as _button %}
+
+    <div class="block--content-preview acf-component--fullscreen">
+        <div class="bg-gold text-white py-xxl">
+            <div class="container relative">
+                <div class="grid grid-cols-6 d:grid-cols-12 gap">
+                    <div class="col-span-6 d:col-span-7 d:col-start-2">
+                        <div class="flex flex-col gap-s">
+                            {% if data.title %}
+                                <div>{{ data.title }}</div>
+                            {% endif %}
+                            
+                            <div class="flex flex-col gap-l">
+                                {% if data.content %}
+                                    <div class="ts-h2 italic" show-element animate-lines>
+                                        {{ fn('wpautop', data.content) }}
+                                    </div>
+                                {% endif %}
+
+                                {% if data.button.title %}
+                                    {{ _button.default({
+                                        'title': data.button.title,
+                                        'url': data.button.url,
+                                        'target': data.button.target,
+                                        'classList': 'component-button--light',
+                                        'icon': 'chevron-right',
+                                    }) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if data.images|length %}
+                    <div class="block--content-preview__images">
+                        <div class="images--wrapper" show-element>
+                            {% for index, img in data.images %}
+                                <div class="images--item images--item-{{ index }}">
+                                    {{ _image.default(img) }}
+                                </div>    
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

@@ -3,7 +3,7 @@
 }
 
 .ArchiveEvent__breadcrumbs {
-    @apply mb-xxxl;
+    @apply mb-xxl;
 }
 
 .ArchiveEvent__header {
@@ -14,13 +14,13 @@
         @apply flex flex-col gap-l;
         
         & p {
-            @apply ts-h4;
+            @apply ts-h3;
         }
     }
 }
 
 .ArchiveEvent__list {
-    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxxl;
+    @apply grid grid-cols-12 gap-x-gap gap-y-xxl mt-xxl mb-xxl;
     @apply d:gap-y-xl;
 
     & >  div {

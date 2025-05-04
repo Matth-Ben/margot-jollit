@@ -21,7 +21,7 @@
         }
         
         & > h3 {
-            @apply ts-h4;
+            @apply ts-h3;
         }
 
         & > span {

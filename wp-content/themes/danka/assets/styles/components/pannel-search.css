@@ -18,7 +18,7 @@
             }
 
             & > input {
-                @apply ts-h4 bg-transparent w-full;
+                @apply ts-h3 bg-transparent w-full;
 
                 &::placeholder {
                     @apply text-dark;

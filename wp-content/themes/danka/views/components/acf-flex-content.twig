@@ -5,7 +5,7 @@
                 {% if component.acf_fc_layout %}
                     {% set filename = component.acf_fc_layout|replace({'_': '-'}) %}
                     {% set filename = filename ~ ".twig" %}
-                    {% set path = function('get_template_directory') ~ '/views/acf-components/' ~ filename %}
+                    {% set path = function('get_template_directory') ~ '/views/blocks/' ~ filename %}
 
                     {% if function('file_exists', path) %}
                         {% import path as c %}

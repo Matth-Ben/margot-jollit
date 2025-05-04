@@ -2,10 +2,6 @@
     @apply bg-dark text-light;
 }
 
-#app-content {
-    @apply bg-light;
-}
-
 button {
     @apply cursor-pointer;
 }

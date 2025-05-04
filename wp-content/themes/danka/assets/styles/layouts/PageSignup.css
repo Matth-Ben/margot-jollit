@@ -1,5 +1,5 @@
 .PageSignup__breadcrumbs {
-    @apply mb-xxxl px-margin;
+    @apply mb-xxl px-margin;
 }
 
 .PageSignup__header {
@@ -12,5 +12,5 @@
 }
 
 .PageSignup__content {
-    @apply px-margin mb-xxxl;
+    @apply px-margin mb-xxl;
 }

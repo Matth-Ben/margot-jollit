@@ -1,5 +1,5 @@
 .component--form-search {
-    @apply flex justify-between gap-xxl w-full h-xxxl px-margin py-xl bg-light;
+    @apply flex justify-between gap-xxl w-full h-xxl px-margin py-xl bg-light;
 
     .component {
 

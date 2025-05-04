@@ -57,7 +57,7 @@ module.exports = (env, argv) => {
       proxy: [
         {
           context: () => true, // Proxy toutes les requêtes
-          target: 'http://wp-danka.test',
+          target: 'http://localhost:10084',
           changeOrigin: true
         }
       ]

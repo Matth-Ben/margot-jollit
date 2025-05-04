@@ -1,0 +1,15 @@
+.block--content-preview__images {
+    @apply absolute -bottom-[30rem] right-0 w-[32.6rem] h-[38rem] z-10;
+}
+
+.block--content-preview__images .images--wrapper {
+    @apply relative aspect-[326/380];
+}
+
+.block--content-preview__images .images--wrapper .images--item {
+    @apply absolute inset-0 aspect-[326/380];
+}
+
+.block--content-preview__images .images--wrapper .images--item .component-image {
+    @apply object-cover w-full h-full;
+}

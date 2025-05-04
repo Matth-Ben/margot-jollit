@@ -11,6 +11,10 @@ let desktop_global_css_variables = []
 let responsive_css_variables = {}
 let custom_css = ''
 let content = ''
+const remDefault    = parseFloat(data.rem.default);    // ex. 10
+const xxlBreakpoint = data.breakpoints.xxl;            // ex. 1440
+const maxViewport   = 1920;
+const maxFont       = (remDefault * maxViewport / xxlBreakpoint).toFixed(3);  // "13.333"
 
 // Breakpoints
 if ( data?.breakpoints ) {
@@ -136,6 +140,9 @@ global_css_variables.push('--layout-width: calc(100vw - 2 * var(--spacing-margin
 
 // Custom CSS
 custom_css += `\n\nhtml {\n  font-size: 10px;\n}`
+if (data.rem?.xxl === 'scale') {
+    custom_css += `\n\n@media screen and (min-width: ${xxlBreakpoint}px) {\n  html {\n    font-size: clamp(\n      ${remDefault}px,\n      calc(100vw * ${remDefault} / ${xxlBreakpoint}),\n      ${maxFont}px\n    );\n  }\n}`;
+}
 utilities += `\n@utility container {\n  width:100%; max-width: 100%; padding: 0 var(--spacing-margin)\n}`
 utilities += `\n@utility gap {\n gap: var(--spacing-gap); \n}`
 

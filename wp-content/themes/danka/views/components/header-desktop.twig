@@ -21,11 +21,7 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-                <div>
-                    {{ button.icon({icon: 'cart'}) }}
-                    {{ button.icon({icon: 'search', attributes: 'data-pannel-target="' ~ data.pannel_search_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.pannel_search_id ~ '"'}) }}
-                </div>
-                {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ data.pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.pannel_navigation_id ~ '"'}) }}
+                {# {{ button.burger({title: 'Menu', attributes: 'data-pannel-target="' ~ data.pannel_navigation_id ~ '" aria-expanded="false" aria-haspopup="true" aria-controls="' ~ data.pannel_navigation_id ~ '"'}) }} #}
             </div>
         </nav>
     </div>

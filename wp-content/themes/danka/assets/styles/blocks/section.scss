@@ -10,7 +10,7 @@
         & > .component__content {
 
             & > * {
-                @apply my-xxxxl;
+                @apply my-xxl;
 
                 &:first-child {
                     @apply mt-0;
@@ -31,7 +31,7 @@
                 & > div:last-child {
 
                     & > .acf-component--files-to-download {
-                        @apply my-xxxl;
+                        @apply my-xxl;
                     }
 
                     & > .acf-component--text {
@@ -42,7 +42,7 @@
                         @apply my-xl;
 
                         &.acf-component--table {
-                            @apply my-xxxxl;
+                            @apply my-xxl;
                         }
 
                         &:first-child {
@@ -61,7 +61,7 @@
                 width: calc(100% + var(--margin) * 2);
 
                 & + .acf-component--fullscreen {
-                    margin-top: calc(var(--spacing-xxxxl) * -1);
+                    margin-top: calc(var(--spacing-xxl) * -1);
                 }
             }
         }
@@ -77,7 +77,7 @@
         }
 
         & > .component--acf-flex-content.component--halfscreen {
-            @apply gap-xxxl;
+            @apply gap-xxl;
     
             & > .component__content {
     
